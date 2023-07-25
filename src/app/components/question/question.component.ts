@@ -8,7 +8,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { QuizQuestion } from '../../shared/models/QuizQuestion.model';
 import { QuizService } from '../../shared/services/quiz.service';
@@ -39,12 +39,12 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
 
   constructor(
     private quizService: QuizService, 
-    private timerService: TimerService
+    private timerService: TimerService,private frombuilder:FormBuilder
   ) { }
 
   ngOnInit() {
-    this.formGroup = new FormGroup({
-      answer: new FormControl(['', Validators.required])
+    this.formGroup = this.frombuilder.group({
+      answer: ['', Validators.required]
     });
 
     this.previousUserAnswersTextSingleAnswer = this.quizService.previousUserAnswersTextSingleAnswer;
