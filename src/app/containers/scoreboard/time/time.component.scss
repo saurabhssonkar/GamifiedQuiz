@@ -1,0 +1,16 @@
+@import "../../../../_variables.scss";
+@import "../../../../_mixins.scss";
+
+.time-left {
+  float: right;
+  margin-right: 1.5rem;
+
+  .leader {
+    margin-top: 5px;
+    margin-left: 35px;
+  }
+
+  span.scoreboard {
+    margin: 0px 0 0 35px;
+  }
+}
