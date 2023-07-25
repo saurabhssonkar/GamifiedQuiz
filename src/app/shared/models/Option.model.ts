@@ -3,4 +3,4 @@ export interface Option {
   correct?: boolean,
   selected?: boolean
 }
-type Options = Option[];
+
