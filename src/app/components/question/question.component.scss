@@ -1,7 +1,7 @@
 @import "../../../_variables.scss";
 
 .options {
-  margin: 0 0 -5px 0.4rem;
+  margin: 10 0 -5px 0.4rem;
   padding: 5px;
 
   mat-radio-button, mat-checkbox {
@@ -12,17 +12,19 @@
     font-size: 20px !important;
     color: $dark-brown;
     background-color: $light-gray;
-    border: 2px solid $medium-gray;
-    padding: 10px 5px 0 30px;
+    padding: 10px 5px 0 10px;
     margin-left: -5px;
     vertical-align: middle;
-
+    border-radius: 50px;
+    
     &:hover {
       border: 2px solid $vivid-blue;
+      border-radius: 30px;
     }
   }
 
-  mat-radio-label, mat-checkbox-label {
+  mat-radio-label,
+  mat-checkbox-label {
     white-space: normal;
 
     .feedback-icon {
@@ -128,6 +130,31 @@
     margin-top: 45px;
     margin-left: 45px;
   }
+
+  // &.fade-in-image { /* Move this rule outside of the mat-radio-button rule */
+  //   animation: fadeIn 3s;
+  // }
+  // @keyframes fadeIn {
+  //   0% {
+  //     opacity: 0;
+  //   }
+  //   100% {
+  //     opacity: 1;
+  //   }
+  // }
+  &.fade-in-image{
+    animation: fadeInRight 2s ease-in-out;
+  }
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
 }
 
 .multiple-answer {

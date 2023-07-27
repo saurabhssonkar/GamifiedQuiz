@@ -19,6 +19,8 @@
     </mat-card-header>
 
     <mat-card-content>
+              <!-- milestone option show  -->
+
       <mat-toolbar>
         <button mat-button [matMenuTriggerFor]="menu"><span i18n>Milestones &#x25BC;</span></button>
         <mat-menu #menu="matMenu">
@@ -40,34 +42,34 @@
                        'completed': status === 'completed' && quiz?.quizId === completedQuizId }"
           [ngStyle]="{ 'background': 'url(' + quiz?.imageUrl + ') no-repeat center 10px',
                        'background-size': '300px 210px' }">
-
+           <!-- starting mcq page below the summary jus top of the start quiz -->
           <summary class="quiz-info">
             <h5 class="quiz-title" i18n>{{ quiz?.milestone }}</h5>
             <h6 class="quiz-subtitle text-justify" i18n>{{ quiz?.summary }}</h6>
           </summary>
-
+           <!-- content of the mcq option  -->
           <div class="status-icon">
-            <span class="icon" matTooltip="Start"
+            <!-- <span class="icon" matTooltip="Start"
                   *ngIf="!quizCompleted || status === 'started' || quiz?.quizId === startedQuizId"
                   [routerLink]="['/intro/', quiz?.quizId]">
               <svg viewBox="0 0 24 24">
                 <path [attr.d]="quizStatusIcon.start" />
               </svg>
-            </span>
-            <span class="icon" matTooltip="Continue" 
+            </span> -->
+            <!-- <span class="icon" matTooltip="Continue" 
                   *ngIf="status === 'continue' || quiz?.quizId === continueQuizId"
                   [routerLink]="['/question/', quiz?.quizId, currentQuestionIndex]">
               <svg viewBox="0 0 24 24">
                 <path [attr.d]="quizStatusIcon.continue" />
               </svg>
-            </span>
-            <span class="icon" matTooltip="Completed"
+            </span> -->
+            <!-- <span class="icon" matTooltip="Completed"
                   *ngIf="status === 'completed' && quiz?.quizId === completedQuizId"
                   [routerLink]="['/results/', quiz?.quizId]">
               <svg viewBox="0 0 24 24">
                 <path [attr.d]="quizStatusIcon.completed" />
               </svg>
-            </span>
+            </span> -->
           </div>
         </mat-grid-tile>
       </mat-grid-list>

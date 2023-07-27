@@ -1,6 +1,7 @@
 <ng-container *ngFor="let quiz of quizData">
   <mat-card *ngIf="quiz.quizId === quizName">
     <mat-card-header>
+      <!-- header image -->
       <div mat-card-avatar class="header-image"
            [routerLink]="['/quiz/select']"
            matTooltip="back to Codelab Quiz Selection" matTooltipPosition="left">
