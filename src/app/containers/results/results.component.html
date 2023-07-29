@@ -1,5 +1,6 @@
 <ng-container *ngFor="let quiz of quizData">
   <mat-card *ngIf="quiz.quizId === quizName">
+    <!-- result of the header  -->
     <mat-card-header>
       <!-- header image -->
       <div mat-card-avatar class="header-image"
@@ -11,7 +12,8 @@
 
     <mat-card-content>
       <section class="results">
-        <h3 i18n>Congratulations! You&apos;ve completed the quiz!</h3>
+        <h3>Congratulations! You&apos;ve completed the quiz!</h3>
+        <!-- total score out of the  -->
         <section class="statistics">
           <span class="your-score" i18n>
             You scored <span class="result">{{ quizMetadata?.correctAnswersCount$ | async }}</span> out of
@@ -200,9 +202,19 @@
             <a class="btn hvr-radial-out" title="select quiz" (click)="selectQuiz()">
               <i class="fas fa-mouse-pointer"></i>&nbsp;&nbsp;Select Quiz
             </a>
-            <a class="btn hvr-radial-out" title="back to Codelab" [href]="codelabUrl">
-              <i class="fas fa-laptop"></i>&nbsp;&nbsp;Back to Codelab
-            </a>
+            <ng-container *ngFor=" let level of quizI">
+              <a *ngIf=" quizMetadata?.percentage<50"[ngClass]="{'disabled-anchor': quizMetadata?.percentage < 50}" class="btn hvr-radial-out" title="back to Codelab" (click)="selectQuiz1(level)">
+                <i class="fas fa-laptop"></i>&nbsp;&nbsp;{{level}}
+              </a>
+              <a *ngIf="quizMetadata?.percentage >= 50" class="btn hvr-radial-out" title="back to Codelab" (click)="selectQuiz1(level)">
+                <i class="fas fa-laptop"></i>&nbsp;&nbsp;{{level}}
+              </a>
+            </ng-container> 
+            
+            <!-- <a *ngIf=" quizMetadata?.percentage" class="btn hvr-radial-out" title="back to Codelab" (click)="selectQuiz2()">
+              <i class="fas fa-laptop"></i>&nbsp;&nbsp;Level3
+            </a> -->
+            
           </mat-nav-list>
         </mat-card-actions>
       </section>

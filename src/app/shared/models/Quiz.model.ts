@@ -6,6 +6,9 @@ export interface Quiz {
   summary: string;
   imageUrl: string;
   questions: QuizQuestion[];
+  SNumber:Number,
+  isEnable:Boolean,
+  marks:Number
   status: 'started' | 'continue' | 'completed' | '';
 }
 

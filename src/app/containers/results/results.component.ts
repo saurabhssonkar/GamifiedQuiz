@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
 
-import { QUIZ_DATA, QUIZ_RESOURCES } from '../../shared/quiz';
+import { QUIZ_DATA} from '../../shared/quiz';
 import { Quiz } from '../../shared/models/Quiz.model';
 import { QuizQuestion } from '../../shared/models/QuizQuestion.model';
 // import { QuizResource } from '../../shared/models/QuizResource.model';
@@ -29,6 +29,8 @@ export class ResultsComponent implements OnInit {
     totalQuestionsAttempted: this.quizService.totalQuestionsAttempted,
     correctAnswersCount$: this.quizService.correctAnswersCountSubject,
     percentage: this.calculatePercentageOfCorrectlyAnsweredQuestions(),
+    // console.log(percentage),
+    
     completionTime: this.timerService.calculateTotalElapsedTime(this.timerService.elapsedTimes)
   };
   results: Result = {
@@ -55,7 +57,10 @@ export class ResultsComponent implements OnInit {
   elapsedSeconds: number;
 
   checkedShuffle: boolean;
-
+  quizI: string[];
+  value:string[];
+  score1:number[]=[];
+  
   @ViewChild('accordion', { static: false }) accordion: MatAccordion;
   panelOpenState = false;
 
@@ -83,8 +88,33 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+    const percentageValue = this.calculatePercentageOfCorrectlyAnsweredQuestions();
+    console.log('Percentage:', percentageValue);
+
+
+    const numberOfLevels = 3; // Replace this with the actual number of levels you have
+    this.score1 = Array(numberOfLevels).fill(0);
+    this.score1.push(percentageValue);
+
+    
+    console.log('checked the data',this.quizData);
+    const quizIds: string[] = this.quizData.map((quiz) => quiz.quizId);
+
+    
+   sessionStorage.setItem('quizIds', JSON.stringify(quizIds));
+
+   const quizIdSting = sessionStorage.getItem('quizIds');
+    this.quizI= JSON.parse(quizIdSting);
+    console.log("--------",this.quizI);
+    for(let i=0;i<this.quizI.length; i++){
+      const value = this.quizI[i];
+      console.log('---value--',value);
+
+    }
+
     this.activatedRoute.url.subscribe(segments => {
       this.quizName = segments[1].toString();
+      console.log('checked the level',this.quizName);
     });
     this.correctAnswers = this.quizService.correctAnswers;
     this.questions = this.quizService.questions;
@@ -92,6 +122,7 @@ export class ResultsComponent implements OnInit {
     this.checkedShuffle = this.quizService.checkedShuffle;
     // this.resources = this.quizService.resources;
   }
+
 
   private getCompletedQuizId(quizId): void {
     this.quizService.setCompletedQuizId(quizId);
@@ -147,10 +178,32 @@ export class ResultsComponent implements OnInit {
   }
 
   selectQuiz() {
+    
     this.quizService.resetAll();
     this.quizService.resetQuestions();
     this.quizId = '';
     this.indexOfQuizId = 0;
     this.router.navigate(['/select/']).then();
+
   }
+  selectQuiz1(level:any) {
+    console.log("--- Level",level)
+    this.quizService.resetAll();
+    this.quizService.resetQuestions();
+    this.timerService.elapsedTimes = [];
+    this.timerService.completionTime = 0;
+    const value = this.quizI[1];
+
+    this.router.navigate(['/question/',level,1]).then();
+  }
+  // selectQuiz2() {
+  //   this.isLevel2=true;
+  //   this.quizService.resetAll();
+  //   this.quizService.resetQuestions();
+  //   this.timerService.elapsedTimes = [];
+  //   this.timerService.completionTime = 0;
+  //   const value = this.quizI[2];
+
+  //   this.router.navigate(['/question/',value, 1]).then();
+  // }
 }

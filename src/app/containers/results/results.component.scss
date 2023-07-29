@@ -335,3 +335,8 @@ a.btn:focus:not(:active)::after {
     transform: scale(10);
   }
 }
+
+.disabled-anchor {
+  pointer-events: none;
+  opacity: 0.5;
+}

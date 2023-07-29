@@ -132,6 +132,12 @@ export class QuizService {
   // set the text of the previous answers in an array to show in the following quiz
   setPreviousUserAnswersText(previousAnswers, questions: QuizQuestion[]): void {
     for (let i = 0; i < previousAnswers.length; i++) {
+      const question = questions[i];
+
+    if (!question) {
+      // Skip this iteration if the question is undefined or null
+      continue;
+    }
       if (previousAnswers[i].length === 1) {
         const previousAnswersString = questions[i].options[previousAnswers[i] - 1].text;
         this.previousUserAnswersTextSingleAnswer.push(previousAnswersString);

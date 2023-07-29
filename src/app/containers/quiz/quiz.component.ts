@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
-import { QUIZ_DATA, QUIZ_RESOURCES } from '../../shared/quiz';
+import { QUIZ_DATA } from '../../shared/quiz';
 import { Option } from '../../shared/models/Option.model';
 import { Quiz } from '../../shared/models/Quiz.model';
 import { QuizQuestion } from '../../shared/models/QuizQuestion.model';
@@ -57,6 +57,7 @@ export class QuizComponent implements OnInit {
     private router: Router
   ) {
     this.quizId = this.activatedRoute.snapshot.paramMap.get('quizId');
+    console.log(this.quizId)
     this.indexOfQuizId = this.quizData.findIndex(el => el.quizId === this.quizId); 
     
     this.sendPreviousUserAnswersToQuizService(this.quizService.previousUserAnswers);

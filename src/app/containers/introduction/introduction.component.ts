@@ -22,8 +22,11 @@ export class IntroductionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.quizData);
     this.route.url.subscribe(segments => {
+      console.log(segments);
       this.quizName = segments[1].toString();
+      console.log(this.quizName);
     });
   }
 

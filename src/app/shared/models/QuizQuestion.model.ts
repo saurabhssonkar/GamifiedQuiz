@@ -5,4 +5,4 @@ export interface QuizQuestion {
   options: Option[],
   explanation: string
 }
-// type Questions = QuizQuestion[];
+type Questions = QuizQuestion[];
