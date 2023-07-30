@@ -5,7 +5,7 @@ export const QUIZ_DATA: Quiz[] = [
   {
     quizId: 'level1',
     SNumber:1,
-    isEnable:true,
+    isEnable:false,
     marks:0,
     milestone: 'TypeScript',
     summary: 'TypeScript makes it easier to read and debug JavaScript code.',
@@ -107,7 +107,7 @@ export const QUIZ_DATA: Quiz[] = [
   {
     quizId: 'level2',
     SNumber:1,
-    isEnable:true,
+    isEnable:false,
     marks:0,
     milestone: 'Creating your first app',
     summary: 'Angular allows us to create an app that contains components and modules as well as a system for bootstrapping the app.',
@@ -210,7 +210,7 @@ export const QUIZ_DATA: Quiz[] = [
   {
     quizId: 'level3',
     SNumber:1,
-    isEnable:true,
+    isEnable:false,
     marks:0,
     milestone: 'Templates',
     summary: 'Angular has a very expressive template system, which takes HTML as a base, and extends it with custom elements.',

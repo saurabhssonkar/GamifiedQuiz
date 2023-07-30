@@ -202,14 +202,13 @@
             <a class="btn hvr-radial-out" title="select quiz" (click)="selectQuiz()">
               <i class="fas fa-mouse-pointer"></i>&nbsp;&nbsp;Select Quiz
             </a>
-            <ng-container *ngFor=" let level of quizI">
-              <a *ngIf=" quizMetadata?.percentage<50"[ngClass]="{'disabled-anchor': quizMetadata?.percentage < 50}" class="btn hvr-radial-out" title="back to Codelab" (click)="selectQuiz1(level)">
-                <i class="fas fa-laptop"></i>&nbsp;&nbsp;{{level}}
+            
+              <a *ngIf="!quiz.isEnable"[ngClass]="{'disabled-anchor': quizMetadata?.percentage < 50}" class="btn hvr-radial-out" title="back to Codelab" (click)="selectQuiz1(levels1)">
+                <i class="fas fa-laptop"></i>&nbsp;&nbsp;{{levels1}}
               </a>
-              <a *ngIf="quizMetadata?.percentage >= 50" class="btn hvr-radial-out" title="back to Codelab" (click)="selectQuiz1(level)">
-                <i class="fas fa-laptop"></i>&nbsp;&nbsp;{{level}}
+              <a *ngIf="quiz.isEnable" class="btn hvr-radial-out" title="back to Codelab" (click)="selectQuiz1(levels1)">
+                <i class="fas fa-laptop"></i>&nbsp;&nbsp;{{levels1}}
               </a>
-            </ng-container> 
             
             <!-- <a *ngIf=" quizMetadata?.percentage" class="btn hvr-radial-out" title="back to Codelab" (click)="selectQuiz2()">
               <i class="fas fa-laptop"></i>&nbsp;&nbsp;Level3
@@ -221,19 +220,19 @@
 
       <hr />
 
-      <section class="challenge-social">
+      <!-- <section class="challenge-social">
         <h4>Challenge your friends!</h4>
         <div class="social-buttons">
-          <!--<div class="fb-share-button" data-href="https://www.codelab.fun" data-layout="button" data-size="large">
+          <div class="fb-share-button" data-href="https://www.codelab.fun" data-layout="button" data-size="large">
             <a class="btn facebook hvr-shutter-out-horizontal" title="Facebook" target="_blank"
              href="https://www.facebook.com/sharer/sharer.php?u=I scored {{quizMetadata?.percentage}}/100 on this awesome quiz about Angular {{quizData?.milestone}}. Try to beat my score at &amp;hashtag=quiz&amp;url={{codelabUrl}}!%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share your score</a>
-          </div>-->
+          </div>
           <a class="btn twitter-share-button hvr-shutter-out-horizontal" title="Twitter" data-size="large" target="_blank"
              href="https://twitter.com/intent/tweet?text=I%20scored%20{{quizMetadata?.percentage}}/100%20on%20this%20awesome%20quiz%20about%20Angular%20{{quiz?.milestone}}.%20Try%20to%20beat%20my%20score%20at%20&amp;hashtag=quiz&amp;url={{codelabUrl}}!">Tweet your score</a>
           <a class="btn email hvr-shutter-out-horizontal" title="e-mail" data-size="large" target="_blank"
              href="mailto:?subject=Try to beat my quiz score!&amp;body=I scored {{ quizMetadata?.percentage }}% on this awesome quiz about Angular {{quiz?.milestone}}. Try to beat my score at {{ codelabUrl }}">Email a friend</a>
         </div>
-      </section>
+      </section> -->
     </mat-card-content>
   </mat-card>
 </ng-container>
