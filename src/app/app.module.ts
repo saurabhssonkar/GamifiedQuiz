@@ -29,6 +29,10 @@ import { QuizService } from './shared/services/quiz.service';
 import { TimerService } from './shared/services/timer.service';
 import { JoinPipe } from './pipes/join.pipe';
 import { FormsModule } from '@angular/forms';
+import { ClassComponent } from './containers/class/class.component';
+import { ChapterComponent } from './containers/chapter/chapter.component';
+import { SubjectComponent } from './containers/subject/subject.component';
+import { CarouselModule } from 'primeng/carousel';
 
 
 @NgModule({
@@ -42,7 +46,10 @@ import { FormsModule } from '@angular/forms';
     ScoreboardComponent,
     ScoreComponent,
     TimeComponent,
-    JoinPipe
+    JoinPipe,
+    ClassComponent,
+    ChapterComponent,
+    SubjectComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +68,8 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     NgbModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    CarouselModule
   ],
   exports: [MatExpansionModule],
   bootstrap: [AppComponent],

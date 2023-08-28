@@ -1,0 +1,28 @@
+<div class="container mt-5 ">
+    <div class="card">
+        <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions" autoPlayInterval="100">
+            <ng-template let-product pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                    <div class="mb-3 ">
+                        <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" [alt]="product.name" class="w-6 shadow-2" style="border-radius: 5px;" />
+                    </div>
+                    <div>
+                        <h4 class="mb-1">{{ product.name }}</h4>
+                        <h6 class="mt-0 mb-3">{{ '$' + product.price }}</h6>
+                        <span [ngClass]="{
+                            'success': product.inventoryStatus === 'INSTOCK',
+                            'warning': product.inventoryStatus === 'LOWSTOCK',
+                            'danger': product.inventoryStatus === 'OUTOFSTOCK',
+                            'default': product.inventoryStatus !== 'INSTOCK' && product.inventoryStatus !== 'LOWSTOCK' && product.inventoryStatus !== 'OUTOFSTOCK'
+                          }">
+                            {{ product.inventoryStatus }}
+                          </span>                    <div class="car-buttons mt-5">
+                            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
+                            <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+    </div>
