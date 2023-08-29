@@ -7,6 +7,7 @@ import { QuizSelectionComponent } from '../containers/quiz-selection/quiz-select
 import { ResultsComponent } from '../containers/results/results.component';
 import { ChapterComponent } from '../containers/chapter/chapter.component';
 import { SubjectComponent } from '../containers/subject/subject.component';
+import { BooksComponent } from '../containers/books/books.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'select', pathMatch: 'full' },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'question/:quizId/:questionIndex', component: QuizComponent, pathMatch: 'full' },
   { path: 'results/:quizId', component: ResultsComponent, pathMatch: 'full' },
   {path:'chapter',component: ChapterComponent},
-  {path :'subject' ,component:SubjectComponent, pathMatch: 'full'}
+  {path :'subject' ,component:SubjectComponent, pathMatch: 'full'},
+  {path:'books',component:BooksComponent,pathMatch:'full'}
 ];
 
 @NgModule({

@@ -36,12 +36,12 @@
         <mat-grid-tile
 
           *ngFor="let quiz of quizData"
-          [routerLink]="['/intro/', quiz?.quizId]"
-          [ngClass]="{ 'started': status === 'started' && quiz?.quizId === startedQuizId,
+          [routerLink]="['/subject']">
+          <!-- [ngClass]="{ 'started': status === 'started' && quiz?.quizId === startedQuizId,
                        'continue': status === 'continue' && quiz?.quizId === continueQuizId,
                        'completed': status === 'completed' && quiz?.quizId === completedQuizId }"
           [ngStyle]="{ 'background': 'url(' + quiz?.imageUrl + ') no-repeat center 10px',
-                       'background-size': '300px 210px' }">
+                       'background-size': '300px 210px' }"> -->
            <!-- starting mcq page below the summary jus top of the start quiz -->
           <summary class="quiz-info">
             <h5 class="quiz-title" i18n>{{ quiz?.milestone }}</h5>
@@ -81,4 +81,4 @@
   </mat-card>
 </ng-container>
 
-
+<!-- [routerLink]="['/intro/', quiz?.quizId]" -->

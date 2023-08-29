@@ -33,6 +33,7 @@ import { ClassComponent } from './containers/class/class.component';
 import { ChapterComponent } from './containers/chapter/chapter.component';
 import { SubjectComponent } from './containers/subject/subject.component';
 import { CarouselModule } from 'primeng/carousel';
+import { BooksComponent } from './containers/books/books.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CarouselModule } from 'primeng/carousel';
     JoinPipe,
     ClassComponent,
     ChapterComponent,
-    SubjectComponent
+    SubjectComponent,
+    BooksComponent
   ],
   imports: [
     CommonModule,

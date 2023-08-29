@@ -1,28 +1,56 @@
 <div class="container mt-5 ">
-    <div class="card">
-        <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions" autoPlayInterval="100">
-            <ng-template let-product pTemplate="item">
+
+    <div class="card" style="border-radius:25px">
+        <div class="card-title">
+            <h5 style="margin-left: 500px;">Selected Subject</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 ">
+                    <img src="https://w7.pngwing.com/pngs/931/769/png-transparent-database-icon-database-free-blue-background-blue-angle-world-thumbnail.png"
+                        alt="Marks" style="width: 100px;">
+                </div>
+                <div class="col-md-6">
+                    <img src="https://static.vecteezy.com/system/resources/previews/016/009/835/original/the-human-icon-and-logo-vector.jpg"
+                        alt="profile" style="width: 200px;">
+                </div>
+                <div class="col-md-3 ">
+                    <img src="https://illustoon.com/photo/753.png" alt="star" style="width: 100px;">
+                </div>
+
+            </div>
+        </div>
+        <p-carousel [value]="quizData" [numVisible]="3" [numScroll]="3" [circular]="true"
+            [responsiveOptions]="responsiveOptions" autoPlayInterval="100">
+            <ng-template let-quiz pTemplate="item">
                 <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
                     <div class="mb-3 ">
-                        <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" [alt]="product.name" class="w-6 shadow-2" style="border-radius: 5px;" />
+                        <a [routerLink]="['/books']">
+                            <img src="{{ quiz.imageUrl }}" [alt]="quiz.quizId" class=" shadow-2"
+                                style="border-radius: 5px; width: 250px;" />
+                        </a>
                     </div>
                     <div>
-                        <h4 class="mb-1">{{ product.name }}</h4>
-                        <h6 class="mt-0 mb-3">{{ '$' + product.price }}</h6>
-                        <span [ngClass]="{
+                        <h4 class="mb-1">{{ quiz.quizId }}</h4>
+                        <!-- <h6 class="mt-0 mb-3">{{ '$' +  quiz.quizId }}</h6> -->
+                        <!-- <span [ngClass]="{
                             'success': product.inventoryStatus === 'INSTOCK',
                             'warning': product.inventoryStatus === 'LOWSTOCK',
                             'danger': product.inventoryStatus === 'OUTOFSTOCK',
                             'default': product.inventoryStatus !== 'INSTOCK' && product.inventoryStatus !== 'LOWSTOCK' && product.inventoryStatus !== 'OUTOFSTOCK'
-                          }">
-                            {{ product.inventoryStatus }}
-                          </span>                    <div class="car-buttons mt-5">
-                            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
-                            <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+                          }"> -->
+                        <!-- <span>{{ quiz.quizId}}</span>  -->
+                        <!-- </span> -->
+                        <div class="car-buttons mt-5">
+                            <p-button type="button" styleClass="p-button p-button-rounded mr-2"
+                                icon="pi pi-search"></p-button>
+                            <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
+                                icon="pi pi-star-fill"></p-button>
                         </div>
                     </div>
                 </div>
             </ng-template>
         </p-carousel>
     </div>
-    </div>
+</div>
+<!-- <a [routerLink]="['/question/', quiz.quizId, 1]"></a> -->
