@@ -111,7 +111,7 @@ export const QUIZ_DATA: Quiz[] = [
     marks:0,
     milestone: 'Creating your first app',
     summary: 'Angular allows us to create an app that contains components and modules as well as a system for bootstrapping the app.',
-    imageUrl: 'https://raw.githubusercontent.com/marvinrusinek/angular-9-quiz-app/master/src/assets/images/ts.png',
+    imageUrl: 'https://img.freepik.com/free-vector/flashcard-number-6-with-six-children-park_1308-70624.jpg?w=2000',
     questions: [
       {
         questionText: 'Which of the following are true statements about Angular?',

@@ -12,6 +12,7 @@ import { QuizService } from '../../shared/services/quiz.service';
 })
 export class QuizSelectionComponent implements OnInit {
   quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));
+  responsiveOptions: any[] | undefined;
   currentQuestionIndex: number;
   totalQuestions: number;
   quizId: string;
@@ -40,6 +41,23 @@ export class QuizSelectionComponent implements OnInit {
     this.totalQuestions = this.quizService.totalQuestions;
     this.quizCompleted = this.quizService.quizCompleted;
     this.status = this.quizService.status;
+    this.responsiveOptions = [
+      {
+          breakpoint: '1199px',
+          numVisible: 1,
+          numScroll: 1
+      },
+      {
+          breakpoint: '991px',
+          numVisible: 2,
+          numScroll: 1
+      },
+      {
+          breakpoint: '767px',
+          numVisible: 1,
+          numScroll: 1
+      }
+  ];
 
     this.quizService.resetAll();
     this.quizService.resetQuestions();
