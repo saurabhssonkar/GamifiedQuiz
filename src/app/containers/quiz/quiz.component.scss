@@ -131,3 +131,129 @@ section.progress-bar {
     height: 20px;
   }
 }
+.card-header {
+  display: block;
+
+  .header-image {
+    margin: 5px 0 0 15px;
+  }
+
+  .card-title {
+    display: inline-block;
+    margin: -100px -150px 0 -120px !important;
+    margin-top: 5px !important;
+    font-size: 36px;
+  }
+
+  .card-subtitle {
+    display: block;
+    float: right;
+    margin: -55px -15px 0 0 !important;
+    clear: both;
+  }
+}
+
+.unanswered {
+  border: 2px solid $vivid-blue;
+}
+
+.answered {
+  border: 2px solid $medium-gray !important;
+}
+
+.number-correct {
+  color: $green;
+}
+
+#question {
+  font-family: $font-stack;
+  font-weight: 700;
+  font-size: 30px !important;
+  margin: 0 0 10px 13rem;
+  margin-bottom: 25px !important;
+  float: left;
+  padding: 5px 10px 15px 20px;
+  background: linear-gradient(to left bottom, #09e2f6 0%, #b5d9fc 80%);
+  // border: 2px solid $vivid-blue;
+  color: $dark-brown;
+  width: 39.5rem !important;
+  height: auto;
+  vertical-align: baseline;
+  border-radius: 50px;
+  line-height: 32px;
+  
+  .css-typing span {
+    width: 40rem;
+    animation: type 4s steps(60, end);
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+  to {
+    width: 40rem;
+  }
+}
+
+.paging {
+  width: 40rem;
+
+  .card-actions {
+    margin: 10px 0 45px 0;
+
+    svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    polygon, path {
+      fill: $dodger-blue;
+    }
+
+    .prev-question-nav {
+      float: left;
+      margin-left: 0.7rem;
+    }
+
+    .restart-nav {
+      float: left;
+      margin-left: 14rem;
+    }
+
+    .next-question-nav {
+      float: right;
+      margin-right: -1.25rem;
+    }
+
+    .prev-question-nav,
+    .next-question-nav,
+    .restart-nav {
+      transform: scale(1);
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+
+    .show-score-nav {
+      width: 150px;
+      margin: 35px auto;
+    }
+  }
+}
+
+section.progress-bar {
+  margin: 40px 0 10px 1.5rem;
+  width: 39rem;
+  height: auto;
+  border-radius: 10px;
+
+  ngb-progressbar {
+    height: 20px;
+  }
+}
+

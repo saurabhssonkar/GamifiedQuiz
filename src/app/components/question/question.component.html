@@ -2,18 +2,18 @@
 
 <form [formGroup]="formGroup">
   <div class="options" *ngFor="let option of currentQuestion.options; index as i">
-    <div class="single-answer fade-in-image " *ngIf="!multipleAnswer">
+    <div class="single-answer check fade-in-image " *ngIf="!multipleAnswer">
       <mat-radio-button
         (change)="setSelected(i)"
         [disabled]="alreadyAnswered"
         [class.is-correct]="option.selected && option.correct"
         [class.is-incorrect]="option.selected && !option.correct"
-        class="fade-in-image">
+        class="fade-in-image ">
 
-        <mat-radio-label class="check">
+        <mat-radio-label class="">
           <!-- show the text option in mcq choice -->
           <span>{{ i + 1 }}. {{ option.text }}</span>
-           this is icon of the done and clear if the question is right 
+           <!-- this is icon of the done and clear if the question is right  -->
           <mat-icon class="feedback-icon"
                     *ngIf="option.selected && option.correct && isCorrectAnswerSelected">done</mat-icon>
           <mat-icon class="feedback-icon"

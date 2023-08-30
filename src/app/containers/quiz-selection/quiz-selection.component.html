@@ -1,4 +1,4 @@
-<ng-container *ngIf="quizData.length > 0">
+<!-- <ng-container *ngIf="quizData.length > 0">
   <mat-card>
     <mat-card-header>
       <div class="container">
@@ -9,19 +9,18 @@
         </div>
         <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
           <h1 i18n>Edumitram Quiz App</h1>
-        </div>
+        </div> -->
         <!-- this is the comment line of the first if revert the code  -->
         <!-- <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 info">
           <a href="https://github.com/codelab-fun/codelab/blob/master/README.md#angular-codelab---codelabfun" target="_blank">
             <i class="material-icons">info</i>
           </a>
         </div> -->
-      </div>
+      <!-- </div>
     </mat-card-header>
 
-    <mat-card-content>
-      <!-- milestone option show  -->
-      <!-- 
+    <mat-card-content> -->
+            <!-- 
       <mat-toolbar>
         <button mat-button [matMenuTriggerFor]="menu"><span i18n>Milestones &#x25BC;</span></button>
         <mat-menu #menu="matMenu">
@@ -33,20 +32,20 @@
         </mat-menu>
       </mat-toolbar> -->
 
-      <mat-grid-list cols="3" rowHeight="370px">
-        <mat-grid-tile *ngFor="let quiz of quizData" [routerLink]="['/subject']">
+      <!-- <mat-grid-list cols="3" rowHeight="370px">
+        <mat-grid-tile *ngFor="let quiz of quizData" [routerLink]="['/subject']"> -->
           <!-- [ngClass]="{ 'started': status === 'started' && quiz?.quizId === startedQuizId,
                        'continue': status === 'continue' && quiz?.quizId === continueQuizId,
                        'completed': status === 'completed' && quiz?.quizId === completedQuizId }"
           [ngStyle]="{ 'background': 'url(' + quiz?.imageUrl + ') no-repeat center 10px',
                        'background-size': '300px 210px' }"> -->
           <!-- starting mcq page below the summary jus top of the start quiz -->
-          <summary class="quiz-info">
+          <!-- <summary class="quiz-info">
             <h5 class="quiz-title" i18n>{{ quiz?.milestone }}</h5>
             <h6 class="quiz-subtitle text-justify" i18n>{{ quiz?.summary }}</h6>
-          </summary>
+          </summary> -->
           <!-- content of the mcq option  -->
-          <div class="status-icon">
+          <!-- <div class="status-icon"> -->
             <!-- <span class="icon" matTooltip="Start"
                   *ngIf="!quizCompleted || status === 'started' || quiz?.quizId === startedQuizId"
                   [routerLink]="['/intro/', quiz?.quizId]">
@@ -68,7 +67,7 @@
                 <path [attr.d]="quizStatusIcon.completed" />
               </svg>
             </span> -->
-          </div>
+          <!-- </div>
         </mat-grid-tile>
       </mat-grid-list>
     </mat-card-content>
@@ -77,7 +76,10 @@
       <h3 class="text-center" i18n>Copyright &copy; 2023 Edumitram.fun</h3>
     </mat-card-footer>
   </mat-card>
-</ng-container>
+</ng-container> -->
+
+
+<!-- **************************************************###########********************************************** -->
 <div class="container mt-5 ">
 
   <div class="card" style="border-radius:25px">
@@ -93,8 +95,6 @@
         </div>
 
       </div>
-      <!-- <h5 style="margin-left: 500px; font-size: large; font-weight: 200px;">Selected Subject</h5> -->
-      <!-- <img src="https://edumitram.co.in/images/logo.png" alt="logo" style="width: 100px; margin-bottom: 0px;margin-top: 10px; margin-left: 100px; position: absolute;"> -->
     </div>
     <div class="card-body">
 
@@ -104,7 +104,7 @@
           <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
             <div class="card" style="border-radius:10px">
               <div class="mt-3">
-                <a [routerLink]="['/chapter']">
+                <a [routerLink]="['/subject']">
                   <img src="{{ quiz.imageUrl }}" [alt]="quiz.quizId" class=" shadow-2"
                     style=" width: 250px; height: 250px;" />
                 </a>
