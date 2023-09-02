@@ -3,11 +3,20 @@ import { ActivatedRoute } from '@angular/router';
 import { Quiz } from 'src/app/shared/models/Quiz.model';
 import { QUIZ_DATA } from 'src/app/shared/quiz';
 import { QuizService } from 'src/app/shared/services/quiz.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
-  styleUrls: ['./subject.component.css']
+  styleUrls: ['./subject.component.css'],
+   animations: [
+    trigger('fadeInRight', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(20px)' }), // Initial state
+        animate('2000ms', style({ opacity: 1, transform: 'translateX(0)' })), // Final state
+      ]),
+    ]),
+  ],
 })
 export class SubjectComponent {
 

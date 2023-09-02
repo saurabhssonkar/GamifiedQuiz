@@ -1,0 +1,13 @@
+.bgimage{
+    background-image: url(../image/bg.png);
+    background-size: cover;
+    
+  }
+  .scale:hover{
+    transform: scale(1.2);
+  }
+  .scale1:hover{
+    transform: scale(1);
+  
+    
+  }

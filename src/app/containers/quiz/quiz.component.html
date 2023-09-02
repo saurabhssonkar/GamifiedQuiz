@@ -92,7 +92,7 @@
 </ng-container> -->
 <!-- this is the new code  -->
 
-<div class="container mt-md-5">
+ <div class="container mt-md-5">
   
   <ng-container *ngFor="let quiz of quizData">
     <div class="card" [@changeRoute]="animationState$ | async" (@changeRoute.done)="animationDoneHandler()"
@@ -205,4 +205,7 @@
       </div>
     </div>
   </ng-container>
-</div>
+</div> 
+
+        <!-- <codelab-quiz-question [question]="question" (answer)="selectedAnswer($event)">
+        </codelab-quiz-question> -->

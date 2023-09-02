@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { QuizService } from '../../../shared/services/quiz.service';
@@ -9,7 +9,7 @@ import { QuizService } from '../../../shared/services/quiz.service';
   templateUrl: './score.component.html',
   styleUrls: ['./score.component.scss']
 })
-export class ScoreComponent implements OnInit {
+export class ScoreComponent implements OnInit , OnDestroy {
   totalQuestions: number;
   correctAnswersCount$: Observable<number>;
 
@@ -18,5 +18,8 @@ export class ScoreComponent implements OnInit {
   ngOnInit() {
     this.correctAnswersCount$ = this.quizService.correctAnswersCountSubject;
     this.totalQuestions = this.quizService.totalQuestions;
+  }
+  ngOnDestroy(): void {
+    
   }
 }

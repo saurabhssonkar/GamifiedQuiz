@@ -27,7 +27,7 @@ mat-card-header {
 }
 
 .answered {
-  border: 2px solid $medium-gray !important;
+  // border: 2px solid $medium-gray !important;
 }
 
 .number-correct {
@@ -43,7 +43,8 @@ mat-card-header {
   float: left;
   padding: 5px 10px 15px 20px;
   background: linear-gradient(to left bottom, #119f3a 0%, #a3d421 80%);
-  border: 2px solid $vivid-blue;
+  // border: 2px solid $vivid-blue;
+  border: 1px;
   color: $dark-brown;
   width: 39.5rem !important;
   height: auto;
@@ -158,7 +159,7 @@ section.progress-bar {
 }
 
 .answered {
-  border: 2px solid $medium-gray !important;
+  // border: 2px solid $medium-gray !important;
 }
 
 .number-correct {

@@ -59,3 +59,10 @@ mat-card-actions {
 ::ng-deep .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
   background-color: $black !important;
 }
+
+
+.bgimage{
+  background-image: url(../image/bg.png);
+  background-size: cover;
+  
+}
