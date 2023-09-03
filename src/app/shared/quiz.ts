@@ -11,6 +11,7 @@ export const QUIZ_DATA: Quiz[] = [
     summary: 'TypeScript makes it easier to read and debug JavaScript code.',
     // imageUrl:"https://i.postimg.cc/1X7t9nVv/1.jpg",
     imageUrl: '../../assets/images/1.jpg',
+    imageUrl1: '../../assets/images/subject.png',
     questions: [
       {
         questionText: 'Which of the following does TypeScript use to specify the type information?',
@@ -114,6 +115,8 @@ export const QUIZ_DATA: Quiz[] = [
     summary: 'Angular allows us to create an app that contains components and modules as well as a system for bootstrapping the app.',
     // imageUrl:'https://i.postimg.cc/MH6MZJPp/2.png',
     imageUrl: '../../assets/images/2.jpg',
+    imageUrl1: '../../assets/images/subject.png',
+
     questions: [
       {
         questionText: 'Which of the following are true statements about Angular?',
@@ -218,6 +221,8 @@ export const QUIZ_DATA: Quiz[] = [
     summary: 'Angular has a very expressive template system, which takes HTML as a base, and extends it with custom elements.',
     // imageUrl: 'https://i.postimg.cc/Kv5kWjY3/3.png',
         imageUrl: '../../assets/images/3.jpg',
+        imageUrl1: '../../assets/images/subject.png',
+
 
   
     questions: [

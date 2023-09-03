@@ -5,6 +5,8 @@ export interface Quiz {
   milestone: string;
   summary: string;
   imageUrl: string;
+  imageUrl1: string;
+
   questions: QuizQuestion[];
   SNumber:Number,
   isEnable:Boolean,

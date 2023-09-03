@@ -3,12 +3,21 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { QUIZ_DATA } from '../../shared/quiz';
 import { Quiz } from '../../shared/models/Quiz.model';
 import { QuizService } from '../../shared/services/quiz.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'codelab-quiz-selection',
   templateUrl: './quiz-selection.component.html',
   styleUrls: ['./quiz-selection.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fadeInRight', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(20px)' }), // Initial state
+        animate('1500ms', style({ opacity: 1, transform: 'translateX(0)' })), // Final state
+      ]),
+    ]),
+  ],
 })
 export class QuizSelectionComponent implements OnInit {
   quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));

@@ -3,8 +3,8 @@
     <div class="row">
 
         <div class="col-md-12 ">
-            <div class="card" style="border-radius:25px">
-                <div class="card-title mt-3 mb-3" style="margin-left:500px;">Select Quiz</div>
+            <div class="card bgimage" style="border-radius:25px">
+                <div class="card-title mt-3 mb-3" style="margin-left:370px; font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 50px; color:#ffff">Select Chapter</div>
                 <div class="card-body">
                     <ng-container *ngFor="let quiz of quizData">
                         <a [routerLink]="['/intro/', quiz?.quizId]" style="color: black; text-decoration: none;">

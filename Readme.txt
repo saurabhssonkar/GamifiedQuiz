@@ -191,3 +191,104 @@ this is the old cod of the mcq
     </mat-card-footer>
   </mat-card>
 </ng-container>
+
+
+
+
+this is the quiz-componet.ts file  
+
+
+
+<!-- <ng-container *ngFor="let quiz of quizData">
+  <mat-card [@changeRoute]="animationState$ | async" (@changeRoute.done)="animationDoneHandler()"
+    *ngIf="quiz.quizId === quizName && question && questionIndex <= totalQuestions">
+
+    <mat-card-header>
+      mcq header image
+      <div mat-card-avatar class="header-image" [routerLink]="['/select']" matTooltip="back to Codelab Quiz Selection"
+        matTooltipPosition="left">
+      </div>
+      mcq title text 
+      <mat-card-title i18n>{{ quiz?.milestone }} Quiz</mat-card-title>
+      <mat-card-subtitle i18n>Assess your knowledge of {{ quiz?.milestone }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      this is the timer box and score box
+      <codelab-scoreboard></codelab-scoreboard>
+
+      mcq text box question 
+      <section id="question" class="css-typing" [ngClass]="!answers || answers.length === 0 ? 'unanswered': 'answered'">
+        <span *ngIf="!answers || answers.length === 0" i18n>{{ question?.questionText }}&nbsp;
+          <span class="number-correct" *ngIf="numberOfCorrectAnswers > 1">
+            <em>({{ numberOfCorrectAnswers }} answers are correct.)</em>
+          </span>
+        </span>
+        <span *ngIf="answers && answers.length > 0" i18n>
+          {{ numberOfCorrectAnswers === 1 ? 'Option ' + correctOptions + ' was correct because ' :
+          'Options ' + correctOptions + ' were correct because ' }}
+          {{ explanationText }}.
+        </span>
+      </section>
+
+      <codelab-quiz-question [question]="question" (answer)="selectedAnswer($event)">
+      </codelab-quiz-question>
+    </mat-card-content>
+
+    <mat-card-footer>
+      <section class="paging">
+        <mat-card-actions>
+          <mat-nav-list>
+            left arrow or previous arrow 
+            <div class="prev-question-nav" *ngIf="question && questionIndex > 1">
+              <button type="button" mat-flat-button (click)="advanceToPreviousQuestion()"
+                (window:keydown.ArrowLeft)="advanceToPreviousQuestion()" matTooltip="&laquo; Previous Question"
+                matTooltipPosition="above">
+                <svg viewBox="0 0 410.258 410.258">
+                  <polygon [attr.points]="paging.previousButtonPoints" />
+                </svg>
+              </button>
+            </div>
+            restrat button or restart arrow
+
+            <div class="restart-nav" *ngIf="question && questionIndex > 1 && questionIndex < totalQuestions">
+              <button type="button" mat-flat-button (click)="restartQuiz()" matTooltip="Restart Quiz"
+                matTooltipPosition="above">
+                <svg viewBox="0 0 305.836 305.836">
+                  <path [attr.d]="paging.restartButtonPath" />
+                </svg>
+              </button>
+            </div>
+
+            right arrow or next arrow 
+            <div class="next-question-nav" *ngIf="question && questionIndex !== totalQuestions">
+              <button type="button" mat-flat-button (click)="advanceToNextQuestion()"
+                (window:keydown.ArrowRight)="advanceToNextQuestion()" (window:keydown.Enter)="advanceToNextQuestion()"
+                matTooltip="Next Question &raquo;" matTooltipPosition="above" [disabled]="!isAnswered">
+                <svg viewBox="0 0 410.258 410.258">
+                  <polygon [attr.points]="paging.nextButtonPoints" />
+                </svg>
+              </button>
+            </div>
+            show your score button 
+            <div class="show-score-nav" *ngIf="question && questionIndex === totalQuestions">
+              <button type="submit" mat-raised-button disableRipple="true" (click)="advanceToResults()"
+                (window:keydown.Enter)="advanceToResults()" (window:keydown.ArrowRight)="advanceToResults()"
+                class="btn btn-outline-primary">
+                <strong>Show Your Score</strong>
+              </button>
+            </div>
+          </mat-nav-list>
+        </mat-card-actions>
+      </section>
+
+      <section class="progress-bar" *ngIf="question && questionIndex > 1">
+        <ngb-progressbar max="100" type="success" [striped]="true" [animated]="true" [value]="progressValue"
+          class="progress-bar bg-info">
+          <strong>{{ progressValue.toFixed(0) }}%</strong>
+        </ngb-progressbar>
+      </section>
+    </mat-card-footer>
+  </mat-card>
+</ng-container> -->
+<!-- this is the new code  -->

@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component,OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component,OnInit,ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { QUIZ_DATA } from '../../shared/quiz';
 import { Quiz } from '../../shared/models/Quiz.model';
 import { QuizService } from '../../shared/services/quiz.service';
-// import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,8 +22,8 @@ export class IntroductionComponent implements OnInit {
   constructor(
     private quizService: QuizService,
     private route: ActivatedRoute,
-    // private cdr: ChangeDetectorRef,
-    // private router:Router
+    private cdr: ChangeDetectorRef,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class IntroductionComponent implements OnInit {
       this.quizName = segments[1].toString();
       console.log(this.quizName);
     });
-    // this.startCountdown();
+    this.startCountdown();
   }
 
   onChange($event) {
@@ -41,20 +41,20 @@ export class IntroductionComponent implements OnInit {
       this.quizService.setChecked($event.checked);
     }
   }
-  // startCountdown(){
+  startCountdown(){
     
-  //   this.countInterval = setInterval(()=>{
-  //     if(this.countdown>0){
-  //       this.countdown--;
-  //       console.log("timer",this.countdown);
-  //       this.cdr.detectChanges();
-  //     }
-  //     else{
-  //       clearInterval(this.countInterval);
-  //       // [routerLink]="['/question/', quiz.quizId, 1]">
-  //       // window.location.href='/question/level1/1'
-  //       // this.router.navigateByUrl('/question/level1/1')
-  //     }
-  //   },1000);
-  // }
+    this.countInterval = setInterval(()=>{
+      if(this.countdown>0){
+        this.countdown--;
+        console.log("timer",this.countdown);
+        this.cdr.detectChanges();
+      }
+      else{
+        clearInterval(this.countInterval);
+        // [routerLink]="['/question/', quiz.quizId, 1]">
+        // window.location.href='/question/level1/1'
+        this.router.navigateByUrl('/question/level1/1')
+      }
+    },1000);
+  }
 }

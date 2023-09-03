@@ -9,11 +9,14 @@ import { trigger, transition, style, animate } from '@angular/animations';
   selector: 'app-subject',
   templateUrl: './subject.component.html',
   styleUrls: ['./subject.component.css'],
-   animations: [
-    trigger('fadeInRight', [
+  animations: [
+    trigger('fadeInOut', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(20px)' }), // Initial state
-        animate('2000ms', style({ opacity: 1, transform: 'translateX(0)' })), // Final state
+        style({ opacity: 0 }),
+        animate('500ms', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('1500ms', style({ opacity: 0 })),
       ]),
     ]),
   ],

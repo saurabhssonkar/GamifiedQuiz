@@ -3,53 +3,55 @@
 .options {
   margin: 10 0 -5px 0.4rem;
   // margin: 50px 0 10px 0.4rem;
-  padding: 5px;
+  padding: 1px;
   width: 900px;
 
   mat-radio-button, mat-checkbox {
     cursor: pointer;
-    width: 39.5rem;
-    height: auto;
+    width: 39.5rem; // Set the desired width
+    min-height: 4rem;
     font-family: $font-stack;
-    font-size: 20px !important;
+    font-size: 1rem;
     color: $dark-brown;
     background-color: $light-gray;
-    padding: 10px 5px 0 10px;
-    margin-left: -5px;
-    vertical-align: middle;
-    border-radius: 50px;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 3rem;
+    position: relative;
+    
+    .mat-radio-label, .mat-checkbox-label {
+      white-space: normal;
+      display: flex; /* Center the text vertically */
+      align-items: center;
+      justify-content: center;
+       /* Center the text vertically */
+       span {
+        text-align: center;
+        margin-top: 100px;
+        /* Center the text horizontally */
+      }
+      .feedback-icon {
+        position: absolute;
+        right: 1rem;
+        top: -1.5rem;
+      }
+    }
     
     &:hover {
       border: 2px solid $vivid-blue;
-      border-radius: 30px;
+      border-radius: 1.5rem;
+    }
+    
+    &.is-correct {
+      background-color: $green;
+    }
+    
+    &.is-incorrect {
+      background-color: $red;
     }
   }
-
-  mat-radio-label,
-  mat-checkbox-label {
-    white-space: normal;
-
-    .feedback-icon {
-      position: absolute;
-      right: 0;
-      margin-right: 40px;
-      margin-top: -25px;
-    }
-  }
-
-  mat-checkbox .feedback-icon {
-    margin-top: -50px;
-  }
-
-  .is-correct {
-    background-color: $green;
-  }
-
-  .is-incorrect {
-    background-color: $red;
-  }
+  
 }
-
 .messages {
   display: flex;
   justify-content: center;

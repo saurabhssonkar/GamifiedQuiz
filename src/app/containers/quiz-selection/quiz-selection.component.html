@@ -101,7 +101,7 @@
       <p-carousel [value]="quizData" [numVisible]="3" [numScroll]="3" [circular]="true"
         [responsiveOptions]="responsiveOptions" autoPlayInterval="100">
         <ng-template let-quiz pTemplate="item">
-          <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+          <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" [@fadeInRight]>
             <div class="card" style="border-radius:10px">
               <div class="mt-3">
                 <a [routerLink]="['/subject']">
