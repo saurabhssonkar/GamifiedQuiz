@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Quiz } from 'src/app/shared/models/Quiz.model';
@@ -7,7 +8,18 @@ import { QuizService } from 'src/app/shared/services/quiz.service';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  styleUrls: ['./books.component.css'],
+  animations: [
+    trigger('fadeInUp', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-50px)' }),
+        animate('500ms ease-in', style({ opacity: 1, transform: 'translateY(0)' })),
+      ]),
+      transition(':leave', [
+        animate('500ms ease-out', style({ opacity: 0, transform: 'translateY(-50px)' })),
+      ]),
+    ]),
+  ],
 })
 export class BooksComponent {
   responsiveOptions: any[] | undefined;

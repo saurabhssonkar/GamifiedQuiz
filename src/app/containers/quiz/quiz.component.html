@@ -142,9 +142,10 @@
             {{ explanationText }}.
           </span>
         </section>
-
-        <codelab-quiz-question [question]="question" (answer)="selectedAnswer($event)">
-        </codelab-quiz-question>
+        <div class="mx-md-4">
+          <codelab-quiz-question [question]="question" (answer)="selectedAnswer($event)">
+          </codelab-quiz-question>
+        </div>
       </div>
 
       <div class="card-footer">

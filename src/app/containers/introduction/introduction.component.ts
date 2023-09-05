@@ -52,8 +52,8 @@ export class IntroductionComponent implements OnInit {
       else{
         clearInterval(this.countInterval);
         // [routerLink]="['/question/', quiz.quizId, 1]">
-        // window.location.href='/question/level1/1'
-        this.router.navigateByUrl('/question/level1/1')
+        // window.location.href=`/question/${this.quizName}/1`
+        this.router.navigateByUrl(`/question/${this.quizName}/1`)
       }
     },1000);
   }
