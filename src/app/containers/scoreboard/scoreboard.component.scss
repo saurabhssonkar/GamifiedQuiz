@@ -24,3 +24,78 @@
     padding: -10px 0; // fix
   }
 }
+
+.circleProgress_wrapper {
+  position: absolute;
+  top: 1rem;
+  left: 6.5rem;
+  width: 3rem;
+  height: 3rem;
+  margin: .5rem auto;
+  text-align: center;
+  line-height: 3rem;
+}
+.right {
+  right: 0;
+}
+.wrapper{
+  position: absolute;
+  width: 1.5rem;
+  height: 3rem;
+  top: 0;
+  overflow: hidden;
+}
+.circleProgress{
+  width: 2.2rem;
+  height: 2.2rem;
+  border: .4rem solid #f1f1f1;
+  border-radius: 50%;
+  box-sizing: content-box;
+  position: absolute;
+  top: 0;
+}
+.rightcircle{
+  border-top: .4rem solid #8731fd;
+  border-right: .4rem solid #8731fd;
+  right: 0;
+}
+.leftcircle{
+  border-bottom: .4rem solid #8731fd;
+  border-left: .4rem solid #8731fd;
+  left: 0;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg)
+}
+.right_cartoon {
+  -webkit-animation: circleProgressLoad_right 10s linear infinite forwards;
+  animation: circleProgressLoad_right 10s linear infinite forwards;
+}
+.left_cartoon {
+  -webkit-animation: circleProgressLoad_left 10s linear infinite forwards;
+  animation: circleProgressLoad_left 10s linear infinite forwards
+}
+
+
+@keyframes circleProgressLoad_right {
+  0% {
+      -webkit-transform: rotate(46deg);
+      transform: rotate(46deg)
+  }
+
+  50%,to {
+      -webkit-transform: rotate(-136deg);
+      transform: rotate(-136deg)
+  }
+}
+
+@keyframes circleProgressLoad_left {
+  0%,50% {
+      -webkit-transform: rotate(46deg);
+      transform: rotate(46deg)
+  }
+
+  to {
+      -webkit-transform: rotate(-136deg);
+      transform: rotate(-136deg)
+  }
+}

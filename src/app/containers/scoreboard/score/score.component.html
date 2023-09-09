@@ -1,6 +1,11 @@
 <div class="score">
   <span class="leader" i18n>Score</span>
-  <span class="scoreboard" i18n>
-    {{ correctAnswersCount$ | async }}/{{ totalQuestions }}
+  <span class="scoreboard">
+    <div class="row">
+      <h1 class="p-1 ">{{correctAnswersCount$ | async}}</h1>
+      <h1 class="p-1 ">/</h1>
+      <h1 class="p-1 ">{{totalQuestions}}</h1>
+    </div>
+    <!-- &nbsp;{{ correctAnswersCount$ | async }} / {{ totalQuestions }} -->
   </span>
 </div>

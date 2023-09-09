@@ -34,6 +34,10 @@ import { ChapterComponent } from './containers/chapter/chapter.component';
 import { SubjectComponent } from './containers/subject/subject.component';
 import { CarouselModule } from 'primeng/carousel';
 import { BooksComponent } from './containers/books/books.component';
+import {HttpClientModule} from '@angular/common/http';
+import { NgxXml2jsonService } from 'ngx-xml2json';
+
+
 
 
 @NgModule({
@@ -51,7 +55,7 @@ import { BooksComponent } from './containers/books/books.component';
     ClassComponent,
     ChapterComponent,
     SubjectComponent,
-    BooksComponent
+    BooksComponent,
   ],
   imports: [
     CommonModule,
@@ -71,11 +75,15 @@ import { BooksComponent } from './containers/books/books.component';
     NgbModule,
     FontAwesomeModule,
     FormsModule,
-    CarouselModule
+    CarouselModule,
+    HttpClientModule,
+    
+   
   ],
   exports: [MatExpansionModule],
   bootstrap: [AppComponent],
-  providers: [QuizService, TimerService],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [QuizService, TimerService,NgxXml2jsonService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  
 })
 export class AppModule { }

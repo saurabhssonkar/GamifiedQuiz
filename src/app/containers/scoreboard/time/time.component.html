@@ -1,7 +1,21 @@
 <div class="time-left">
     <label class="leader" i18n>Time</label>
-  <span class="scoreboard" i18n>
+  <!-- <span class="scoreboard" i18n>
+    0:<span *ngIf="timeLeft$ < 10">0</span>{{ timeLeft$ | async }}
+  </span> -->
+</div>
+
+<div class="circle">
+  <div   class="circleProgress_wrapper">
+    <div   class="wrapper right">
+        <div   class="circleProgress rightcircle right_cartoon"  ></div>
+    </div> 
+    <div  class="wrapper left">
+<div   class="circleProgress leftcircle left_cartoon"  ></div>
+</div>
+<!-- <span id="timer">10</span> -->
+ <span  id="timer" i18n>
     0:<span *ngIf="timeLeft$ < 10">0</span>{{ timeLeft$ | async }}
   </span>
 </div>
-
+</div>

@@ -98,14 +98,14 @@
     </div>
     <div class="card-body">
 
-      <p-carousel [value]="quizData" [numVisible]="3" [numScroll]="3" [circular]="true"
+      <p-carousel [value]="classList" [numVisible]="3" [numScroll]="1" [circular]="true"
         [responsiveOptions]="responsiveOptions" autoPlayInterval="100">
-        <ng-template let-quiz pTemplate="item">
+        <ng-template let-class pTemplate="item">
           <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" [@fadeInRight]>
             <div class="card" style="border-radius:10px">
               <div class="mt-3">
                 <a [routerLink]="['/subject']">
-                  <img src="{{ quiz.imageUrl }}" [alt]="quiz.quizId" class=" shadow-2"
+                  <img src="../../../assets/images/classicon/{{class.Classid}}.jpg" [alt]="class.Classid" class=" shadow-2"
                     style=" width: 250px; height: 250px;" />
                 </a>
               </div>
@@ -129,3 +129,4 @@
 
 
 <!-- [routerLink]="['/intro/', quiz?.quizId]" -->
+<!-- +`${quiz.soap:Envelope.soap:Body.GetClassListResponse.GetClassListResult.CTSClassMaster.Classid}`+.jpg -->

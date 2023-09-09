@@ -28,12 +28,15 @@
     "howler": "^2.2.0",
     "jquery": "^3.5.1",
     "ngx-bootstrap": "^6.0.0",
+    "ngx-soap": "^0.7.0",
+    "ngx-xml2json": "^1.0.2",
     "popper.js": "^1.16.1",
     "primeicons": "^6.0.1",
     "primeng": "^16.2.0",
     "rxjs": "^7.8.0",
     "tslib": "^2.3.0",
     "typescript": "^5.0.2",
+    "xml2js": "^0.6.2",
     "zone.js": "^0.13.0"
   },
   "scripts": {

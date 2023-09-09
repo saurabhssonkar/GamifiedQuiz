@@ -4,14 +4,20 @@
 .score {
   float: left;
   margin-left: 1rem;
+  margin-top: -10px;
 
   .leader {
     margin-left: 10px;
     margin-top: 5px;
+    padding: 5px 20px;
+    background-color: #58DEF9;
   }
 
   span.scoreboard {
-    margin: 5px 0 0 0px;
-    margin-left: 20px;
+    margin: 5px 0px 0px 0px;
+    margin-left: 40px;
+    margin-top: 0px;
+    // background-color: #EBEBEB;
+    // border-radius: 10px;
   }
 }
