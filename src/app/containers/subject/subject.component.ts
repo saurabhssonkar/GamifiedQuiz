@@ -47,15 +47,19 @@ export class SubjectComponent {
       console.log("subjectList", res);
       this.Subject = res;
   
-      this.Subject.map((Subject:any) => {
-        this.remotePath = "../../../assets/images/subjects/" + Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
-        
-      
+      this.Subject.map((_Subject:any) => {
+        this.remotePath = "../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
+       // Subject.ImagePath=this.defaultImage;
+         _Subject.ImagePath="../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
         this.checkRemoteImageExists(this.remotePath).subscribe((result) => {
           this.data = result;
+          _Subject.ImagePath=this.data.status=="404"?this.defaultImage: _Subject.ImagePath ;
+          console.log("Subject", _Subject.Name);
+          console.log("Original:", this.remotePath);
           console.log("Result:", result);
           console.log("Path",this.data.path);
           console.log("Status",this.data.status);
+          console.log("Image", _Subject.ImagePath);
           // if(this.data.path && this.data.status == 200){
           //   this.defaultImage  = this.data.path;
           //   console.log("@1230",this.defaultImage)
@@ -65,8 +69,11 @@ export class SubjectComponent {
           // }
 
         });
+       
       });
-    });
+    }
+    
+    );
 
     this.responsiveOptions = [
             {
@@ -85,6 +92,7 @@ export class SubjectComponent {
               numScroll: 1
             }
           ];
+          console.log("subjectList", this.Subject);
   }
   
   checkRemoteImageExists(remotePath:string) {
@@ -93,7 +101,7 @@ export class SubjectComponent {
         map(response => {
           return {
             path: this.remotePath,
-            status: response.status
+            status: 200
           };
         }),
   
@@ -106,7 +114,11 @@ export class SubjectComponent {
   }
   onImageError(){
 
-    return `123##%%${this.defaultImage}`
+    return {
+      path: this.defaultImage,
+      status: 404
+    };
+    //return `123##%%${this.defaultImage}`
 
   }
   
