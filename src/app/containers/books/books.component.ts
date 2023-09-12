@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Quiz } from 'src/app/shared/models/Quiz.model';
 import { QUIZ_DATA } from 'src/app/shared/quiz';
 import { QuizService } from 'src/app/shared/services/quiz.service';
+import { TocService } from 'src/app/shared/toc.service';
 
 @Component({
   selector: 'app-books',
@@ -29,13 +30,18 @@ export class BooksComponent {
 
   constructor(
     private quizService: QuizService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private tocService:TocService
   ) { }
 
 
  
 
   ngOnInit() {
+
+    this.tocService.getBookList(38,5,4).subscribe((res)=>{
+      console.log("getBookLis@@@@",res);
+    });
 
       
 

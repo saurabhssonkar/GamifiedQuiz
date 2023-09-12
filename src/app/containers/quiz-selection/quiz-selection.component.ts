@@ -54,19 +54,10 @@ export class QuizSelectionComponent implements OnInit {
 
     this.tocService.getclassList(38).subscribe((res)=>{
       this.classList=res;
-     console.log('soap classList',  this.classList)
-     const data = this.classList.map((classid:any)=>{
-        return classid.Classid;
-     });
-     console.log("######",data);
+    //  console.log('soap classList',  this.classList)
     });
-
-    this.tocService.getSubjectList(38).subscribe((res)=>{
-      console.log("subjectList",res);
-    });
-
-    this.tocService.getBookList(38,5,4).subscribe((res)=>{
-      console.log("getBookLis@@@@",res);
+    this.tocService.getChapterTopicList().subscribe((res)=>{
+      console.log("₹₹₹₹₹₹₹₹₹₹₹this.getChapterTopiclist",res);
     })
 
     this.status = this.quizService.status;
