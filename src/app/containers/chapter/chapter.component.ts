@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Quiz } from 'src/app/shared/models/Quiz.model';
 import { QUIZ_DATA } from 'src/app/shared/quiz';
 import { TocService } from 'src/app/shared/toc.service';
-
+import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-chapter',
@@ -22,29 +23,33 @@ import { TocService } from 'src/app/shared/toc.service';
   ],
 })
 export class ChapterComponent implements OnInit{
-  getchapterTopicData:any
+  getchapterTopicData:any=undefined;
+  getchapterTopicData$ : Observable<any>;
+  isdataloaded:boolean=false;
 
   constructor(private tocService:TocService){
 
   }
   quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));
 
+  //getchapterTopicData=this.quizData;
+
+   ngOnInit() {
+
+    this.getchapterTopicData$=this.tocService.getChapterTopicList();
+
+    this.tocService.getChapterTopicList().subscribe((resp) => {
 
 
-  ngOnInit(): void {
-
-    this.tocService.getChapterTopicList().subscribe((resp)=>{
-
-      
-
+      this.isdataloaded=true;
       this.getchapterTopicData = resp;
-      console.log("data",this.getchapterTopicData);
-      this.getchapterTopicData.forEach((element:any) => {
-        console.log("that is",element.CHAPTERNAME)
-        
+      console.log("data", this.getchapterTopicData);
+      this.getchapterTopicData.forEach((element: any) => {
+        console.log("that is", element.CHAPTERNAME);
+
       });
 
-     
+
     })
 
     
