@@ -25,18 +25,11 @@
 
                             <div class="mt-3 ">
                                 <a [routerLink]="['/books']">
-                                    <img *ngIf="data.path; else defaultImage" 
+                                    <img
                                         src={{subject.ImagePath}}
                                         [alt]="subject.Name"
                                         class=" shadow-2 scale1 "
                                         style="width: 250px; height: 250px;" />
-                                    <ng-template #defaultImage>
-                                        <img src={{subject.ImagePath}}
-                                            [alt]="subject.Name" 
-                                            class=" shadow-2 scale1 "
-                                            style="width: 250px; height: 250px;" />
-
-                                    </ng-template>
                                     <h1 class="text-decoration-none ">{{subject.Name}}</h1>
                                 </a>
                             </div>

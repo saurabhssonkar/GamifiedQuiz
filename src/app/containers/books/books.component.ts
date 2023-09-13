@@ -5,6 +5,9 @@ import { Quiz } from 'src/app/shared/models/Quiz.model';
 import { QUIZ_DATA } from 'src/app/shared/quiz';
 import { QuizService } from 'src/app/shared/services/quiz.service';
 import { TocService } from 'src/app/shared/toc.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, of } from 'rxjs';
+
 
 @Component({
   selector: 'app-books',
@@ -27,11 +30,18 @@ export class BooksComponent {
   // quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));
   quizData:any;
   quizName: String = '';
+ bookList:any;
+ imagePathData:any;
+ serverImage:any
+
+ defaultImage:string="../../../assets/images/samplebook.jpg";
+ 
 
   constructor(
     private quizService: QuizService,
     private route: ActivatedRoute,
-    private tocService:TocService
+    private tocService:TocService,
+    private http:HttpClient
   ) { }
 
 
@@ -40,7 +50,20 @@ export class BooksComponent {
   ngOnInit() {
 
     this.tocService.getBookList(38,5,4).subscribe((res)=>{
-      console.log("getBookLis@@@@",res);
+      this.bookList=res;
+    this.bookList.map((_BookId:any)=>{
+      this.serverImage = "http://192.168.1.50:8081/Lessons/Images/hdimages/"+_BookId.BookID+".jpg";
+      _BookId.ImagePath = "http://192.168.1.50:8081/Lessons/Images/hdimages/"+_BookId.BookID+".jpg";
+
+      this.checkserverImageExist(this.serverImage).subscribe((imagePaths:any)=>{
+        this.imagePathData=imagePaths;
+        
+        _BookId.ImagePath = this.imagePathData.status=="404" ? this.defaultImage :_BookId.ImagePath;
+         
+
+      });
+    })
+       
     });
 
       
@@ -63,27 +86,27 @@ export class BooksComponent {
           }
       ];
       // console.log(this.quizData);
-      this.quizData = [
-        {
-        imageUrl: "https://target.scene7.com/is/image/Target/GUEST_7aee5b9f-8d87-49dc-882a-a301b4b46903?qlt=65&fmt=pjpeg&hei=350&wid=350",
-        quizId:"Histroy Agrwal"
+    //   this.quizData = [
+    //     {
+    //     imageUrl: "https://target.scene7.com/is/image/Target/GUEST_7aee5b9f-8d87-49dc-882a-a301b4b46903?qlt=65&fmt=pjpeg&hei=350&wid=350",
+    //     quizId:"Histroy Agrwal"
 
-      },
-      {
-        imageUrl: "https://m.media-amazon.com/images/I/91SbMgIsmLL.jpg",
-        quizId:"Matmatics BM Sharma"
+    //   },
+    //   {
+    //     imageUrl: "https://m.media-amazon.com/images/I/91SbMgIsmLL.jpg",
+    //     quizId:"Matmatics BM Sharma"
 
-      },
-      {
-        imageUrl: 'https://www.bookgeeks.in/wp-content/uploads/2023/07/A-Few-Thousand-Kilometres-of-Happiness-by-Anand-Krishna-Panicker-Book.jpg',
-        quizId: "Hindi Premchand"
-      },
-      {
-        imageUrl: "https://www.bigw.com.au/medias/sys_master/images/images/h91/hf2/35092834615326.jpg",
-        quizId:"English Arybhat"
+    //   },
+    //   {
+    //     imageUrl: 'https://www.bookgeeks.in/wp-content/uploads/2023/07/A-Few-Thousand-Kilometres-of-Happiness-by-Anand-Krishna-Panicker-Book.jpg',
+    //     quizId: "Hindi Premchand"
+    //   },
+    //   {
+    //     imageUrl: "https://www.bigw.com.au/medias/sys_master/images/images/h91/hf2/35092834615326.jpg",
+    //     quizId:"English Arybhat"
 
-      }
-    ]
+    //   }
+    // ]
       this.route.url.subscribe(segments => {
         console.log(segments);
         this.quizName = segments[1].toString();
@@ -91,5 +114,26 @@ export class BooksComponent {
       });
   }
 
+  checkserverImageExist(serverImage:any){
+    return this.http.get(`${serverImage}`, { observe: 'response', responseType: 'blob' })
+    .pipe(
+      map(resp=>{
+        return{
+          path: this.serverImage,
+          status:200
+        }
+      }),
+      catchError(()=>{
+        return of (this.onImageError());
+      })
+    )
+  }
+
+  onImageError(){
+    return{
+      path:this.defaultImage,
+      status:404
+    }
+  }
 
 }
