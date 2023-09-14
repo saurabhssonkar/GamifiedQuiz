@@ -98,9 +98,9 @@
     </div>
     <div class="card-body">
 
-      <p-carousel [value]="classList" [numVisible]="3" [numScroll]="1" [circular]="true"
+      <p-carousel [value]="classList | async" [numVisible]="3" [numScroll]="1" [circular]="true"
         [responsiveOptions]="responsiveOptions" autoPlayInterval="100">
-        <ng-template let-class pTemplate="item">
+        <ng-template let-class | async pTemplate="item">
           <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" [@fadeInRight]>
             <div class="card" style="border-radius:10px">
               <div class="mt-3">
