@@ -1,85 +1,98 @@
-<ng-content></ng-content>
-<form [formGroup]="formGroup">
-  <div class="options" *ngFor="let option of currentQuestion.options; index as i">
-    <div class="single-answer check fade-in-image " *ngIf="!multipleAnswer">
-      <mat-radio-button
-        (change)="setSelected(i)"
-        [disabled]="alreadyAnswered"
-        [class.is-correct]="option.selected && option.correct"
-        [class.is-incorrect]="option.selected && !option.correct"
-        class="fade-in-image ">
+<!-- <div class="mcq">
 
-        <mat-radio-label class="">
-          <!-- show the text option in mcq choice -->
-          <span>{{ i + 1 }}. {{ option.text }}</span>
-           <!-- this is icon of the done and clear if the question is right  -->
-          <mat-icon class="feedback-icon"
-                    *ngIf="option.selected && option.correct && isCorrectAnswerSelected">done</mat-icon>
-          <mat-icon class="feedback-icon"
-                    *ngIf="option.selected && !option.correct">clear</mat-icon>
-        </mat-radio-label>
-      </mat-radio-button>
+  <label class="mcq-answer">
+    <input type="radio" name="question1" id="answer1">
+    <div class="highlight"></div>
+    <div class="circle"></div>
+    <p>Incorrect answer 1</p>
+    <span class="feedback">Incorrect</span>
+  </label>
+  <label class="mcq-answer correct">
+    <input type="radio" name="question1" id="answer1">
+    <div class="highlight"></div>
+    <div class="circle"></div>
+    <p>Correct answer</p>
+    <span class="feedback">Correct</span>
+  </label>
+  <label class="mcq-answer">
+    <input type="radio" name="question1" id="answer1">
+    <div class="highlight"></div>
+    <div class="circle"></div>
+    <p>Incorrect answer 2</p>
+    <span class="feedback">Incorrect</span>
+  </label>
+  <label class="mcq-answer">
+    <input type="radio" name="question1" id="answer1">
+    <div class="highlight"></div>
+    <div class="circle"></div>
+    <p>Incorrect answer 3</p>
+    <span class="feedback">Incorrect</span>
+  </label>
 
-      <div *ngIf="previousUserAnswersText[i] && option.selected" class="previous-answer-text">
-        <span>&ldquo;{{ previousUserAnswersText[i] }}&rdquo; was selected in your previous quiz.</span>
+</div> -->
+<!-- MCQ visible demo ends here -->
+
+<div class="container mt-5 ">
+  <div class="row">
+      <div class="col-md-12 ">
+          <div class="" >
+              <div class="card-title mt-3 mb-3" style="margin-left:2rem; font-family: 'Courier New', Courier, monospace;  font-size: 2rem; color:black; line-height: 1.8rem; text-align: justify;">
+                Which of the following does TypeScript use to specify the type information? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia eius assumenda doloribus. </div>
+              <div class="card-body">
+
+                  <div class="row ">
+                      <div class="col-md-12 ">
+                          <div class="card" style="border-radius:25px">
+                            
+                              <div class="card-body1">
+
+                               
+                                  <div class="row col-md-12 mt-2">
+                                  <h5 style="font-size: 0.8rem; margin: 0px 40px 7px"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae asperiores odit labore, quaerat ut distinctio quae, neque quibusdam debitis fuga culpa fugit. Saepe, ex.</h5></div>
+                              
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                      <div class="col-md-12 ">
+                          <div class="card" style="border-radius:25px">
+                              
+                              <div class="card-body1">
+                                  <div class="row col-md-12 mt-2 ">
+                                  <h5  style="font-size: 0.8rem; margin: 0px 40px 7px"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae asperiores odit labore, quaerat ut distinctio quae, neque quibusdam debitis fuga culpa fugit. Saepe, ex.</h5></div>
+                              </div>
+                             
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div class="col-md-12 ">
+                        <div class="card" style="border-radius:25px">
+                            
+                            <div class="card-body1">
+                                <div class="row col-md-12 mt-2 ">
+                                <h5  style="font-size: 0.8rem; margin: 0px 40px 7px"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae asperiores odit labore, quaerat ut distinctio quae, neque quibusdam debitis fuga culpa fugit. Saepe, ex.</h5></div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 mb-3">
+                  <div class="col-md-12 ">
+                      <div class="card" style="border-radius:25px">
+                          
+                          <div class="card-body1">
+                              <div class="row col-md-12 mt-2 ">
+                              <h5  style=   "font-size: 0.8rem;
+                              margin: 0px 40px 7px"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae asperiores odit labore, quaerat ut distinctio quae, neque quibusdam debitis fuga culpa fugit. Saepe, ex.</h5></div>
+                          </div>
+                         
+                      </div>
+                  </div>
+              </div>
+              </div>
+          </div>
       </div>
-
-      <section class="messages">
-        <div *ngIf="option.selected && option.correct && isCorrectAnswerSelected">
-          <span>
-            <mat-icon class="sentiment-icon">sentiment_very_satisfied</mat-icon>&nbsp;&nbsp;&nbsp;
-            <span class="message correct-message" i18n>&nbsp;&nbsp;&nbsp;You&apos;re right! {{ correctMessage }}</span>
-          </span>
-        </div>
-        <div *ngIf="option.selected && !option.correct">
-          <span>
-            <mat-icon class="sentiment-icon">sentiment_very_dissatisfied</mat-icon>&nbsp;&nbsp;&nbsp;
-            <span class="message wrong-message" i18n>&nbsp;&nbsp;&nbsp;That&apos;s wrong. {{ correctMessage }}</span>
-          </span>
-        </div>
-        <!-- TODO: show previous user answers for single-answer questions -->
-        <div *ngFor="let previousText of previousUserAnswersTextSingleAnswer[i]" class="previous-answer-text">
-          <span *ngIf="option.selected"><em>{{ previousText }}</em> was selected in your previous quiz.</span>
-        </div>
-      </section>
-    </div>
-
-    <div class="multiple-answer" *ngIf="multipleAnswer">
-      <mat-checkbox
-        (change)="setSelected(i)"
-        [class.is-correct]="option.selected && option.correct"
-        [class.is-incorrect]="option.selected && !option.correct"
-        class="fade-in-image">
-
-        <mat-checkbox-label>
-          <span>{{ i + 1 }}. {{ option.text }}</span>
-
-          <mat-icon class="feedback-icon"
-                    *ngIf="option.selected && option.correct && isCorrectAnswerSelected">done</mat-icon>
-          <mat-icon class="feedback-icon"
-                    *ngIf="option.selected && !option.correct">clear</mat-icon>
-        </mat-checkbox-label>
-      </mat-checkbox>
-
-
-      <section class="messages">
-        <div *ngIf="option.selected && option.correct && isCorrectAnswerSelected">
-          <span>
-            <mat-icon class="sentiment-icon">sentiment_very_satisfied</mat-icon>&nbsp;&nbsp;&nbsp;
-            <span class="message correct-message" i18n>&nbsp;&nbsp;&nbsp;You&apos;re right! {{ correctMessage }}</span>
-          </span>
-        </div>
-        <div *ngIf="option.selected && !option.correct">
-          <span>
-            <mat-icon class="sentiment-icon">sentiment_very_dissatisfied</mat-icon>&nbsp;&nbsp;&nbsp;
-            <span class="message wrong-message" i18n>&nbsp;&nbsp;&nbsp;That&apos;s wrong. {{ correctMessage }}</span>
-          </span>
-        </div>
-      </section>
-    </div>
-
-    <div *ngFor="let previousText of previousUserAnswersTextMultipleAnswer" class="previous-answer-text">
-      <span *ngIf="option.selected">{{ previousText }}</span>&nbsp;was selected in your previous quiz.
-    </div>
   </div>
-</form>
+</div>

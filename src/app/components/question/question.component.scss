@@ -1,208 +1,115 @@
-@import "../../../_variables.scss";
 
-.options {
-  margin: 10 0 -5px 0.4rem;
-  // margin: 50px 0 10px 0.4rem;
-  padding: 1px;
-  width: 900px;
 
-  mat-radio-button, mat-checkbox {
-    cursor: pointer;
-    width: 39.5rem; // Set the desired width
-    min-height: 4rem;
-    font-family: $font-stack;
-    font-size: 1rem;
-    color: $dark-brown;
-    background-color: $light-gray;
-    padding: 0.8rem;
-    margin: 0.5rem 0;
-    border-radius: 3rem;
-    position: relative;
-    
-    .mat-radio-label, .mat-checkbox-label {
-      white-space: normal;
-      display: flex; /* Center the text vertically */
-      align-items: center;
-      justify-content: center;
-       /* Center the text vertically */
-       span {
-        text-align: center;
-        margin-top: 100px;
-        /* Center the text horizontally */
-      }
-      .feedback-icon {
-        position: absolute;
-        right: 1rem;
-        top: -1.5rem;
-      }
-    }
-    
-    &:hover {
-      border: 2px solid $vivid-blue;
-      border-radius: 1.5rem;
-    }
-    
-    &.is-correct {
-      background-color: $green;
-    }
-    
-    &.is-incorrect {
-      background-color: $red;
-    }
-  }
+.mcq{
+  margin-top: 150px;
   
 }
-.messages {
+
+.mcq .mcq-answer {
+  position: relative;
   display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-  height: auto;
-
-  span {
-    font-size: 17px;
-    margin-top: 10px;
-  }
-
-  .sentiment-icon {
-    font-size: 30px;
-    color: $light-yellow;
-    margin: 50px -50px 0 10px;
-    vertical-align: top;
-    float: left;
-  }
-
-  .message {
-    font-family: $font-stack;
-    margin: 20px auto;
-    padding: 10px !important;
-    width: 37.5rem;
-    height: auto;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-  }
-
-  .correct-message {
-    border: 2px solid $vivid-blue;
-    color: $green;
-  }
-
-  .wrong-message {
-    border: 2px solid $red;
-    color: $red;
-    padding: 5px;
-    margin-top: -10px;
-
-    .sentiment-icon {
-      float: left;
-      margin-top: -50px;
-    }
-  }
-}
-
-.previous-answer-text {
-  clear: both;
-
-  div {
-    font-family: $font-stack;
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-
-    span {
-      font-weight: $font-weight-max;
-      font-style: italic;
-    }
-  }
-}
-
-.single-answer {
-  mat-radio-button {
-    height: 57.6px;
-  }
-
-  .message {
-    margin-top: 10px;
-  }
-
-  .feedback-icon {
-    margin-top: 5px !important;
-  }
-
-  .sentiment-icon {
-    margin-top: 45px;
-    margin-left: 45px;
-  }
-
-  // &.fade-in-image { /* Move this rule outside of the mat-radio-button rule */
-  //   animation: fadeIn 3s;
-  // }
-  // @keyframes fadeIn {
-  //   0% {
-  //     opacity: 0;
-  //   }
-  //   100% {
-  //     opacity: 1;
-  //   }
-  // }
-  &.fade-in-image{
-    animation: fadeInRight 2s ease-in-out;
-  }
-  @keyframes fadeInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100px);
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: #F5F5F5;
+  border: 1px solid #CCC;
+  border-radius: 15px;
+  padding-right: 120px;
+  width: 550px;
   
 }
 
-.multiple-answer {
-  mat-checkbox {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-  mat-checkbox:first-child {
-    margin-top: -20px !important;
-  }
-
-  .message {
-    margin-top: 30px;
-    margin-bottom: 20px;
-  }
-
-  .message .wrong-message {
-    margin-top: 10px !important;
-  }
-
-  .feedback-icon {
-    margin-top: 5px !important;
-  }
-
-  .sentiment-icon {
-    margin-top: 40px;
-    margin-left: 25px;
-  }
+.mcq .mcq-answer p {
+  z-index: 1000;
 }
 
-// hide the radio buttons/checkboxes next to the answer choice
-::ng-deep .mat-radio-button .mat-radio-container {
+.mcq .circle {
+  position: relative;
+  height: 1em;
+  width: 1em;
+  margin-left: 1em;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 0.3em solid #666677;
+  background-color: transparent;
+}
+
+.mcq .mcq-answer p {
+  display: block;
+  margin: 1em;
+  z-index: 10;
+}
+
+.mcq .feedback {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #a94442;
+  color: white;
+  min-height: 100%;
+  max-width: 88.6%;
+  padding: 1em 1em 1em 2em;
+  z-index: 100;
+  opacity: 1;
+  visibility: hidden;
+}
+
+.mcq .correct .feedback {
+  background-color: #3c763d;
+}
+
+.mcq input {
   display: none;
 }
-::ng-deep .mat-checkbox .mat-checkbox-inner-container {
-  display: none;
+
+.mcq .highlight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
-// set width and height of mat-checkbox
-::ng-deep .mat-checkbox .mat-checkbox-layout {
-  width: 37rem;
-  height: auto;
+.mcq input:hover ~ .highlight {
+  background-color: #CCC;
 }
-.check{
-  margin: 0 0 10px 13rem;
+
+.mcq input:checked ~ .highlight {
+  background-color: #f2dede;
 }
+
+.mcq .correct input:checked ~ .highlight {
+  background-color: #dff0d8;
+}
+
+.mcq input:checked ~ .circle {
+  background-color: #ebccd1;;
+  border-color: #a94442;
+}
+
+.mcq .correct input:checked ~ .circle {
+  background-color: #d6e9c6;
+  border-color: #3c763d;
+  
+}
+
+.mcq input:checked ~ .feedback {
+  visibility: visible;
+  -webkit-animation: feedbackfade 3s ease 3s;
+          animation: feedbackfade 3s ease 3s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.card-body1 {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 0rem 1rem;
+  
+}
+
 

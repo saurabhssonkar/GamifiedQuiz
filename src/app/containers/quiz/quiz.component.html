@@ -126,10 +126,10 @@
       </div>
       <div class="card-body  ">
         <!-- this is the timer box and score box -->
-        <codelab-scoreboard></codelab-scoreboard>
+        <!-- <codelab-scoreboard></codelab-scoreboard> -->
 
         <!-- mcq text box question  -->
-        <section id="question" class="css-typing"
+        <!-- <section id="question" class="css-typing"
           [ngClass]="!answers || answers.length === 0 ? 'unanswered': 'answered'">
           <span *ngIf="!answers || answers.length === 0">{{ question?.questionText }}&nbsp;
             <span class="number-correct"  *ngIf="numberOfCorrectAnswers > 1">
@@ -141,8 +141,8 @@
             'Options ' + correctOptions + ' were correct because ' }}
             {{ explanationText }}.
           </span>
-        </section>
-        <div class="mx-md-4">
+        </section> -->
+        <div class="align-content-center custom">
           <codelab-quiz-question [question]="question" (answer)="selectedAnswer($event)">
           </codelab-quiz-question>
         </div>

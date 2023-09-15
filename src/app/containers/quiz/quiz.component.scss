@@ -34,40 +34,40 @@ mat-card-header {
   color: $green;
 }
 
-#question {
-  font-family: $font-stack;
-  font-weight: 700;
-  font-size: 30px !important;
-  margin: 0 0 10px 0.4rem;
-  margin-bottom: 25px !important;
-  float: left;
-  padding: 5px 10px 15px 20px;
-  background: linear-gradient(to left bottom, #119f3a 0%, #a3d421 80%);
-  // border: 2px solid $vivid-blue;
-  border: 1px;
-  color: $dark-brown;
-  width: 39.5rem !important;
-  height: auto;
-  vertical-align: middle;
-  border-radius: 50px;
-  line-height: 32px;
-  .css-typing span {
-    width: 40rem;
-    -webkit-animation: type 3s steps(60, end);
-    animation: type 4s steps(60, end);
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-  }
+// #question {
+//   font-family: $font-stack;
+//   font-weight: 700;
+//   font-size: 30px !important;
+//   margin: 0 0 10px 0.4rem;
+//   margin-bottom: 25px !important;
+//   float: left;
+//   padding: 5px 10px 15px 20px;
+//   background: #CCCCCC;
+//   // border: 2px solid $vivid-blue;
+//   border: 1px;
+//   color: $dark-brown;
+//   width: 39.5rem !important;
+//   height: auto;
+//   vertical-align: middle;
+//   border-radius: 50px;
+//   line-height: 32px;
+//   .css-typing span {
+//     width: 40rem;
+//     -webkit-animation: type 3s steps(60, end);
+//     animation: type 4s steps(60, end);
+//     -webkit-animation-fill-mode: forwards;
+//     animation-fill-mode: forwards;
+//   }
   
-}
-@keyframes type {
-  from {
-    width: 0;
-  }
-  to {
-    width: 40rem;
-  }
-}
+// }
+// @keyframes type {
+//   from {
+//     width: 0;
+//   }
+//   to {
+//     width: 40rem;
+//   }
+// }
 
 
 .paging {
@@ -167,20 +167,20 @@ section.progress-bar {
 }
 
 #question {
-  font-family: $font-stack;
-  font-weight: 700;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 550;
   font-size: 30px !important;
   margin: 0 0 10px 13rem;
   margin-bottom: 25px !important;
   float: left;
-  padding: 5px 10px 15px 20px;
-  background: linear-gradient(to left bottom, #09e2f6 0%, #b5d9fc 80%);
-  // border: 2px solid $vivid-blue;
+  padding: 18px 38px;
+  background-color:#F7F7F7;
+  border: none;
   color: $dark-brown;
   width: 39.5rem !important;
   height: auto;
   vertical-align: baseline;
-  border-radius: 50px;
+  border-radius: 44px;
   line-height: 32px;
   
   .css-typing span {
@@ -256,5 +256,9 @@ section.progress-bar {
   ngb-progressbar {
     height: 20px;
   }
+}
+
+.custom{
+  margin-top: 20px;
 }
 

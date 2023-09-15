@@ -24,33 +24,31 @@ import {map} from 'rxjs/operators';
 })
 export class ChapterComponent implements OnInit{
   getchapterTopicData:any=undefined;
-  getchapterTopicData$ : Observable<any>;
-  isdataloaded:boolean=false;
+  // getchapterTopicData : Observable<any>;
 
   constructor(private tocService:TocService){
 
   }
-  quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));
+  // quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));
 
-  //getchapterTopicData=this.quizData;
 
    ngOnInit() {
 
-    this.getchapterTopicData$=this.tocService.getChapterTopicList();
+    this.getchapterTopicData=this.tocService.getChapterTopicList();
 
-    this.tocService.getChapterTopicList().subscribe((resp) => {
-
-
-      this.isdataloaded=true;
-      this.getchapterTopicData = resp;
-      console.log("data", this.getchapterTopicData);
-      this.getchapterTopicData.forEach((element: any) => {
-        console.log("that is", element.CHAPTERNAME);
-
-      });
+    // this.tocService.getChapterTopicList().subscribe((resp) => {
 
 
-    })
+ 
+    //   this.getchapterTopicData = resp;
+    //   console.log("data", this.getchapterTopicData);
+    //   this.getchapterTopicData.forEach((element: any) => {
+    //     console.log("that is", element.CHAPTERNAME);
+
+    //   });
+
+
+    // })
 
     
   }
