@@ -14,11 +14,12 @@ export class TocService {
   classList:any;
   subjectList:any;
   getsubjectList:any;
-  getChapterTopiclist:any
+  getChapterTopiclist:any;
+  getQuestionTest:any;
 
   constructor(private http: HttpClient ,private ngxXml2jsonService: NgxXml2jsonService) {}
 
-  getclassList(id: number) :Observable<any>{
+  getclassList(id: number){
     const soapBody = `<?xml version="1.0" encoding="utf-8"?>
       <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
         <soap:Body>
@@ -177,6 +178,38 @@ export class TocService {
 
       })
     )
+  }
+
+  getTestQuetion():Observable<any>{
+
+    const  soapBody=`<?xml version="1.0" ?>
+    <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+        <S:Body>
+            <GetTestQuestions xmlns="http://educomp.com/smartclass/">
+                <TestID>0000266900006970</TestID>
+                <Type>Educomp</Type>
+            </GetTestQuestions>
+        </S:Body>
+    </S:Envelope>`;
+    const headers = new HttpHeaders({
+      'Content-Type':'text/xml'
+    })
+    return this.http.post(`http://192.168.1.50:8081/services/WebService_SAS.asmx`, soapBody,({headers,responseType:'text'}))
+    .pipe(
+      map((resp)=>{
+        if(resp){
+          const parse = new DOMParser();
+          const docxml  = parse.parseFromString(resp,'text/xml');
+          const obj = this.ngxXml2jsonService.xmlToJson(docxml);
+          this.getQuestionTest  = obj;
+          console.log("getQuestionTest",this.getQuestionTest)
+           
+          const queSetDetails = this.getQuestionTest['soap:Envelope']['soap:Body'].GetTestQuestionsResponse.GetTestQuestionsResult.QSetDetails;
+          return queSetDetails;
+        }
+      })
+    )
+
   }
   
 }

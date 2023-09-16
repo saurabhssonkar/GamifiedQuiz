@@ -14,6 +14,7 @@ import { QuizQuestion } from '../../shared/models/QuizQuestion.model';
 import { QuizService } from '../../shared/services/quiz.service';
 import { TimerService } from '../../shared/services/timer.service';
 import { Option } from 'src/app/shared/models/Option.model';
+import { TocService } from 'src/app/shared/toc.service';
 
 
 @Component({
@@ -36,10 +37,12 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
   previousUserAnswersText = [];
   previousUserAnswersTextSingleAnswer = [];
   previousUserAnswersTextMultipleAnswer = [];
+  questionTest:any;
 
   constructor(
     private quizService: QuizService, 
-    private timerService: TimerService,private frombuilder:FormBuilder
+    private timerService: TimerService,private frombuilder:FormBuilder,
+    private tocService:TocService
   ) { }
 
   ngOnInit() {
@@ -49,6 +52,11 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
 
     this.previousUserAnswersTextSingleAnswer = this.quizService.previousUserAnswersTextSingleAnswer;
     this.previousUserAnswersTextMultipleAnswer = this.quizService.previousUserAnswersTextMultipleAnswer;
+
+    this.tocService.getTestQuetion().subscribe((resp)=>{
+      console.log("this is ",resp);
+    });
+    this.questionTest = this.tocService.getTestQuetion();
   }
 
   ngOnChanges(changes: SimpleChanges) {

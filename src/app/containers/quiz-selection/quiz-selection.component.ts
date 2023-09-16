@@ -52,13 +52,14 @@ export class QuizSelectionComponent implements OnInit {
     this.totalQuestions = this.quizService.totalQuestions;
     this.quizCompleted = this.quizService.quizCompleted;
     this.classList=this.tocService.getclassList(38);
-  /*  this.tocService.getclassList(38).subscribe((res)=>{
-      this.classList=res;
-    //  console.log('soap classList',  this.classList)
-    });*/
-    this.tocService.getChapterTopicList().subscribe((res)=>{
-      console.log("₹₹₹₹₹₹₹₹₹₹₹this.getChapterTopiclist",res);
-    })
+  // /  this.tocService.getclassList(38).subscribe((res)=>{
+  //     this.classList=res;
+  
+     console.log('soap classList',  this.classList)
+    
+    // this.tocService.getChapterTopicList().subscribe((res)=>{
+    //   console.log("₹₹₹₹₹₹₹₹₹₹₹this.getChapterTopiclist",res);
+    // })
 
     this.status = this.quizService.status;
     this.responsiveOptions = [

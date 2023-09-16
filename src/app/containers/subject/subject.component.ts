@@ -43,9 +43,14 @@ export class SubjectComponent {
   ) { }
 
   ngOnInit() {
-    this.tocService.getSubjectList(38, 5).subscribe((res) => {
-      console.log("subjectList", res);
-      this.Subject = res;
+    // this.tocService.getSubjectList(38, 5).subscribe((res) => {
+    //   console.log("subjectList", res);
+    //   this.Subject = res;
+    // this.Subject =this.tocService.getSubjectList(38,5)
+    // console.log("Subject Data",this.Subject);
+
+    this.tocService.getSubjectList(38, 5).subscribe((subjects: any[]) => {
+      this.Subject = subjects;
   
       this.Subject.map((_Subject:any) => {
         this.remotePath = "../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
@@ -65,9 +70,8 @@ export class SubjectComponent {
         });
        
       });
-    }
+    });
     
-    );
 
     this.responsiveOptions = [
             {
@@ -86,7 +90,7 @@ export class SubjectComponent {
               numScroll: 1
             }
           ];
-          console.log("subjectList", this.Subject);
+        
   }
   
   checkRemoteImageExists(remotePath:string) {
