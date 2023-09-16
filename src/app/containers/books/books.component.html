@@ -19,9 +19,9 @@
                 </div> -->
 
 
-            <p-carousel [value]="bookList" [numVisible]="3" [numScroll]="1" [circular]="true"
+            <p-carousel [value]="bookList | async" [numVisible]="3" [numScroll]="1" [circular]="true"
                 [responsiveOptions]="responsiveOptions" autoPlayInterval="100">
-                <ng-template let-book pTemplate="item">
+                <ng-template let-book | async pTemplate="item">
                     <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" [@fadeInUp]>
                         <div class="card scale" style="border-radius:20px">
                         <div class="mt-3">

@@ -31,7 +31,6 @@ export class SubjectComponent {
   quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));
   quizName: String = '';
   Subject: any;
-  imageExists: boolean = false;
   remotePath: any;
   defaultImage:string="../../../assets/images/subjects/chemistry-green.svg"
   data:any
@@ -49,28 +48,29 @@ export class SubjectComponent {
     // this.Subject =this.tocService.getSubjectList(38,5)
     // console.log("Subject Data",this.Subject);
 
-    this.tocService.getSubjectList(38, 5).subscribe((subjects: any[]) => {
-      this.Subject = subjects;
+    this.Subject=this.tocService.getSubjectList(38, 5)
+    console.log("___@@@__",this.Subject);
+      // this.Subject = subjects;
   
-      this.Subject.map((_Subject:any) => {
-        this.remotePath = "../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
-         _Subject.ImagePath="../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
-        this.checkRemoteImageExists(this.remotePath).subscribe((result) => {
-          this.data = result;
-          _Subject.ImagePath=this.data.status=="404"?this.defaultImage: _Subject.ImagePath ;
-          console.log("Subject", _Subject.Name);
-          console.log("Original:", this.remotePath);
-          console.log("Result:", result);
-          console.log("Path",this.data.path);
-          console.log("Status",this.data.status);
-          console.log("Image", _Subject.ImagePath);
-          console.log("Subject",this.Subject);
+      // this.Subject.map((_Subject:any) => {
+      //   this.remotePath = "../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
+      //    _Subject.ImagePath="../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
+      //   this.checkRemoteImageExists(this.remotePath).subscribe((result) => {
+      //     this.data = result;
+      //     _Subject.ImagePath=this.data.status=="404"?this.defaultImage: _Subject.ImagePath ;
+      //     console.log("Subject", _Subject.Name);
+      //     console.log("Original:", this.remotePath);
+      //     console.log("Result:", result);
+      //     console.log("Path",this.data.path);
+      //     console.log("Status",this.data.status);
+      //     console.log("Image", _Subject.ImagePath);
+      //     console.log("Subject",this.Subject);
         
 
-        });
+      //   });
        
-      });
-    });
+      // });
+    // });
     
 
     this.responsiveOptions = [
@@ -93,31 +93,31 @@ export class SubjectComponent {
         
   }
   
-  checkRemoteImageExists(remotePath:string) {
-    return this.http.get(`${remotePath}`, { observe: 'response', responseType: 'blob' })
-      .pipe(
-        map(response => {
-          return {
-            path: this.remotePath,
-            status: 200
-          };
-        }),
+  // checkRemoteImageExists(remotePath:string) {
+  //   return this.http.get(`${remotePath}`, { observe: 'response', responseType: 'blob' })
+  //     .pipe(
+  //       map(response => {
+  //         return {
+  //           path: this.remotePath,
+  //           status: 200
+  //         };
+  //       }),
   
-        catchError(() => {
+  //       catchError(() => {
 
-          return of( this.onImageError()); 
-        })
+  //         return of( this.onImageError()); 
+  //       })
       
-      );
-  }
-  onImageError(){
+  //     );
+  // }
+  // onImageError(){
 
-    return {
-      path: this.defaultImage,
-      status: 404
-    };
+  //   return {
+  //     path: this.defaultImage,
+  //     status: 404
+  //   };
 
-  }
+  // }
   
   
 

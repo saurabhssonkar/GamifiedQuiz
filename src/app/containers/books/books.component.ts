@@ -34,7 +34,7 @@ export class BooksComponent {
  imagePathData:any;
  serverImage:any
 
- defaultImage:string="../../../assets/images/samplebook.jpg";
+ defaultImageBook:string="../../../assets/images/samplebook.jpg";
  
 
   constructor(
@@ -49,22 +49,24 @@ export class BooksComponent {
 
   ngOnInit() {
 
-    this.tocService.getBookList(38,5,4).subscribe((res)=>{
-      this.bookList=res;
-    this.bookList.map((_BookId:any)=>{
-      this.serverImage = "http://192.168.1.50:8081/Lessons/Images/hdimages/"+_BookId.BookID+".jpg";
-      _BookId.ImagePath = "http://192.168.1.50:8081/Lessons/Images/hdimages/"+_BookId.BookID+".jpg";
+    this.bookList=this.tocService.getBookList(38,5,4)
 
-      this.checkserverImageExist(this.serverImage).subscribe((imagePaths:any)=>{
-        this.imagePathData=imagePaths;
+    // this.tocService.getBookList(38,5,4).subscribe((res)=>{
+      
+    // this.bookList.map((_BookId:any)=>{
+    //   this.serverImage = "http://192.168.1.50:8081/Lessons/Images/hdimages/"+_BookId.BookID+".jpg";
+    //   _BookId.ImagePath = "http://192.168.1.50:8081/Lessons/Images/hdimages/"+_BookId.BookID+".jpg";
+
+    //   this.checkserverImageExist(this.serverImage).subscribe((imagePaths:any)=>{
+    //     this.imagePathData=imagePaths;
         
-        _BookId.ImagePath = this.imagePathData.status=="404" ? this.defaultImage :_BookId.ImagePath;
+    //     _BookId.ImagePath = this.imagePathData.status=="404" ? this.defaultImageBook :_BookId.ImagePath;
          
 
-      });
-    })
+    //   });
+    // })
        
-    });
+    // });
 
       
 
@@ -131,7 +133,7 @@ export class BooksComponent {
 
   onImageError(){
     return{
-      path:this.defaultImage,
+      path:this.defaultImageBook,
       status:404
     }
   }
