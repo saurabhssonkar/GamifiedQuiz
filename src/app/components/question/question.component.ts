@@ -37,12 +37,19 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
   previousUserAnswersText = [];
   previousUserAnswersTextSingleAnswer = [];
   previousUserAnswersTextMultipleAnswer = [];
-  questionTest:any;
+  questionTest: any;
+  mcqQuestionAndOptionData: any;
+  transformedData: any
+  transformDataSet = [];
+  couter=0;
+  option=[];
+  quizId:any
+  questions:any
 
   constructor(
-    private quizService: QuizService, 
-    private timerService: TimerService,private frombuilder:FormBuilder,
-    private tocService:TocService
+    private quizService: QuizService,
+    private timerService: TimerService, private frombuilder: FormBuilder,
+    private tocService: TocService
   ) { }
 
   ngOnInit() {
@@ -51,10 +58,55 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
     });
 
     this.previousUserAnswersTextSingleAnswer = this.quizService.previousUserAnswersTextSingleAnswer;
+    console.log("previousUserAnswersTextSingleAnswer", this.previousUserAnswersTextSingleAnswer)
     this.previousUserAnswersTextMultipleAnswer = this.quizService.previousUserAnswersTextMultipleAnswer;
 
-    this.tocService.getTestQuetion().subscribe((resp)=>{
-      console.log("this is ",resp);
+    this.tocService.getTestQuetion().subscribe((resp) => {
+      this.mcqQuestionAndOptionData = resp;
+      console.log("this is ", resp);
+
+        const numberOfLevel = 4;
+        for (let i = 0; i < numberOfLevel; i++) {
+
+
+          for (let j = 0; j <= 10; j++) {
+            this.quizId = `level${i}`
+            const jsonData = this.mcqQuestionAndOptionData[this.couter];
+            this.couter++;
+            this.questions= [
+              {
+                questionText: jsonData.QText,
+                options: [
+                  { text: jsonData.AnswerAText, correct: "true" },
+                  { text: jsonData.AnswerBText },
+                  { text: jsonData.AnswerCText },
+                  { text: jsonData.AnswerDText },
+                ],
+                explanation: `Correct Answer: ${jsonData.CorrectAnswerCode}`
+              }
+            ]
+          
+
+
+           
+         
+          };
+          this.quizId = this.quizId
+          this.questions = [this.questions]
+          this.transformedData = {
+            quizId:this.quizId,
+            questions: this.questions,
+            
+           
+          };
+          this.transformDataSet.push(this.transformedData)
+          console.log("transformData", this.transformDataSet)
+        };
+      
+
+     
+
+
     });
     this.questionTest = this.tocService.getTestQuetion();
   }
@@ -66,11 +118,12 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
       this.multipleAnswer = this.correctAnswers.length > 1;
 
       if (this.formGroup) {
-        this.formGroup.patchValue({answer: ''});
+        this.formGroup.patchValue({ answer: '' });
         this.alreadyAnswered = false;
       }
     }
   }
+
 
   isCorrect(correct: boolean, optionIndex: number): boolean {
     return correct === this.currentQuestion.options[optionIndex].correct;

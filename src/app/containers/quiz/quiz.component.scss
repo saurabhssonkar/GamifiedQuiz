@@ -170,14 +170,13 @@ section.progress-bar {
   font-family: 'Courier New', Courier, monospace;
   font-weight: 550;
   font-size: 30px !important;
-  margin: 0 0 10px 13rem;
+  margin: 0 0 10px 1rem;
   margin-bottom: 25px !important;
   float: left;
   padding: 18px 38px;
   background-color:#F7F7F7;
   border: none;
   color: $dark-brown;
-  width: 39.5rem !important;
   height: auto;
   vertical-align: baseline;
   border-radius: 44px;
@@ -261,4 +260,11 @@ section.progress-bar {
 .custom{
   margin-top: 20px;
 }
+
+.bgimage{
+  background-image: url(../../containers/image/bg.png);
+  background-size: cover;
+  
+}
+
 
