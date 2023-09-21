@@ -29,8 +29,8 @@ export class TocService {
 
   defaultImageBook: string = "../../../assets/images/samplebook.jpg";
 
-  private message = new BehaviorSubject<Quiz[]>(QUIZ_DATA);
-  getMessage = this.message.asObservable();
+  // private message = new BehaviorSubject<Quiz[]>(QUIZ_DATA);
+  // getMessage = this.message.asObservable();
 
 
   constructor(private http: HttpClient, private ngxXml2jsonService: NgxXml2jsonService) { }
@@ -308,8 +308,8 @@ export class TocService {
 
   }
 
-  setMessage(message: Quiz[]) {
-    this.message.next(message)
-  }
+  // setMessage(message: Quiz[]) {
+  //   this.message.next(message)
+  // }
 
 }

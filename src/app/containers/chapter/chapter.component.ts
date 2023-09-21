@@ -5,6 +5,7 @@ import { QUIZ_DATA } from 'src/app/shared/quiz';
 import { TocService } from 'src/app/shared/toc.service';
 import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import { QuizService } from 'src/app/shared/services/quiz.service';
 
 @Component({
   selector: 'app-chapter',
@@ -36,7 +37,7 @@ export class ChapterComponent implements OnInit{
 
   // getchapterTopicData : Observable<any>;
 
-  constructor(private tocService:TocService){
+  constructor(private tocService:TocService ,private quizService:QuizService){
 
   }
   // quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));
@@ -113,9 +114,13 @@ export class ChapterComponent implements OnInit{
 
     });
     console.log("Data set");
-    this.tocService.setMessage(this.transformDataSet)
+    this.quizService.setMessage(this.transformDataSet)
 
+    this.quizService.getMessage.subscribe(resp=>{
+      console.log("get data of where set Data",resp)
+    })
     
   }
+ 
 
 }

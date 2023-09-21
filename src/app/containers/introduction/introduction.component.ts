@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { TocService } from 'src/app/shared/toc.service';
 
 
+
 @Component({
   selector: 'codelab-quiz-intro',
   templateUrl: './introduction.component.html',
@@ -38,8 +39,9 @@ export class IntroductionComponent implements OnInit {
     });
     // this.startCountdown();
 
-    this.tocService.getMessage.subscribe(resp=>{
+    this.quizService.getMessage.subscribe(resp=>{
       this.QUIZ_DATA =resp;
+      console.log("get Data1")
       console.log("QUIZ_DATA",this.QUIZ_DATA);
 
     })

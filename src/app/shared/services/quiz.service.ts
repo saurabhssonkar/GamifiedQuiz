@@ -63,6 +63,8 @@ export class QuizService {
     html5: true,
     format: ['mp3', 'aac']
   });
+    private message = new BehaviorSubject<Quiz[]>(QUIZ_DATA);
+    getMessage = this.message.asObservable();
 
 
   constructor(
@@ -230,5 +232,8 @@ export class QuizService {
 
   resetQuestions() {
     this.quizData = JSON.parse(JSON.stringify(QUIZ_DATA));
+  }
+  setMessage(message: Quiz[]) {
+    this.message.next(message)
   }
 }
