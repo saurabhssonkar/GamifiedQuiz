@@ -4,9 +4,10 @@ mat-card-header {
   display: block;
   margin-top: 20px !important;
 
-  .header-image {
-    margin-left: 10px;
-  }
+  // .header-image {
+  //   margin-left: 50px;
+  //   background-image: url(../../../assets/images/edumitram.png);
+  // }
 
   mat-card-title {
     font-family: 'Roboto', arial, sans-serif;
@@ -339,4 +340,12 @@ a.btn:focus:not(:active)::after {
 .disabled-anchor {
   pointer-events: none;
   opacity: 0.5;
+}
+
+
+.header-image {
+  margin-left: 50px;
+  background-image: url(../../../assets/images/edumitram.png);
+  height: 26vh;
+  background-repeat: no-repeat;
 }
