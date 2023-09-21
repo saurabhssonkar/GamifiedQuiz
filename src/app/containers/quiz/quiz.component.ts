@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -22,6 +22,7 @@ type AnimationState = 'animationStarted' | 'none';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuizComponent implements OnInit {
+  // @Input() justName:any
   quizData: Quiz[] = QUIZ_DATA;
   quizName = '';
   // quizResources: QuizResource[] = JSON.parse(JSON.stringify(QUIZ_RESOURCES));
@@ -61,6 +62,7 @@ export class QuizComponent implements OnInit {
     this.indexOfQuizId = this.quizData.findIndex(el => el.quizId === this.quizId); 
     
     this.sendPreviousUserAnswersToQuizService(this.quizService.previousUserAnswers);
+    console.log("this quizData",this.quizData);
   }
 
   ngOnInit() {

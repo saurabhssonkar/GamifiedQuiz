@@ -5,6 +5,7 @@ import { QUIZ_DATA } from '../../shared/quiz';
 import { Quiz } from '../../shared/models/Quiz.model';
 import { QuizService } from '../../shared/services/quiz.service';
 import { Router } from '@angular/router';
+import { TocService } from 'src/app/shared/toc.service';
 
 
 @Component({
@@ -18,12 +19,14 @@ export class IntroductionComponent implements OnInit {
   quizName: String = '';
   countdown:number=5;
   countInterval:any;
+ QUIZ_DATA:any
 
   constructor(
     private quizService: QuizService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
-    private router:Router
+    private router:Router,
+    private tocService:TocService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +36,13 @@ export class IntroductionComponent implements OnInit {
       this.quizName = segments[1].toString();
       console.log(this.quizName);
     });
-    this.startCountdown();
+    // this.startCountdown();
+
+    this.tocService.getMessage.subscribe(resp=>{
+      this.QUIZ_DATA =resp;
+      console.log("QUIZ_DATA",this.QUIZ_DATA);
+
+    })
   }
 
   onChange($event) {
@@ -41,20 +50,22 @@ export class IntroductionComponent implements OnInit {
       this.quizService.setChecked($event.checked);
     }
   }
-  startCountdown(){
+  // startCountdown(){
     
-    this.countInterval = setInterval(()=>{
-      if(this.countdown>0){
-        this.countdown--;
-        console.log("timer",this.countdown);
-        this.cdr.detectChanges();
-      }
-      else{
-        clearInterval(this.countInterval);
-        // [routerLink]="['/question/', quiz.quizId, 1]">
-        // window.location.href=`/question/${this.quizName}/1`
-        this.router.navigateByUrl(`/question/${this.quizName}/1`)
-      }
-    },1000);
-  }
+  //   this.countInterval = setInterval(()=>{
+  //     if(this.countdown>0){
+  //       this.countdown--;
+  //       console.log("timer",this.countdown);
+  //       this.cdr.detectChanges();
+  //     }
+  //     else{
+  //       clearInterval(this.countInterval);
+  //       // [routerLink]="['/question/', quiz.quizId, 1]">
+  //       // window.location.href=`/question/${this.quizName}/1`
+  //       this.router.navigateByUrl(`/question/${this.quizName}/1`)
+  //     }
+  //   },1000);
+  // }
+
+ 
 }

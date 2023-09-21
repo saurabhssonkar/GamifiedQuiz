@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import { NgxXml2jsonComponent, NgxXml2jsonService } from 'ngx-xml2json';
 import { text } from '@fortawesome/fontawesome-svg-core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Quiz } from './models/Quiz.model';
+import { QUIZ_DATA } from './quiz';
 
 
 
@@ -26,6 +28,9 @@ export class TocService {
   defaultImage: string = "../../../assets/images/subjects/chemistry-green.svg";
 
   defaultImageBook: string = "../../../assets/images/samplebook.jpg";
+
+  private message = new BehaviorSubject<Quiz[]>(QUIZ_DATA);
+  getMessage = this.message.asObservable();
 
 
   constructor(private http: HttpClient, private ngxXml2jsonService: NgxXml2jsonService) { }
@@ -301,6 +306,10 @@ export class TocService {
         })
       )
 
+  }
+
+  setMessage(message: Quiz[]) {
+    this.message.next(message)
   }
 
 }

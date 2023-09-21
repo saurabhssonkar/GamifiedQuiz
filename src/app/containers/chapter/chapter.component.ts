@@ -24,6 +24,16 @@ import {map} from 'rxjs/operators';
 })
 export class ChapterComponent implements OnInit{
   getchapterTopicData:any=undefined;
+  transformedData: any
+  transformDataSet = [];
+  couter=0;
+  option=[];
+  quizId:any
+  questions=[];
+  jsonData=[];
+  questionTest: any;
+  mcqQuestionAndOptionData: any;
+
   // getchapterTopicData : Observable<any>;
 
   constructor(private tocService:TocService){
@@ -49,6 +59,61 @@ export class ChapterComponent implements OnInit{
 
 
     // })
+
+    this.tocService.getTestQuetion().subscribe((resp) => {
+      this.mcqQuestionAndOptionData = resp;
+      console.log("this is ", resp);
+
+        const numberOfLevel = 4;
+        for (let i = 1; i <=numberOfLevel; i++) {
+
+          this.quizId = `level${i}`
+
+          for (let j = 0; j < this.mcqQuestionAndOptionData.length && j < 10; j++) {
+            
+            const jsonValue = this.mcqQuestionAndOptionData[this.couter];
+            this.couter++;
+            // console.log("couter",this.couter);
+            const question = {
+              questionText: jsonValue.QText,
+              options: [
+                { text: jsonValue.AnswerAText, correct: "true" },
+                { text: jsonValue.AnswerBText },
+                { text: jsonValue.AnswerCText },
+                { text: jsonValue.AnswerDText },
+              ],
+              explanation: `Correct Answer: ${jsonValue.CorrectAnswerCode}`
+            };
+      
+            this.questions.push(question);
+            // console.log("@@@",this.questions)
+         
+          };
+          this.quizId = this.quizId;
+          // const SNumber=undefined
+          // this.questions = this.jsonData;
+          this.transformedData = {
+            quizId:this.quizId,
+            questions: [...this.questions],
+            SNumber:1,
+            isEnable:false,
+            milestone:'TypeScript',
+            summary:'TypeScript makes it easier to read and debug JavaScript code.',
+            marks:0,
+            imageUrl: '../../assets/images/1.jpg',
+            imageUrl1: '../../assets/images/subject.png',
+            
+           
+          };
+          this.transformDataSet.push(this.transformedData)
+          this.questions = [];
+          console.log("transformData", this.transformDataSet)
+        };
+
+
+    });
+    console.log("Data set");
+    this.tocService.setMessage(this.transformDataSet)
 
     
   }
