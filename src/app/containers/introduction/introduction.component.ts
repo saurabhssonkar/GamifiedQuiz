@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component,OnInit,ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { QUIZ_DATA } from '../../shared/quiz';
+// import { QUIZ_DATA } from '../../shared/quiz';
 import { Quiz } from '../../shared/models/Quiz.model';
 import { QuizService } from '../../shared/services/quiz.service';
 import { Router } from '@angular/router';
@@ -16,7 +16,8 @@ import { TocService } from 'src/app/shared/toc.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IntroductionComponent implements OnInit {
-  quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));
+  // quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));
+  quizData:any;
   quizName: String = '';
   countdown:number=5;
   countInterval:any;
@@ -27,11 +28,16 @@ export class IntroductionComponent implements OnInit {
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private router:Router,
-    private tocService:TocService
-  ) { }
+    private tocService:TocService,
+  ) { 
+    this.quizService.getMessage.subscribe(resp=>{
+      this.quizData =resp
+      console.log("introduction component.ts",this.quizData)
+    })
+  }
 
   ngOnInit(): void {
-    console.log(this.quizData);
+    // console.log(this.quizData);
     this.route.url.subscribe(segments => {
       console.log(segments);
       this.quizName = segments[1].toString();

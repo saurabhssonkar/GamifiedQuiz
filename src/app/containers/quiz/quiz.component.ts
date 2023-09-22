@@ -23,7 +23,8 @@ type AnimationState = 'animationStarted' | 'none';
 })
 export class QuizComponent implements OnInit {
   // @Input() justName:any
-  quizData: Quiz[] = QUIZ_DATA;
+  // quizData: Quiz[] = QUIZ_DATA;
+  quizData:any;
   quizName = '';
   // quizResources: QuizResource[] = JSON.parse(JSON.stringify(QUIZ_RESOURCES));
   question: QuizQuestion;
@@ -57,6 +58,11 @@ export class QuizComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
+    this.quizService.getMessage.subscribe(resp=>{
+      this.quizData  = resp;
+      console.log("quiz.componet.ts",this.quizData);
+
+    })
     this.quizId = this.activatedRoute.snapshot.paramMap.get('quizId');
     console.log(this.quizId)
     this.indexOfQuizId = this.quizData.findIndex(el => el.quizId === this.quizId); 

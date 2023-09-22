@@ -349,3 +349,8 @@ a.btn:focus:not(:active)::after {
   height: 26vh;
   background-repeat: no-repeat;
 }
+.bgimage{
+  background-image: url(../image/bg.png);
+  background-size: cover;
+  
+}

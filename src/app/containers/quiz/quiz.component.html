@@ -92,7 +92,7 @@
 </ng-container> -->
 <!-- this is the new code  -->
 
- <div class="container mt-md-5 ">
+ <div class="container-md  mt-md-5 ">
   
   <ng-container *ngFor="let quiz of quizData">
     <div class="card" [@changeRoute]="animationState$ | async" (@changeRoute.done)="animationDoneHandler()"
@@ -150,9 +150,10 @@
             </span>
           </span> -->
           <span *ngIf="answers && answers.length > 0">
-            {{ numberOfCorrectAnswers === 1 ? 'Option ' + correctOptions + ' was correct because ' :
+            {{ question?.questionText }}
+            <!-- {{ numberOfCorrectAnswers === 1 ? 'Option ' + correctOptions + ' was correct because ' :
             'Options ' + correctOptions + ' were correct because ' }}
-            {{ explanationText }}.
+            {{ explanationText }}. -->
           </span>
         </section>
         <div class="align-content-center custom">
