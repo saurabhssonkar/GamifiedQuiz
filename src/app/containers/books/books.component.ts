@@ -33,7 +33,8 @@ export class BooksComponent {
  bookList:any;
  imagePathData:any;
  serverImage:any
-
+ subjecId:any;
+ classId:any;
  defaultImageBook:string="../../../assets/images/samplebook.jpg";
  
 
@@ -48,25 +49,20 @@ export class BooksComponent {
  
 
   ngOnInit() {
-
-    this.bookList=this.tocService.getBookList(38,5,4)
-
-    // this.tocService.getBookList(38,5,4).subscribe((res)=>{
+   
+   this.quizService.getclassId.subscribe(resp=>{
+    this.classId = resp;
+    console.log("get classid",this.classId)
+   })
+    this.quizService.getSuibjectId.subscribe(resp=>{
+      this.subjecId = resp;
+      console.log("get SubjectId",this.subjecId)
       
-    // this.bookList.map((_BookId:any)=>{
-    //   this.serverImage = "http://192.168.1.50:8081/Lessons/Images/hdimages/"+_BookId.BookID+".jpg";
-    //   _BookId.ImagePath = "http://192.168.1.50:8081/Lessons/Images/hdimages/"+_BookId.BookID+".jpg";
+    })
 
-    //   this.checkserverImageExist(this.serverImage).subscribe((imagePaths:any)=>{
-    //     this.imagePathData=imagePaths;
-        
-    //     _BookId.ImagePath = this.imagePathData.status=="404" ? this.defaultImageBook :_BookId.ImagePath;
-         
+    this.bookList=this.tocService.getBookList(38,this.classId,this.subjecId)
 
-    //   });
-    // })
-       
-    // });
+   
 
       
 
@@ -136,6 +132,12 @@ export class BooksComponent {
       path:this.defaultImageBook,
       status:404
     }
+  }
+  onClick(bookid:any){
+    console.log("bookId",bookid);
+    this.quizService.setBookId(bookid)
+
+    
   }
 
 }

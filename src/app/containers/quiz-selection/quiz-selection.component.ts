@@ -57,9 +57,7 @@ export class QuizSelectionComponent implements OnInit {
   
      console.log('soap classList',  this.classList)
     
-    // this.tocService.getChapterTopicList().subscribe((res)=>{
-    //   console.log("₹₹₹₹₹₹₹₹₹₹₹this.getChapterTopiclist",res);
-    // })
+    
 
     this.status = this.quizService.status;
     this.responsiveOptions = [
@@ -83,5 +81,14 @@ export class QuizSelectionComponent implements OnInit {
     this.quizService.resetAll();
     this.quizService.resetQuestions();
   }
+  onClick(classid:any){
+    
+
+    console.log("classId",classid);
+    this.quizService.setClassId(classid)
+
+  }
+
+  
   
 }

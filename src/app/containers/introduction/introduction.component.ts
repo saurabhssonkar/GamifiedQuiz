@@ -43,6 +43,10 @@ export class IntroductionComponent implements OnInit {
       this.quizName = segments[1].toString();
       console.log(this.quizName);
     });
+    this.quizService.getTopicID.subscribe((resp=>{
+      console.log("get topic id",resp);
+
+    }))
     // this.startCountdown();
 
     this.quizService.getMessage.subscribe(resp=>{

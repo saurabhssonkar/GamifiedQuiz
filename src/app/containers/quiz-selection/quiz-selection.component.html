@@ -104,10 +104,10 @@
           <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" [@fadeInRight]>
             <div class="card" style="border-radius:10px">
               <div class="mt-3">
-                <a [routerLink]="['/subject']">
+                <button (click)="onClick( class.Classid)" [routerLink]="['/subject']">  
                   <img src="../../../assets/images/classicon/{{class.Classid}}.jpg" [alt]="class.Classid" class=" shadow-2"
                     style=" width: 250px; height: 250px;" />
-                </a>
+                </button>
               </div>
 
               <div>

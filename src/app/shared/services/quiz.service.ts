@@ -66,6 +66,19 @@ export class QuizService {
     private message = new BehaviorSubject<Quiz[]>(QUIZ_DATA);
     getMessage = this.message.asObservable();
 
+    private classId = new BehaviorSubject<any>('');
+    getclassId  =  this.classId.asObservable();
+    
+    private subjectId  = new BehaviorSubject<any>('');
+    getSuibjectId  =  this.subjectId.asObservable();
+
+    private bookId = new BehaviorSubject<any>('');
+    getbookId = this.bookId.asObservable()
+
+    private topicId = new BehaviorSubject<any>('');
+    getTopicID = this.topicId.asObservable();
+
+
 
   constructor(
     private timerService: TimerService,
@@ -235,5 +248,17 @@ export class QuizService {
   }
   setMessage(message: Quiz[]) {
     this.message.next(message)
+  }
+  setClassId(classid:any){
+    this.classId.next(classid)
+  }
+  setSubjectId(subjectId:any){
+    this.subjectId.next(subjectId);
+  }
+  setBookId(bookId:any){
+    this.bookId.next(bookId)
+  }
+  setTopicId(topicId:any){
+    this.topicId.next(topicId)
   }
 }

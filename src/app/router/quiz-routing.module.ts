@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { IntroductionComponent } from '../containers/introduction/introduction.component';
 import { QuizComponent } from '../containers/quiz/quiz.component';
 import { QuizSelectionComponent } from '../containers/quiz-selection/quiz-selection.component';

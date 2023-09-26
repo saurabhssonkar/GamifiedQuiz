@@ -25,10 +25,10 @@
                     <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" [@fadeInUp]>
                         <div class="card scale" style="border-radius:20px">
                         <div class="mt-3">
-                            <a [routerLink]="['/chapter']">
+                            <button [routerLink]="['/chapter']" (click)="onClick(book.BookID)">
                                 <img src={{book.ImagePath}} [alt]="book.BoardName" class=" shadow-2 scale1"
                                     style=" width: 250px; height: 250px;" />
-                            </a>
+                            </button>
                         </div>
                         </div>
                         <div>
