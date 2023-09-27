@@ -27,10 +27,20 @@ export class TocService {
   imagePathData: any;
   getChapterTopicCuratedlist: any;
   ctsClassMasterArray: any;
-  GetChapterTopicCuratedListResponse:any;
+  GetChapterTopicCuratedListResponse: any;
   defaultImage: string = "../../../assets/images/subjects/chemistry-green.svg";
 
   defaultImageBook: string = "../../../assets/images/samplebook.jpg";
+  getchapterTopicData: any = undefined;
+  transformedData: any
+  transformDataSet = [];
+  couter = 0;
+  option = [];
+  quizId: any
+  questions = [];
+  jsonData = [];
+  questionTest: any;
+  mcqQuestionAndOptionData: any;
 
 
   // private message = new BehaviorSubject<Quiz[]>(QUIZ_DATA);
@@ -308,17 +318,17 @@ export class TocService {
       )
   }
 
-  getChapterTopicCuratedList(): Observable<any> {
+  getChapterTopicCuratedList(getchapterId: any, getchapterTopicId: any, userId: any, classId: any, Section: any): Observable<any> {
 
-    const soapBody = 
-    `<?xml version="1.0" ?>
+    const soapBody =
+      `<?xml version="1.0" ?>
     <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
     <S:Body>
         <GetChapterTopicCuratedList xmlns="http://educomp.com/smartclass">
-            <chapterid>133906</chapterid>
-            <topicid>246152</topicid>
+            <chapterid>100522</chapterid>
+            <topicid>229531</topicid>
             <userid>38</userid>
-            <classsID>3</classsID>
+            <classsID>10</classsID>
             <Section>A</Section>
             <mappingType></mappingType>
         </GetChapterTopicCuratedList>
@@ -337,7 +347,7 @@ export class TocService {
             const obj = this.ngxXml2jsonService.xmlToJson(docxml);
             this.getChapterTopicCuratedlist = obj;
             this.GetChapterTopicCuratedListResponse = this.getChapterTopicCuratedlist['soap:Envelope']['soap:Body'].GetChapterTopicCuratedListResponse.GetChapterTopicCuratedListResult.CTSResourcesForCTS;
-            console.log("getChapterTopicCuratedList", this.GetChapterTopicCuratedListResponse);
+            // console.log("getChapterTopicCuratedList", this.GetChapterTopicCuratedListResponse);
             return this.GetChapterTopicCuratedListResponse
 
           }
@@ -345,7 +355,7 @@ export class TocService {
       )
   }
 
-  getTestQuetion(): Observable<any> {
+  getTestQuetion() {
 
     const soapBody = `<?xml version="1.0" ?>
     <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
@@ -363,6 +373,7 @@ export class TocService {
       .pipe(
         map((resp) => {
           if (resp) {
+            console.log("resp",resp)
             const parse = new DOMParser();
             const docxml = parse.parseFromString(resp, 'text/xml');
             const obj = this.ngxXml2jsonService.xmlToJson(docxml);
@@ -370,7 +381,53 @@ export class TocService {
             console.log("getQuestionTest", this.getQuestionTest)
 
             const queSetDetails = this.getQuestionTest['soap:Envelope']['soap:Body'].GetTestQuestionsResponse.GetTestQuestionsResult.QSetDetails;
-            return queSetDetails;
+            this.mcqQuestionAndOptionData = queSetDetails
+            const numberOfLevel = 4;
+            for (let i = 1; i <= numberOfLevel; i++) {
+
+              this.quizId = `level${i}`
+
+              for (let j = 0; j < this.mcqQuestionAndOptionData.length && j < 10; j++) {
+
+                const jsonValue = this.mcqQuestionAndOptionData[this.couter];
+                this.couter++;
+                // console.log("couter",this.couter);
+                const question = {
+                  questionText: jsonValue.QText,
+                  options: [
+                    { text: jsonValue.AnswerAText, correct: "true" },
+                    { text: jsonValue.AnswerBText },
+                    { text: jsonValue.AnswerCText },
+                    { text: jsonValue.AnswerDText },
+                  ],
+                  explanation: `Correct Answer: ${jsonValue.CorrectAnswerCode}`
+                };
+
+                this.questions.push(question);
+                // console.log("@@@",this.questions)
+
+              };
+              this.quizId = this.quizId;
+              // const SNumber=undefined
+              // this.questions = this.jsonData;
+              this.transformedData = {
+                quizId: this.quizId,
+                questions: [...this.questions],
+                SNumber: 1,
+                isEnable: false,
+                milestone: 'TypeScript',
+                summary: 'TypeScript makes it easier to read and debug JavaScript code.',
+                marks: 0,
+                imageUrl: '../../assets/images/1.jpg',
+                imageUrl1: '../../assets/images/subject.png',
+
+
+              };
+              this.transformDataSet.push(this.transformedData)
+              this.questions = [];
+              console.log("transformData", this.transformDataSet)
+            };
+            return this.transformDataSet;
           }
         })
       )

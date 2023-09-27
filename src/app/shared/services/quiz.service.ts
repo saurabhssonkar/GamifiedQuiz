@@ -75,8 +75,14 @@ export class QuizService {
     private bookId = new BehaviorSubject<any>('');
     getbookId = this.bookId.asObservable()
 
-    private topicId = new BehaviorSubject<any>('');
-    getTopicID = this.topicId.asObservable();
+    private chapterIdandTopicId = new BehaviorSubject<any>('');
+    getchapterIdandTopicId = this.chapterIdandTopicId.asObservable();
+
+    private testId = new BehaviorSubject<any>('');
+
+    getTestId  = this.testId.asObservable();
+
+
 
 
 
@@ -258,7 +264,10 @@ export class QuizService {
   setBookId(bookId:any){
     this.bookId.next(bookId)
   }
-  setTopicId(topicId:any){
-    this.topicId.next(topicId)
+  setTopicId(object:any){
+    this.chapterIdandTopicId.next(object);
+  }
+  setTestId(TestId:any){
+    this.testId.next(TestId);
   }
 }

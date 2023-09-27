@@ -40,6 +40,9 @@ export class ChapterComponent implements OnInit {
   section = "A";
   bookId: any;
   classId: any;
+  getChapterTopicCuratedList: any;
+  testID:any;
+  getchapterIdandTopicId:any;
 
   // getchapterTopicData : Observable<any>;
 
@@ -53,12 +56,12 @@ export class ChapterComponent implements OnInit {
 
     this.quizService.getbookId.subscribe(resp => {
       this.bookId = resp;
-      console.log("bookid", this.bookId);
+      // console.log("bookid", this.bookId);
 
     })
     this.quizService.getclassId.subscribe(resp => {
       this.classId = resp;
-      console.log("classId", this.classId);
+      // console.log("classId", this.classId);
 
     })
 
@@ -80,77 +83,58 @@ export class ChapterComponent implements OnInit {
 
     // this code is only for testing 
 
-    this.tocService.getChapterTopicCuratedList().subscribe((resp=>{
-
-      console.log("testing code ",resp);
+  
 
 
-    }))
+
+  
+  }
+  onCLick(CHAPTERID: any,TOPICID :any) {
+    let obj = {
+      chapterid: CHAPTERID,
+      topicid: TOPICID
+
+    }
+    // console.log("123@TOPICID", obj);
+    this.quizService.setTopicId(obj);
+    this.tocService.getChapterTopicCuratedList( CHAPTERID,TOPICID,38 ,this.classId ,this.section).subscribe((resp => {
+
+      // console.log("testing code ", resp);
+      this.getChapterTopicCuratedList = resp;
+    
 
 
-    this.tocService.getTestQuetion().subscribe((resp) => {
-      this.mcqQuestionAndOptionData = resp;
-      console.log("this is ", resp);
-
-      const numberOfLevel = 4;
-      for (let i = 1; i <= numberOfLevel; i++) {
-
-        this.quizId = `level${i}`
-
-        for (let j = 0; j < this.mcqQuestionAndOptionData.length && j < 10; j++) {
-
-          const jsonValue = this.mcqQuestionAndOptionData[this.couter];
-          this.couter++;
-          // console.log("couter",this.couter);
-          const question = {
-            questionText: jsonValue.QText,
-            options: [
-              { text: jsonValue.AnswerAText, correct: "true" },
-              { text: jsonValue.AnswerBText },
-              { text: jsonValue.AnswerCText },
-              { text: jsonValue.AnswerDText },
-            ],
-            explanation: `Correct Answer: ${jsonValue.CorrectAnswerCode}`
-          };
-
-          this.questions.push(question);
-          // console.log("@@@",this.questions)
-
-        };
-        this.quizId = this.quizId;
-        // const SNumber=undefined
-        // this.questions = this.jsonData;
-        this.transformedData = {
-          quizId: this.quizId,
-          questions: [...this.questions],
-          SNumber: 1,
-          isEnable: false,
-          milestone: 'TypeScript',
-          summary: 'TypeScript makes it easier to read and debug JavaScript code.',
-          marks: 0,
-          imageUrl: '../../assets/images/1.jpg',
-          imageUrl1: '../../assets/images/subject.png',
+      for (let i = 0; i < this.getChapterTopicCuratedList.length; i++) {
+        if (this.getChapterTopicCuratedList[i].ElementType == "MCQ") {
+          this.testID = this.getChapterTopicCuratedList[i].ID
+          console.log("const testid", this.testID);
+        }
 
 
-        };
-        this.transformDataSet.push(this.transformedData)
-        this.questions = [];
-        console.log("transformData", this.transformDataSet)
-      };
+      }
+    }));
+
+    // this.tocService.getTestQuetion().subscribe((resp) => {
+    //   this.mcqQuestionAndOptionData = resp;
+    //   console.log("this is ", resp);
+
+     
 
 
-    });
-    console.log("Data set");
+    // });
+    const getTestQuetiondata = this.tocService.getTestQuetion();
+    console.log("@@@", getTestQuetiondata);
+
+
+
+    // console.log("Data set");
     this.quizService.setMessage(this.transformDataSet)
 
     this.quizService.getMessage.subscribe(resp => {
-      console.log("get data of where set Data", resp)
+      // console.log("get data of where set Data", resp)
     })
 
-  }
-  onCLick(CHAPTOPICID:any){
-    console.log("123@TOPICID",CHAPTOPICID);
-    this.quizService.setTopicId(CHAPTOPICID);
+    this.quizService.setTestId(this.testID);
 
   }
 

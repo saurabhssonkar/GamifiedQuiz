@@ -21,7 +21,23 @@ export class IntroductionComponent implements OnInit {
   quizName: String = '';
   countdown:number=5;
   countInterval:any;
- QUIZ_DATA:any
+ QUIZ_DATA:any;
+ getchapterTopicData: any = undefined;
+  transformedData: any
+  transformDataSet = [];
+  mcqQuestionAndOptionData: any;
+  couter = 0;
+  option = [];
+  quizId: any
+  questions = [];
+  jsonData = [];
+  questionTest: any;
+  getChapterTopicCuratedList:any;
+  getchapterIdandTopicId:any;
+  classId:any;
+  Section='A'
+  testID:any;
+
 
   constructor(
     private quizService: QuizService,
@@ -43,18 +59,30 @@ export class IntroductionComponent implements OnInit {
       this.quizName = segments[1].toString();
       console.log(this.quizName);
     });
-    this.quizService.getTopicID.subscribe((resp=>{
-      console.log("get topic id",resp);
+    this.quizService.getchapterIdandTopicId.subscribe(resp=>{
+      this.getchapterIdandTopicId  = resp
+      console.log("getchapterIdand.",this.getchapterIdandTopicId.chapterid);
+      console.log("getchapterTopicId.",this.getchapterIdandTopicId.topicid);
 
-    }))
-    // this.startCountdown();
-
-    this.quizService.getMessage.subscribe(resp=>{
-      this.QUIZ_DATA =resp;
-      console.log("get Data1")
-      console.log("QUIZ_DATA",this.QUIZ_DATA);
 
     })
+    this.quizService.getclassId.subscribe(resp=>{
+      this.classId = resp
+      console.log("classid in the introduction page",this.classId );
+
+    });
+
+    // this.startCountdown();
+
+    // this.quizService.getMessage.subscribe(resp=>{
+    //   this.QUIZ_DATA =resp;
+    //   console.log("get Data1")
+    //   console.log("QUIZ_DATA",this.QUIZ_DATA);
+
+    // });
+
+    
+
   }
 
   onChange($event) {

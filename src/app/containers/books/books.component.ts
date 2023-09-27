@@ -35,6 +35,7 @@ export class BooksComponent {
  serverImage:any
  subjecId:any;
  classId:any;
+ getChapterTopicCuratedList:any;
  defaultImageBook:string="../../../assets/images/samplebook.jpg";
  
 
@@ -60,8 +61,8 @@ export class BooksComponent {
       
     })
 
-    this.bookList=this.tocService.getBookList(38,this.classId,this.subjecId)
-
+    this.bookList=this.tocService.getBookList(38,this.classId,this.subjecId);
+   
    
 
       
