@@ -61,7 +61,7 @@ export class BooksComponent {
       
     })
 
-    this.bookList=this.tocService.getBookList(38,this.classId,this.subjecId);
+    this.bookList=this.tocService.getBookList(36,this.classId,this.subjecId);
    
    
 

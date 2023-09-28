@@ -53,7 +53,7 @@ export class SubjectComponent {
       console.log("new Data",this.Classid);
     })
     
-    this.Subject=this.tocService.getSubjectList(38, this.Classid);
+    this.Subject=this.tocService.getSubjectList(36, this.Classid);
     console.log("___@@@__",this.Subject);
     
     this.responsiveOptions = [

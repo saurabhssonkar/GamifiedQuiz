@@ -51,7 +51,7 @@ export class QuizSelectionComponent implements OnInit {
     this.currentQuestionIndex = this.quizService.currentQuestionIndex;
     this.totalQuestions = this.quizService.totalQuestions;
     this.quizCompleted = this.quizService.quizCompleted;
-    this.classList=this.tocService.getclassList(38);
+    this.classList=this.tocService.getclassList(36);
   // /  this.tocService.getclassList(38).subscribe((res)=>{
   //     this.classList=res;
   

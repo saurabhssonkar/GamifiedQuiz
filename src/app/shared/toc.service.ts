@@ -325,11 +325,11 @@ export class TocService {
     <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
     <S:Body>
         <GetChapterTopicCuratedList xmlns="http://educomp.com/smartclass">
-            <chapterid>100522</chapterid>
-            <topicid>229531</topicid>
-            <userid>38</userid>
-            <classsID>10</classsID>
-            <Section>A</Section>
+            <chapterid>${getchapterId}</chapterid>
+            <topicid>${getchapterTopicId}</topicid>
+            <userid>${userId}</userid>
+            <classsID>${classId}</classsID>
+            <Section>${Section}</Section>
             <mappingType></mappingType>
         </GetChapterTopicCuratedList>
     </S:Body>
@@ -355,16 +355,16 @@ export class TocService {
       )
   }
 
-  getTestQuetion() {
+  getTestQuetion(testID:any) {
 
     const soapBody = `<?xml version="1.0" ?>
     <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
         <S:Body>
             <GetTestQuestions xmlns="http://educomp.com/smartclass/">
-                <TestID>0000266900006970</TestID>
+                <TestID>${testID}</TestID>
                 <Type>Educomp</Type>
             </GetTestQuestions>
-        </S:Body>
+        </S:Body>ss
     </S:Envelope>`;
     const headers = new HttpHeaders({
       'Content-Type': 'text/xml'
@@ -373,61 +373,18 @@ export class TocService {
       .pipe(
         map((resp) => {
           if (resp) {
-            console.log("resp",resp)
+            // console.log("resp",resp)
             const parse = new DOMParser();
             const docxml = parse.parseFromString(resp, 'text/xml');
             const obj = this.ngxXml2jsonService.xmlToJson(docxml);
             this.getQuestionTest = obj;
-            console.log("getQuestionTest", this.getQuestionTest)
+            // console.log("getQuestionTest", this.getQuestionTest)
 
             const queSetDetails = this.getQuestionTest['soap:Envelope']['soap:Body'].GetTestQuestionsResponse.GetTestQuestionsResult.QSetDetails;
             this.mcqQuestionAndOptionData = queSetDetails
-            const numberOfLevel = 4;
-            for (let i = 1; i <= numberOfLevel; i++) {
-
-              this.quizId = `level${i}`
-
-              for (let j = 0; j < this.mcqQuestionAndOptionData.length && j < 10; j++) {
-
-                const jsonValue = this.mcqQuestionAndOptionData[this.couter];
-                this.couter++;
-                // console.log("couter",this.couter);
-                const question = {
-                  questionText: jsonValue.QText,
-                  options: [
-                    { text: jsonValue.AnswerAText, correct: "true" },
-                    { text: jsonValue.AnswerBText },
-                    { text: jsonValue.AnswerCText },
-                    { text: jsonValue.AnswerDText },
-                  ],
-                  explanation: `Correct Answer: ${jsonValue.CorrectAnswerCode}`
-                };
-
-                this.questions.push(question);
-                // console.log("@@@",this.questions)
-
-              };
-              this.quizId = this.quizId;
-              // const SNumber=undefined
-              // this.questions = this.jsonData;
-              this.transformedData = {
-                quizId: this.quizId,
-                questions: [...this.questions],
-                SNumber: 1,
-                isEnable: false,
-                milestone: 'TypeScript',
-                summary: 'TypeScript makes it easier to read and debug JavaScript code.',
-                marks: 0,
-                imageUrl: '../../assets/images/1.jpg',
-                imageUrl1: '../../assets/images/subject.png',
-
-
-              };
-              this.transformDataSet.push(this.transformedData)
-              this.questions = [];
-              console.log("transformData", this.transformDataSet)
-            };
-            return this.transformDataSet;
+            
+            
+            return queSetDetails;
           }
         })
       )
@@ -439,3 +396,49 @@ export class TocService {
   // }
 
 }
+
+// const numberOfLevel = 4;
+// for (let i = 1; i <= numberOfLevel; i++) {
+
+//   this.quizId = `level${i}`
+
+//   for (let j = 0; j < this.mcqQuestionAndOptionData.length && j < 10; j++) {
+
+//     const jsonValue = this.mcqQuestionAndOptionData[this.couter];
+//     this.couter++;
+//     // console.log("couter",this.couter);
+//     const question = {
+//       questionText: jsonValue.QText,
+//       options: [
+//         { text: jsonValue.AnswerAText, correct: "true" },
+//         { text: jsonValue.AnswerBText },
+//         { text: jsonValue.AnswerCText },
+//         { text: jsonValue.AnswerDText },
+//       ],
+//       explanation: `Correct Answer: ${jsonValue.CorrectAnswerCode}`
+//     };
+
+//     this.questions.push(question);
+//     // console.log("@@@",this.questions)
+
+//   };
+//   this.quizId = this.quizId;
+//   // const SNumber=undefined
+//   // this.questions = this.jsonData;
+//   this.transformedData = {
+//     quizId: this.quizId,
+//     questions: [...this.questions],
+//     SNumber: 1,
+//     isEnable: false,
+//     milestone: 'TypeScript',
+//     summary: 'TypeScript makes it easier to read and debug JavaScript code.',
+//     marks: 0,
+//     imageUrl: '../../assets/images/1.jpg',
+//     imageUrl1: '../../assets/images/subject.png',
+
+
+//   };
+//   this.transformDataSet.push(this.transformedData)
+//   this.questions = [];
+//   console.log("transformData", this.transformDataSet)
+// };
