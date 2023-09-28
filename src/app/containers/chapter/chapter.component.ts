@@ -34,7 +34,7 @@ export class ChapterComponent implements OnInit {
   questions = [];
   jsonData = [];
   questionTest: any;
-  mcqQuestionAndOptionData: any[] = [];
+  mcqQuestionAndOptionData = [];
   userRole = 'TE';
   userId = 36;
   viewMode = "curated";
@@ -116,65 +116,67 @@ export class ChapterComponent implements OnInit {
       
       
       if (this.testData) {
-        const observables = this.testId.map(id => this.tocService.getTestQuetion(id));
+        const observables = this.testId.map(id => this.tocService.getTestQuetion(id).toPromise());
         forkJoin(observables).subscribe(responses => {
-          this.mcqQuestionAndOptionData = [[].concat(...responses)];
+          this.mcqQuestionAndOptionData = [].concat(...responses);
           console.log('Combined Data:', this.mcqQuestionAndOptionData);
-
+          this.testData = false;
+          if (this.testData == false) {
+            console.log("check length", this.mcqQuestionAndOptionData.length)
+            console.log("@@@",this.mcqQuestionAndOptionData);
+    
+    
+            const numberOfLevel = 4;
+    
+            for (let i = 1; i <= numberOfLevel; i++) {
+    
+              this.quizId = `level${i}`
+    
+              for (let j = 0; j < this.mcqQuestionAndOptionData.length && j < 10; j++) {
+    
+                const jsonValue = this.mcqQuestionAndOptionData[this.couter];
+                this.couter++;
+                const question = {
+                  questionText: jsonValue.QText,
+                  options: [
+                    { text: jsonValue.AnswerAText, correct: "true" },
+                    { text: jsonValue.AnswerBText },
+                    { text: jsonValue.AnswerCText },
+                    { text: jsonValue.AnswerDText },
+                  ],
+                  explanation: `Correct Answer: ${jsonValue.CorrectAnswerCode}`
+                };
+    
+                this.questions.push(question);
+    
+    
+              };
+              this.quizId = this.quizId;
+              this.transformedData = {
+                quizId: this.quizId,
+                questions: [...this.questions],
+                SNumber: 1,
+                isEnable: false,
+                milestone: 'TypeScript',
+                summary: 'TypeScript makes it easier to read and debug JavaScript code.',
+                marks: 0,
+                imageUrl: '../../assets/images/1.jpg',
+                imageUrl1: '../../assets/images/subject.png',
+    
+    
+              };
+              this.transformDataSet.push(this.transformedData)
+              this.questions = [];
+              console.log("transformData this data", this.transformDataSet)
+            };
+    
+          }
 
         });
-        this.testData = false;
+        
 
       };
-      if (this.testData == false) {
-        console.log("check length", this.mcqQuestionAndOptionData.length)
-
-
-        const numberOfLevel = 4;
-
-        for (let i = 1; i <= numberOfLevel; i++) {
-
-          this.quizId = `level${i}`
-
-          for (let j = 0; j < this.mcqQuestionAndOptionData.length && j < 10; j++) {
-
-            const jsonValue = this.mcqQuestionAndOptionData[this.couter];
-            this.couter++;
-            const question = {
-              questionText: jsonValue.QText,
-              options: [
-                { text: jsonValue.AnswerAText, correct: "true" },
-                { text: jsonValue.AnswerBText },
-                { text: jsonValue.AnswerCText },
-                { text: jsonValue.AnswerDText },
-              ],
-              explanation: `Correct Answer: ${jsonValue.CorrectAnswerCode}`
-            };
-
-            this.questions.push(question);
-
-
-          };
-          this.quizId = this.quizId;
-          this.transformedData = {
-            quizId: this.quizId,
-            questions: [...this.questions],
-            SNumber: 1,
-            isEnable: false,
-            milestone: 'TypeScript',
-            summary: 'TypeScript makes it easier to read and debug JavaScript code.',
-            marks: 0,
-            imageUrl: '../../assets/images/1.jpg',
-            imageUrl1: '../../assets/images/subject.png',
-
-
-          };
-          this.transformDataSet.push(this.transformedData)
-          this.questions = [];
-          console.log("transformData this data", this.transformDataSet)
-        };
-
-      }
+     
 
       this.quizService.setMessage(this.transformDataSet);
 
