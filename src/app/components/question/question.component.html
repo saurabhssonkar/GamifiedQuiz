@@ -56,7 +56,9 @@
                         [class.is-correct]="option.selected && option.correct"
                         [class.is-incorrect]="option.selected && !option.correct" class="fade-in-image ">
                       <!-- show the text option in mcq choice -->
-                      <span>{{ i + 1 }}. {{ option.text }}</span>
+                      <span>
+                        <div [innerHTML]="i+1 +'.' + option.text"></div>
+                      </span>
                       <!-- this is icon of the done and clear if the question is right  -->
                       <mat-icon class="feedback-icon"
                         *ngIf="option.selected && option.correct && isCorrectAnswerSelected">done</mat-icon>

@@ -6,11 +6,11 @@ export interface Quiz {
   summary: string;
   imageUrl: string;
   imageUrl1: string;
-
   questions: QuizQuestion[];
-  SNumber:Number,
-  isEnable:Boolean,
-  marks:Number
+  SNumber:Number;
+  isEnable:Boolean;
+  marks:Number;
   status: 'started' | 'continue' | 'completed' | '';
+  // Templatecode:string;
 }
 

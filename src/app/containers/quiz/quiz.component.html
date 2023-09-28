@@ -149,8 +149,9 @@
               <em>({{ numberOfCorrectAnswers }} answers are correct.)</em>
             </span>
           </span> -->
-          <span *ngIf="answers && answers.length > 0">
-            {{ question?.questionText }}
+          <span  *ngIf="answers && answers.length > 0">
+            <div [innerHTML]="question?.questionText "></div>
+
             <!-- {{ numberOfCorrectAnswers === 1 ? 'Option ' + correctOptions + ' was correct because ' :
             'Options ' + correctOptions + ' were correct because ' }}
             {{ explanationText }}. -->

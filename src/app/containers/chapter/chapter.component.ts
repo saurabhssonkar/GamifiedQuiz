@@ -47,6 +47,11 @@ export class ChapterComponent implements OnInit {
   getchapterIdandTopicId: any;
   getTestQuetiondata: any;
   testData: boolean = true;
+  url='<IMG src="http://3.109.178.249:8020/sasimages/';
+  imgae='<IMG src="/sasimages/'
+  Templatecode:any
+  templatImage = 'http://3.109.178.249:8020/Assessments/QuestionBank/QuestionImage.ashx?'
+  
 
   // getchapterTopicData : Observable<any>;
 
@@ -135,14 +140,27 @@ export class ChapterComponent implements OnInit {
               for (let j = 0; j < this.mcqQuestionAndOptionData.length && j < 10; j++) {
     
                 const jsonValue = this.mcqQuestionAndOptionData[this.couter];
+                // console.log("jsonValue",jsonValue.Templatecode);
+                // http://3.109.178.249:8020/Assessments/QuestionBank/QuestionImage.ashx?id=0000266900152807&templacecode=2
                 this.couter++;
+                //  let templateImage  = this.templatImage +'id='+ jsonValue.QId + '&templacecode='+ jsonValue.Templatecode
+                let questionText= jsonValue.QText.replace(this.imgae,this.url)
+                console.log("questionText",questionText);
+                if(jsonValue.Templatecode=='2'){
+                  let templateImage  = this.templatImage +'id='+ jsonValue.QId + '&templacecode='+ jsonValue.Templatecode
+                  console.log("templateImage binding with",templateImage);
+
+                  questionText = questionText + '<br> <span> Saurabh </span> <div>  <img src = "'+templateImage+'" > </div>';
+                  console.log("questionText with tag",questionText)
+                }
+               
                 const question = {
-                  questionText: jsonValue.QText,
+                  questionText: questionText,
                   options: [
-                    { text: jsonValue.AnswerAText, correct: "true" },
-                    { text: jsonValue.AnswerBText },
-                    { text: jsonValue.AnswerCText },
-                    { text: jsonValue.AnswerDText },
+                    { text: jsonValue.AnswerAText.replace(this.imgae,this.url), correct: "true" },
+                    { text: jsonValue.AnswerBText.replace(this.imgae,this.url) },
+                    { text: jsonValue.AnswerCText.replace(this.imgae,this.url) },
+                    { text: jsonValue.AnswerDText.replace(this.imgae,this.url) },
                   ],
                   explanation: `Correct Answer: ${jsonValue.CorrectAnswerCode}`
                 };
@@ -151,7 +169,7 @@ export class ChapterComponent implements OnInit {
     
     
               };
-              this.quizId = this.quizId;
+            
               this.transformedData = {
                 quizId: this.quizId,
                 questions: [...this.questions],
@@ -162,6 +180,8 @@ export class ChapterComponent implements OnInit {
                 marks: 0,
                 imageUrl: '../../assets/images/1.jpg',
                 imageUrl1: '../../assets/images/subject.png',
+               
+               
     
     
               };
