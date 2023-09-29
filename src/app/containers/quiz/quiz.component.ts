@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, SecurityContext } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -11,6 +11,8 @@ import { QuizQuestion } from '../../shared/models/QuizQuestion.model';
 import { QuizService } from '../../shared/services/quiz.service';
 import { TimerService } from '../../shared/services/timer.service';
 import { Animations } from '../../animations/animations';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
 
 type AnimationState = 'animationStarted' | 'none';
 
@@ -45,6 +47,7 @@ export class QuizComponent implements OnInit {
   get numberOfCorrectAnswers(): number { return this.quizService.numberOfCorrectAnswers; }
   previousUserAnswers: any;
   isAnswered:boolean;
+  
 
   paging = {
     previousButtonPoints: "298.052,24 266.052,0 112.206,205.129 266.052,410.258 298.052,386.258 162.206,205.129 ",
@@ -56,7 +59,8 @@ export class QuizComponent implements OnInit {
     private quizService: QuizService,
     private timerService: TimerService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {
     this.quizService.getMessage.subscribe(resp=>{
       this.quizData  = resp;
@@ -69,6 +73,8 @@ export class QuizComponent implements OnInit {
     
     this.sendPreviousUserAnswersToQuizService(this.quizService.previousUserAnswers);
     console.log("this quizData",this.quizData);
+
+    
   }
 
   ngOnInit() {
@@ -107,6 +113,9 @@ export class QuizComponent implements OnInit {
     this.correctCount = this.quizService.correctAnswersCountSubject.getValue();
     this.sendCorrectCountToQuizService(this.correctCount);
     this.totalQuestionsAttempted = 1;
+
+    
+
   }
 
   animationDoneHandler(): void {
@@ -226,5 +235,14 @@ export class QuizComponent implements OnInit {
     this.correctCount = value;
     this.quizService.sendCorrectCountToResults(this.correctCount);
   }
+  toHTML(input) : any {
+    console.log("data",input)
+    return new DOMParser().parseFromString(input, "text/html").documentElement.textContent;
+}
+transform(input: string): string {
+  console.log("data", input);
+  const parsedHTML = new DOMParser().parseFromString(input, "text/html").documentElement.textContent;
+  return parsedHTML;
+}
 
 }

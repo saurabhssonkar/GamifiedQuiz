@@ -134,9 +134,10 @@
           <div class="row">
             <div class="col-md-12 ">
               <div class="">
-                <div class="card-title mt-3 mb-3"
+                <div class="card-title mt-3 mb-3" 
                   style="margin-left:2rem; ;  font-size: 1.7rem; color:rgb(80, 80, 80); line-height: 2.5rem; text-align: justify;"
-                    *ngIf="!answers || answers.length === 0">{{ question?.questionText }}&nbsp;
+                    *ngIf="!answers || answers.length === 0">
+                    <div [innerHTML]="question?.questionText"></div>
                     <span class="number-correct"  *ngIf="numberOfCorrectAnswers > 1">
                       <em>({{ numberOfCorrectAnswers }} answers are correct.)</em>
                     </span>              
@@ -149,13 +150,13 @@
               <em>({{ numberOfCorrectAnswers }} answers are correct.)</em>
             </span>
           </span> -->
-          <span  *ngIf="answers && answers.length > 0">
-            <div [innerHTML]="question?.questionText "></div>
+           <span  *ngIf="answers && answers.length > 0">
+            <div [innerHTML]="question?.questionText"></div> 
 
             <!-- {{ numberOfCorrectAnswers === 1 ? 'Option ' + correctOptions + ' was correct because ' :
             'Options ' + correctOptions + ' were correct because ' }}
             {{ explanationText }}. -->
-          </span>
+           </span> 
         </section>
         <div class="align-content-center custom">
           <codelab-quiz-question [question]="question" (answer)="selectedAnswer($event)">

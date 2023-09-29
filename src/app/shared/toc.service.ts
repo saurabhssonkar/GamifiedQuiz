@@ -117,7 +117,7 @@ export class TocService {
             const xmlDoc = parse.parseFromString(resp, 'text/xml');
             const obj = this.ngxXml2jsonService.xmlToJson(xmlDoc);
             this.subjectList = obj
-            console.log("subjectLis", this.subjectList);
+            // console.log("subjectLis", this.subjectList);
             this.ctsSubjectList = this.subjectList['soap:Envelope']['soap:Body'].GetSubjectsResponse.GetSubjectsResult.CTSSubjectList;
             this.ctsSubjectList.map((_Subject: any) => {
               this.remotePath = "../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
@@ -137,6 +137,7 @@ export class TocService {
               });
 
             });
+            console.log(" this.ctsSubjectList", this.ctsSubjectList)
 
             return this.ctsSubjectList;
           }
