@@ -28,6 +28,7 @@ import { TimeComponent } from './containers/scoreboard/time/time.component';
 import { QuizService } from './shared/services/quiz.service';
 import { TimerService } from './shared/services/timer.service';
 import { JoinPipe } from './pipes/join.pipe';
+import { SanitizeHtmlPipe } from './pipes/htmlsanitize.pipe';
 import { FormsModule } from '@angular/forms';
 import { ClassComponent } from './containers/class/class.component';
 import { ChapterComponent } from './containers/chapter/chapter.component';
@@ -52,6 +53,7 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
     ScoreComponent,
     TimeComponent,
     JoinPipe,
+    SanitizeHtmlPipe,
     ClassComponent,
     ChapterComponent,
     SubjectComponent,
