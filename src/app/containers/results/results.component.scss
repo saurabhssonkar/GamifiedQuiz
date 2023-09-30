@@ -22,6 +22,7 @@ mat-card-header {
 .results {
   display: block;
   clear: both;
+  color: white;
 
   h3 {
     font-family: $congratulations-font;
@@ -353,4 +354,10 @@ a.btn:focus:not(:active)::after {
   background-image: url(../image/bg.png);
   background-size: cover;
   
+}
+.display-flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }

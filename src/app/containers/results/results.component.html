@@ -35,7 +35,7 @@
                 <h3 i18n>Not bad!</h3>
               </div>
               <div *ngIf="quizMetadata?.percentage < 60">
-                <img mat-card-image [src]="TRY_AGAIN" alt="Photo of 'Try Again'" i18n-title title="Try Again">
+                <img mat-card-image src="../../../assets/images/try again.jpg" alt="Photo of 'Try Again'" i18n-title title="Try Again">
                 <h3 i18n>Try again!</h3>
 
                 <!-- <p i18n>Brush up your knowledge of {{ quiz?.milestone }} with these valuable resources:</p>
@@ -190,7 +190,7 @@
 
         <section class="return">
           <mat-card-actions>
-            <mat-nav-list>
+            <div class="display-flex">
               <a class="btn hvr-radial-out" title="restart" (click)="restartQuiz()">
                 <i class="fas fa-power-off"></i>&nbsp;&nbsp;Restart Quiz
               </a>
@@ -211,7 +211,7 @@
               <i class="fas fa-laptop"></i>&nbsp;&nbsp;Level3
             </a> -->
 
-            </mat-nav-list>
+          </div>
           </mat-card-actions>
         </section>
 

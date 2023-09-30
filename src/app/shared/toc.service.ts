@@ -95,7 +95,7 @@ export class TocService {
   };
 
 
-  getSubjectList(useId: Number, classId: any) {
+  getSubjectList(useId: Number, classId: any): Observable<any> {
     const soapBody =
       `<?xml version="1.0" ?>
     <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">

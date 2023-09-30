@@ -131,27 +131,27 @@
         <!-- mcq text box question  -->
         <section id="question" class="css-typing"
           [ngClass]="!answers || answers.length === 0 ? 'unanswered': 'answered'">
-          <div class="row">
-            <div class="col-md-12 ">
-              <div class="">
-                <div class="card-title mt-3 mb-3" 
-                  style="margin-left:2rem; ;  font-size: 1.7rem; color:rgb(80, 80, 80); line-height: 2.5rem; text-align: justify;"
+          <!-- <div class="row">
+            <div class="col-md-12 "> -->
+              <!-- <div class=""> -->
+                <span class="card-title mt-3 mb-3" 
+                  
                     *ngIf="!answers || answers.length === 0">
                     <div [innerHTML]="question?.questionText"></div>
                     <span class="number-correct"  *ngIf="numberOfCorrectAnswers > 1">
                       <em>({{ numberOfCorrectAnswers }} answers are correct.)</em>
                     </span>              
-                 </div>
-              </div>
-            </div>
-          </div>
+                 </span>
+              <!-- </div>
+            </div> -->
+         
           <!-- <span *ngIf="!answers || answers.length === 0">{{ question?.questionText }}&nbsp;
             <span class="number-correct"  *ngIf="numberOfCorrectAnswers > 1">
               <em>({{ numberOfCorrectAnswers }} answers are correct.)</em>
             </span>
           </span> -->
-           <span  *ngIf="answers && answers.length > 0">
-            <div [innerHTML]="question?.questionText"></div> 
+           <span  *ngIf="answers && answers.length > 0" class="mt-3 mb-3">
+            <span [innerHTML]="question?.questionText"></span> 
 
             <!-- {{ numberOfCorrectAnswers === 1 ? 'Option ' + correctOptions + ' was correct because ' :
             'Options ' + correctOptions + ' were correct because ' }}
@@ -223,6 +223,6 @@
     </div>
   </ng-container>
 </div> 
-
+<!-- style="margin-left:2rem; ;  font-size: 1.7rem; color:rgb(80, 80, 80); line-height: 2.5rem; text-align: justify;" -->
         <!-- <codelab-quiz-question [question]="question" (answer)="selectedAnswer($event)">
         </codelab-quiz-question> -->

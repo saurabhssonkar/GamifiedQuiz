@@ -6,7 +6,7 @@ import { QuizService } from 'src/app/shared/services/quiz.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { TocService } from 'src/app/shared/toc.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { Observable, catchError, finalize, map, of, switchMap } from 'rxjs';
 
 
 @Component({
@@ -30,55 +30,66 @@ export class SubjectComponent {
   responsiveOptions: any[] | undefined;
   quizData: Quiz[] = JSON.parse(JSON.stringify(QUIZ_DATA));
   quizName: String = '';
-  Subject: any;
+  // Subject: Observable<any>;
   remotePath: any;
-  defaultImage:string="../../../assets/images/subjects/chemistry-green.svg"
-  data:any
-  Classid:any
+  defaultImage: string = "../../../assets/images/subjects/chemistry-green.svg"
+  data: any
+  Classid: any
+  Subject: any[] = [];
+  loading: boolean = true;
+  Subject$: Observable<any[]> | null = null; 
 
-  getClasslist:any;
+  getClasslist: any;
   constructor(
     private quizService: QuizService,
     private route: ActivatedRoute,
     private tocService: TocService,
     private http: HttpClient
-  ) { 
-    
-   }
+  ) {
+
+  }
 
   ngOnInit() {
 
-    this.quizService.getclassId.subscribe(resp=>{
+    this.quizService.getclassId.subscribe(resp => {
       this.Classid = resp;
-      console.log("new Data",this.Classid);
+      console.log("new Data", this.Classid);
     })
-    
-    this.Subject=this.tocService.getSubjectList(36, this.Classid);
-    console.log("___@@@__",this.Subject);
-    
+
+    this.Subject$ = this.tocService.getSubjectList(36, this.Classid).pipe(
+      // You can also handle errors here if needed
+      catchError((error) => {
+        console.error("Error occurred:", error);
+        this.loading = false; // Set loading to false on error as well
+        return [];
+      }),
+      finalize(() => {
+        this.loading = false; // Set loading to false when the observable completes
+      })
+    );
     this.responsiveOptions = [
-            {
-              breakpoint: '1199px',
-              numVisible: 1,
-              numScroll: 1
-            },
-            {
-              breakpoint: '991px',
-              numVisible: 2,
-              numScroll: 1
-            },
-            {
-              breakpoint: '767px',
-              numVisible: 1,
-              numScroll: 1
-            }
-          ];
-        
+      {
+        breakpoint: '1199px',
+        numVisible: 1,
+        numScroll: 1
+      },
+      {
+        breakpoint: '991px',
+        numVisible: 2,
+        numScroll: 1
+      },
+      {
+        breakpoint: '767px',
+        numVisible: 1,
+        numScroll: 1
+      }
+    ];
+
   }
-  onClick(subjectId:any){
-    console.log("SubjectId",subjectId);
+  onClick(subjectId: any) {
+    console.log("SubjectId", subjectId);
     this.quizService.setSubjectId(subjectId);
-    
+
 
   }
 

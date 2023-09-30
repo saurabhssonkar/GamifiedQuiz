@@ -145,13 +145,13 @@ export class ChapterComponent implements OnInit {
                 this.couter++;
                 //  let templateImage  = this.templatImage +'id='+ jsonValue.QId + '&templacecode='+ jsonValue.Templatecode
                 let questionText= jsonValue.QText.replace(this.imgae,this.url)
-                console.log("questionText",questionText);
+                
                 if(jsonValue.Templatecode=='2'){
                   let templateImage  = this.templatImage +'id='+ jsonValue.QId + '&templacecode='+ jsonValue.Templatecode
-                  console.log("templateImage binding with",templateImage);
+                  
 
-                  questionText = questionText + '<br> <span> Saurabh </span> <div>  <img src = "'+templateImage+'" > </div>';
-                  console.log("questionText with tag",questionText)
+                  questionText = questionText + '<br> <br> <div>  <img src = "'+templateImage+'" > </div>';
+                
                 }
                
                 const question = {
