@@ -66,10 +66,10 @@ export class ResultsComponent implements OnInit {
   @ViewChild('accordion', { static: false }) accordion: MatAccordion;
   panelOpenState = false;
 
-  CONGRATULATIONS = 'https://raw.githubusercontent.com/marvinrusinek/angular-9-quiz-app/master/src/assets/images/congratulations.jpg';
-  NOT_BAD = 'https://raw.githubusercontent.com/marvinrusinek/angular-9-quiz-app/master/src/assets/images/not-bad.jpg';
-  TRY_AGAIN = 'https://raw.githubusercontent.com/marvinrusinek/angular-9-quiz-app/master/src/assets/images/try-again.jpeg';
-  codelabUrl = 'https://www.codelab.fun';
+  // CONGRATULATIONS = 'https://raw.githubusercontent.com/marvinrusinek/angular-9-quiz-app/master/src/assets/images/congratulations.jpg';
+  // NOT_BAD = 'https://raw.githubusercontent.com/marvinrusinek/angular-9-quiz-app/master/src/assets/images/not-bad.jpg';
+  // TRY_AGAIN = 'https://raw.githubusercontent.com/marvinrusinek/angular-9-quiz-app/master/src/assets/images/try-again.jpeg';
+  // codelabUrl = 'https://www.codelab.fun';
 
   constructor(
     private quizService: QuizService,
@@ -113,7 +113,7 @@ export class ResultsComponent implements OnInit {
     this.quizI = JSON.parse(quizIdSting);
     // console.log("--------", this.quizI);
     for (let i = 0; i < this.quizI.length; i++) {
-       this.levels1 = this.quizI[i];
+       this.levels1 = this.quizI[i-1];
       console.log('---value--', this.levels1);
       const levels = this.quizData.filter((scorevalue) => scorevalue.quizId ===this.quizId);
       console.log("<--$-->",levels);

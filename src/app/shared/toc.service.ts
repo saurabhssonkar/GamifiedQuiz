@@ -6,6 +6,7 @@ import { text } from '@fortawesome/fontawesome-svg-core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Quiz } from './models/Quiz.model';
 import { QUIZ_DATA } from './quiz';
+import { enviroment } from '../enviroment/enviroment';
 
 
 
@@ -41,7 +42,8 @@ export class TocService {
   jsonData = [];
   questionTest: any;
   mcqQuestionAndOptionData: any;
-
+  loading:boolean=true;
+  private hostName:any = enviroment.hostName;
 
   // private message = new BehaviorSubject<Quiz[]>(QUIZ_DATA);
   // getMessage = this.message.asObservable();
@@ -66,7 +68,7 @@ export class TocService {
       //'responseType': 'text'
     });
 
-    return this.http.post(`http://192.168.1.50:8081/services/Users/UserServices.asmx`, soapBody, { headers, responseType: 'text' })
+    return this.http.post(`${this.hostName}/services/Users/UserServices.asmx`, soapBody, { headers, responseType: 'text' })
       .pipe(
         map((resp: any) => {
           if (resp) {
@@ -109,10 +111,10 @@ export class TocService {
     const headers = new HttpHeaders({
       'Content-Type': 'text/xml'
     });
-    return this.http.post(`http://192.168.1.50:8081/services/Users/UserServices.asmx`, soapBody, { headers, responseType: 'text' })
+    return this.http.post(`${this.hostName}/services/Users/UserServices.asmx`, soapBody, { headers, responseType: 'text' })
       .pipe(
         map((resp: any) => {
-          if (resp) {
+          if (resp && this.loading==true) {
             const parse = new DOMParser();
             const xmlDoc = parse.parseFromString(resp, 'text/xml');
             const obj = this.ngxXml2jsonService.xmlToJson(xmlDoc);
@@ -124,7 +126,9 @@ export class TocService {
               _Subject.ImagePath = "../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
               this.checkRemoteImageExists(this.remotePath).subscribe((result) => {
                 this.data = result;
-                _Subject.ImagePath = this.data.status == "404" ? this.defaultImage : _Subject.ImagePath;
+                  _Subject.ImagePath = this.data.status == "404" ? this.defaultImage : _Subject.ImagePath;
+                 
+              
                 // console.log("Subject", _Subject.Name);
                 // console.log("Original:", this.remotePath);
                 // console.log("Result:", result);
@@ -137,9 +141,15 @@ export class TocService {
               });
 
             });
-            console.log(" this.ctsSubjectList", this.ctsSubjectList)
+           
+            // console.log(" this.ctsSubjectList", this.ctsSubjectList)
 
+           
+          }
+          this.loading = false;
+          if(this.loading == false){
             return this.ctsSubjectList;
+
           }
         }),
         catchError((error: any) => {
@@ -191,7 +201,7 @@ export class TocService {
       // 'Accept': '*/*',
 
     });
-    return this.http.post(`http://192.168.1.50:8081/services/Books/BookService.asmx`, soapBody, { headers, responseType: 'text' })
+    return this.http.post(`${this.hostName}/services/Books/BookService.asmx`, soapBody, { headers, responseType: 'text' })
       .pipe(
         map((resp: any) => {
           if (resp) {
@@ -204,8 +214,8 @@ export class TocService {
             console.log("ctsbooklength", this.ctsBookList.length);
             if (this.ctsBookList.length > 1) {
               this.ctsBookList.map((_BookId: any) => {
-                this.serverImage = "http://192.168.1.50:8081/Lessons/Images/hdimages/" + _BookId.BookID + ".jpg";
-                _BookId.ImagePath = "http://192.168.1.50:8081/Lessons/Images/hdimages/" + _BookId.BookID + ".jpg";
+                this.serverImage = `${this.hostName}/Lessons/Images/hdimages/` + _BookId.BookID + ".jpg";
+                _BookId.ImagePath = `${this.hostName}/Lessons/Images/hdimages/` + _BookId.BookID + ".jpg";
 
                 this.checkserverImageExist(this.serverImage).subscribe((imagePaths: any) => {
                   this.imagePathData = imagePaths;
@@ -223,8 +233,8 @@ export class TocService {
               this.ctsBookList = [this.ctsBookList];
               console.log("_____@@@____", this.ctsBookList);
               this.ctsBookList.map((_BookId: any) => {
-                this.serverImage = "http://192.168.1.50:8081/Lessons/Images/hdimages/" + _BookId.BookID + ".jpg";
-                _BookId.ImagePath = "http://192.168.1.50:8081/Lessons/Images/hdimages/" + _BookId.BookID + ".jpg";
+                this.serverImage = `${this.hostName}/Lessons/Images/hdimages/` + _BookId.BookID + ".jpg";
+                _BookId.ImagePath = `${this.hostName}/Lessons/Images/hdimages/` + _BookId.BookID + ".jpg";
 
                 this.checkserverImageExist(this.serverImage).subscribe((imagePaths: any) => {
                   this.imagePathData = imagePaths;
@@ -297,7 +307,7 @@ export class TocService {
 
 
 
-    return this.http.post(`http://192.168.1.50:8081/services/Books/BookService.asmx`, soapBody, ({ headers, responseType: 'text' }))
+    return this.http.post(`${this.hostName}/services/Books/BookService.asmx`, soapBody, ({ headers, responseType: 'text' }))
       .pipe(
         map((resp) => {
           if (resp) {
@@ -339,7 +349,7 @@ export class TocService {
       'Content-Type': 'text/xml'
 
     });
-    return this.http.post(`http://192.168.1.50:8081/services/Books/BookService.asmx`, soapBody, ({ headers, responseType: 'text' }))
+    return this.http.post(`${this.hostName}/services/Books/BookService.asmx`, soapBody, ({ headers, responseType: 'text' }))
       .pipe(
         map((resp) => {
           if (resp) {
@@ -370,7 +380,7 @@ export class TocService {
     const headers = new HttpHeaders({
       'Content-Type': 'text/xml'
     })
-    return this.http.post(`http://192.168.1.50:8081/services/WebService_SAS.asmx`, soapBody, ({ headers, responseType: 'text' }))
+    return this.http.post(`${this.hostName}/services/WebService_SAS.asmx`, soapBody, ({ headers, responseType: 'text' }))
       .pipe(
         map((resp) => {
           if (resp) {

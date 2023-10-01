@@ -72,7 +72,7 @@ export class IntroductionComponent implements OnInit {
 
     });
 
-    // this.startCountdown();
+    this.startCountdown();
 
     // this.quizService.getMessage.subscribe(resp=>{
     //   this.QUIZ_DATA =resp;
@@ -90,22 +90,22 @@ export class IntroductionComponent implements OnInit {
       this.quizService.setChecked($event.checked);
     }
   }
-  // startCountdown(){
+  startCountdown(){
     
-  //   this.countInterval = setInterval(()=>{
-  //     if(this.countdown>0){
-  //       this.countdown--;
-  //       console.log("timer",this.countdown);
-  //       this.cdr.detectChanges();
-  //     }
-  //     else{
-  //       clearInterval(this.countInterval);
-  //       // [routerLink]="['/question/', quiz.quizId, 1]">
-  //       // window.location.href=`/question/${this.quizName}/1`
-  //       this.router.navigateByUrl(`/question/${this.quizName}/1`)
-  //     }
-  //   },1000);
-  // }
+    this.countInterval = setInterval(()=>{
+      if(this.countdown>0){
+        this.countdown--;
+        console.log("timer",this.countdown);
+        this.cdr.detectChanges();
+      }
+      else{
+        clearInterval(this.countInterval);
+        // [routerLink]="['/question/', quiz.quizId, 1]">
+        // window.location.href=`/question/${this.quizName}/1`
+        // this.router.navigateByUrl(`/question/${this.quizName}/1`)
+      }
+    },1000);
+  }
 
  
 }

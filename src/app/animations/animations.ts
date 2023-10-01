@@ -5,7 +5,7 @@ export const Animations = {
     transition('* => animationStarted', [
       animate('1s', keyframes([
         style({transform: 'scale(1.0)'}),
-        style({transform: 'scale(1.3)'}),
+        style({transform: 'scale(1.1)'}),
         style({transform: 'scale(1.0)'})
       ]))
     ]),

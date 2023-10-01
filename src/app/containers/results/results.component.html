@@ -8,7 +8,7 @@
         <div class="header-image" [routerLink]="['/quiz/select']" data-toggle="back to Codelab Quiz Selection"
           data-placement="left" style="text-align:left;">
           <!-- <img src="../../../assets/images/edumitram.png" class="header-image"  [routerLink]="['/quiz/select']"> -->
-          <div class="card-title" i18n style="text-align: end;">Results</div>
+          <h1 class="card-title" i18n style="text-align: end; color: white; ">Results</h1>
         </div>
 
       </div>
@@ -26,12 +26,12 @@
 
             <div class="quiz-feedback">
               <div *ngIf="quizMetadata?.percentage >= 80">
-                <img mat-card-image [src]="CONGRATULATIONS" alt="Photo of 'Congratulations'" i18n-title
+                <img mat-card-image src="../../../assets/images/congratulations.jpg" alt="Photo of 'Congratulations'" i18n-title
                   title="Congratulations">
                 <h3 i18n>Great job!</h3>
               </div>
               <div *ngIf="quizMetadata?.percentage >= 60 && quizMetadata?.percentage < 80">
-                <img mat-card-image [src]="NOT_BAD" alt="Photo of 'Not Bad'" i18n-title title="Not Bad">
+                <img mat-card-image src="../../../assets//images/not-bad.jpg" alt="Photo of 'Not Bad'" i18n-title title="Not Bad">
                 <h3 i18n>Not bad!</h3>
               </div>
               <div *ngIf="quizMetadata?.percentage < 60">
