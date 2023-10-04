@@ -49,6 +49,7 @@ export class ChapterComponent implements OnInit {
   testData: boolean = true;
   url='<IMG src="http://3.109.178.249:8020/sasimages/';
   imgae='<IMG src="/sasimages/'
+  imgae2='<IMG src=\"/SASImages/'
   Templatecode:any
   templatImage = 'http://3.109.178.249:8020/Assessments/QuestionBank/QuestionImage.ashx?'
   
@@ -62,6 +63,7 @@ export class ChapterComponent implements OnInit {
 
 
   ngOnInit() {
+    
 
     this.quizService.getbookId.subscribe(resp => {
       this.bookId = resp;
@@ -144,7 +146,7 @@ export class ChapterComponent implements OnInit {
                 // http://3.109.178.249:8020/Assessments/QuestionBank/QuestionImage.ashx?id=0000266900152807&templacecode=2
                 this.couter++;
                 //  let templateImage  = this.templatImage +'id='+ jsonValue.QId + '&templacecode='+ jsonValue.Templatecode
-                let questionText= jsonValue.QText.replace(this.imgae,this.url)
+                let questionText= jsonValue.QText.replace(this.imgae,this.url).replace(this.imgae2,this.url)
                 
                 if(jsonValue.Templatecode=='2'){
                   let templateImage  = this.templatImage +'id='+ jsonValue.QId + '&templacecode='+ jsonValue.Templatecode
@@ -153,14 +155,15 @@ export class ChapterComponent implements OnInit {
                   questionText = questionText + '<br> <br> <div>  <img src = "'+templateImage+'" > </div>';
                 
                 }
+                const correctAnswerIndex = parseInt(jsonValue.CorrectAnswerCode)-1;
                
                 const question = {
                   questionText: questionText,
                   options: [
-                    { text: jsonValue.AnswerAText.replace(this.imgae,this.url), correct: "true" },
-                    { text: jsonValue.AnswerBText.replace(this.imgae,this.url) },
-                    { text: jsonValue.AnswerCText.replace(this.imgae,this.url) },
-                    { text: jsonValue.AnswerDText.replace(this.imgae,this.url) },
+                    { text: jsonValue.AnswerAText.replace(this.imgae,this.url).replace(this.imgae2,this.url),  correct: correctAnswerIndex === 0 },
+                    { text: jsonValue.AnswerBText.replace(this.imgae,this.url).replace(this.imgae2,this.url),  correct: correctAnswerIndex === 1  },
+                    { text: jsonValue.AnswerCText.replace(this.imgae,this.url).replace(this.imgae2,this.url),  correct: correctAnswerIndex === 2  },
+                    { text: jsonValue.AnswerDText.replace(this.imgae,this.url).replace(this.imgae2,this.url),  correct: correctAnswerIndex === 3  },
                   ],
                   explanation: `Correct Answer: ${jsonValue.CorrectAnswerCode}`
                 };

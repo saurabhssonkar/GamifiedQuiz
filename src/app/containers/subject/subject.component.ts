@@ -56,17 +56,8 @@ export class SubjectComponent {
       console.log("new Data", this.Classid);
     })
 
-    this.Subject$ = this.tocService.getSubjectList(36, this.Classid).pipe(
-      // You can also handle errors here if needed
-      catchError((error) => {
-        console.error("Error occurred:", error);
-        this.loading = false; // Set loading to false on error as well
-        return [];
-      }),
-      finalize(() => {
-        this.loading = false; // Set loading to false when the observable completes
-      })
-    );
+    this.Subject$ = this.tocService.getSubjectList(36, this.Classid)
+    
     this.responsiveOptions = [
       {
         breakpoint: '1199px',

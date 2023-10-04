@@ -114,7 +114,7 @@ export class TocService {
     return this.http.post(`${this.hostName}/services/Users/UserServices.asmx`, soapBody, { headers, responseType: 'text' })
       .pipe(
         map((resp: any) => {
-          if (resp && this.loading==true) {
+          if (resp) {
             const parse = new DOMParser();
             const xmlDoc = parse.parseFromString(resp, 'text/xml');
             const obj = this.ngxXml2jsonService.xmlToJson(xmlDoc);
@@ -123,6 +123,7 @@ export class TocService {
             this.ctsSubjectList = this.subjectList['soap:Envelope']['soap:Body'].GetSubjectsResponse.GetSubjectsResult.CTSSubjectList;
             this.ctsSubjectList.map((_Subject: any) => {
               this.remotePath = "../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
+              console.log(this.remotePath)
               _Subject.ImagePath = "../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
               this.checkRemoteImageExists(this.remotePath).subscribe((result) => {
                 this.data = result;
@@ -142,15 +143,14 @@ export class TocService {
 
             });
            
-            // console.log(" this.ctsSubjectList", this.ctsSubjectList)
+             console.log(" this.ctsSubjectList", this.ctsSubjectList)
 
            
           }
-          this.loading = false;
-          if(this.loading == false){
+         
             return this.ctsSubjectList;
 
-          }
+          
         }),
         catchError((error: any) => {
           console.log("Error Occurred", error);

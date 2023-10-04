@@ -52,9 +52,9 @@
 
 
                     <div class="row col-md-12 ">
-                      <input type="radio" class="" (change)="setSelected(i)" [disabled]="alreadyAnswered"
+                      <input type="radio" (change)="setSelected(i)" [disabled]="alreadyAnswered"
                         [class.is-correct]="option.selected && option.correct"
-                        [class.is-incorrect]="option.selected && !option.correct" class="fade-in-image ">
+                        [class.is-incorrect]="option.selected && !option.correct" class="fade-in-image  custom-radio">
                       <!-- show the text option in mcq choice -->
                       <span>
                         <div [innerHTML]="i+1 +'.' + option.text"></div>
@@ -85,7 +85,7 @@
               </div>
               <div *ngIf="option.selected && !option.correct">
                 <span>
-                  <mat-icon class="sentiment-icon">sentiment_very_dissatisfied</mat-icon>&nbsp;&nbsp;&nbsp;
+                  <mat-icon class="sentiment-iconwrong">sentiment_very_dissatisfied</mat-icon>&nbsp;&nbsp;&nbsp;
                   <span class="message wrong-message" i18n>&nbsp;&nbsp;&nbsp;That&apos;s wrong. {{ correctMessage
                     }}</span>
                 </span>
