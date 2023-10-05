@@ -72,6 +72,7 @@ mat-card-header {
 
     .quiz-feedback {
       margin-top: 20px;
+    
 
       img {
         border-radius: 10px;
@@ -250,15 +251,52 @@ mat-card-header {
 
 .return {
   clear: left;
+  display: flex;
   text-align: center;
+  justify-content: center;
   margin-top: 10px;
 
-  a.btn {
+  a.btn1 {
+    width:180px;
+    height: 45px;
     margin-right: 15px;
-    background-color: $light-sea-green;
+    background-color: #45C54F;
     color: $white;
     border: 1px solid $black;
     border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+  a.btn2 {
+    width:180px;
+    height: 45px;
+    margin-right: 15px;
+    background-color: #FF6400;
+    color: $white;
+    border: 1px solid $black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+  a.btn3 {
+    width:180px;
+    height: 45px;
+    margin-right: 15px;
+    background-color:#FF6400;
+    color: $white;
+    border: 1px solid $black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
   }
 }
 
@@ -269,7 +307,7 @@ mat-card-header {
   .social-buttons {
     display: block;
 
-    a.btn {
+    a.btn1 {
       text-decoration: none;
       margin-right: 20px;
       padding: 9px 15px 8px 42px;
@@ -278,19 +316,19 @@ mat-card-header {
       color: $white;
     }
 
-    a.btn.facebook {
+    a.btn1.facebook {
       background-color: $dark-blue;
       background-image: url($facebook-path);
       top: 10px !important;
     }
 
-    a.btn.twitter-share-button {
+    a.btn1.twitter-share-button {
       background-color: $soft-blue;
       background-image: url($twitter-path);
       top: 10px !important;
     }
 
-    a.btn.email {
+    a.btn1.email {
       background-color: $fuel-yellow;
       background-image: url($email-path);
       top: 10px !important;
@@ -299,12 +337,12 @@ mat-card-header {
 }
 
 /* add ripple effect to buttons */
-a.btn {
+a.btn1 {
   position: relative;
   overflow: hidden;
 }
 
-a.btn::after {
+a.btn1::after {
   display: none;
   content: "";
   position: absolute;
@@ -323,7 +361,7 @@ a.btn::after {
   animation: ripple 1s;
   opacity: 0;
 }
-a.btn:focus:not(:active)::after {
+a.btn1:focus:not(:active)::after {
   display: block;
 }
 
@@ -345,10 +383,12 @@ a.btn:focus:not(:active)::after {
 
 
 .header-image {
-  margin-left: 50px;
-  background-image: url(../../../assets/images/edumitram.png);
+  margin-left: 40px;
+  background-image: url(../../../assets/images/header_logo_bak.jpg);
   height: 26vh;
   background-repeat: no-repeat;
+  margin-top: 20px;
+  border-radius: 20px;
 }
 .bgimage{
   background-image: url(../image/bg.png);
@@ -359,5 +399,6 @@ a.btn:focus:not(:active)::after {
   display: flex;
   align-items: center;
   justify-content: center;
+
 
 }

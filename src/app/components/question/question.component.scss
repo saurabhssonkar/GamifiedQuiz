@@ -138,7 +138,9 @@
  
 }
 .row input[type="radio"] {
-  
+  display: flex;
+  align-items: center;
+  justify-content: center; 
   width: 18px; 
   height: 18px;
   background-color: #007bff; 

@@ -112,8 +112,8 @@ export class ResultsComponent implements OnInit {
     const quizIdSting = sessionStorage.getItem('quizIds');
     this.quizI = JSON.parse(quizIdSting);
     // console.log("--------", this.quizI);
-    for (let i = 0; i < this.quizI.length; i++) {
-       this.levels1 = this.quizI[i-1];
+    for (let i = 0; i < 1; i++) {
+       this.levels1 = this.quizI[i+1];
       console.log('---value--', this.levels1);
       const levels = this.quizData.filter((scorevalue) => scorevalue.quizId ===this.quizId);
       console.log("<--$-->",levels);
