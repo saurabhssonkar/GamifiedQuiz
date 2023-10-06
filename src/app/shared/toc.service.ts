@@ -317,8 +317,24 @@ export class TocService {
             this.getChapterTopiclist = obj;
             console.log("###this.getChapterTopiclist", this.getChapterTopiclist);
             const ctsCapterTopicList = this.getChapterTopiclist['HTML']['BODY']['SOAP:ENVELOPE']['SOAP:BODY'].GETTABLEOFCONTENTSFORCTSGAMERESPONSE.GETTABLEOFCONTENTSFORCTSGAMERESULT.BOOKCHAPTERLIST;
-            console.log("______))))))!!!", ctsCapterTopicList);
-            return ctsCapterTopicList;
+            console.log("______))))))!!!", ctsCapterTopicList.length);
+            if( ctsCapterTopicList.length){
+              console.log("123",ctsCapterTopicList)
+              return ctsCapterTopicList
+
+            }
+            else{
+              console.log("0123",[ctsCapterTopicList])
+              return [ctsCapterTopicList]
+
+            }
+            
+             
+           
+            
+
+
+            
 
 
 
