@@ -6,7 +6,7 @@ import { text } from '@fortawesome/fontawesome-svg-core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Quiz } from './models/Quiz.model';
 import { QUIZ_DATA } from './quiz';
-import { enviroment } from '../enviroment/enviroment';
+import { enviroment } from '../../../enviroment/enviroment';
 
 
 
@@ -55,9 +55,9 @@ export class TocService {
     const soapBody = `<?xml version="1.0" encoding="utf-8"?>
       <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
         <soap:Body>
-          <GetClassList xmlns="http://educomp.com/smartclass">
+          <GetClassListForCTSGame xmlns="http://educomp.com/smartclass">
             <usrID>${userId}</usrID>
-          </GetClassList>
+          </GetClassListForCTSGame>
         </soap:Body>
       </soap:Envelope>`;
 
@@ -77,7 +77,7 @@ export class TocService {
             console.log('this', xmlDoc);
             const obj = this.ngxXml2jsonService.xmlToJson(xmlDoc);
             this.getclasslist = obj;
-            this.ctsClassMasterArray = this.getclasslist['soap:Envelope']['soap:Body'].GetClassListResponse.GetClassListResult.CTSClassMaster;
+            this.ctsClassMasterArray = this.getclasslist['soap:Envelope']['soap:Body'].GetClassListForCTSGameResponse.GetClassListForCTSGameResult.CTSClassMaster;
             console.log('data', this.getclasslist);
             console.log('data2', this.ctsClassMasterArray);
             return this.ctsClassMasterArray;
@@ -102,10 +102,10 @@ export class TocService {
       `<?xml version="1.0" ?>
     <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
         <S:Body>
-            <GetSubjects xmlns="http://educomp.com/smartclass">
+            <GetSubjectsGame xmlns="http://educomp.com/smartclass">
                 <usrID>${useId}</usrID>
                 <classID>${classId}</classID>
-            </GetSubjects>
+            </GetSubjectsGame>
         </S:Body>
     </S:Envelope>`;
     const headers = new HttpHeaders({
@@ -120,7 +120,7 @@ export class TocService {
             const obj = this.ngxXml2jsonService.xmlToJson(xmlDoc);
             this.subjectList = obj
             // console.log("subjectLis", this.subjectList);
-            this.ctsSubjectList = this.subjectList['soap:Envelope']['soap:Body'].GetSubjectsResponse.GetSubjectsResult.CTSSubjectList;
+            this.ctsSubjectList = this.subjectList['soap:Envelope']['soap:Body'].GetSubjectsGameResponse.GetSubjectsGameResult.CTSSubjectList;
             this.ctsSubjectList.map((_Subject: any) => {
               this.remotePath = "../../../assets/images/subjects/" + _Subject.Name.toLowerCase().replace(' ', '-') + "-green.svg";
               console.log(this.remotePath)
@@ -189,11 +189,11 @@ export class TocService {
       `<?xml version="1.0" ?>
     <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
         <S:Body>
-            <GetBooks xmlns="http://educomp.com/smartclass">
+            <GetBooksGame xmlns="http://educomp.com/smartclass">
                 <UserID>${userId}</UserID>
                 <ClassID>${classId}</ClassID>
                 <SubjectID>${subjectId}</SubjectID>
-            </GetBooks>
+            </GetBooksGame>
         </S:Body>
     </S:Envelope>`;
     const headers = new HttpHeaders({
@@ -209,7 +209,7 @@ export class TocService {
             const xmlDoc = parse.parseFromString(resp, 'text/xml');
             const obj = this.ngxXml2jsonService.xmlToJson(xmlDoc);
             this.getsubjectList = obj;
-            this.ctsBookList = this.getsubjectList['soap:Envelope']['soap:Body'].GetBooksResponse.GetBooksResult.CTSBookList;
+            this.ctsBookList = this.getsubjectList['soap:Envelope']['soap:Body'].GetBooksGameResponse.GetBooksGameResult.CTSBookList;
             console.log("ctsBookList", this.ctsBookList);
             console.log("ctsbooklength", this.ctsBookList.length);
             if (this.ctsBookList.length > 1) {
@@ -289,14 +289,14 @@ export class TocService {
       `<?xml version="1.0" ?>
     <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
         <S:Body>
-            <GetTableOfContentsForCTS xmlns="http://educomp.com/smartclass">
+            <GetTableOfContentsForCTSGame xmlns="http://educomp.com/smartclass">
                 <book>${bookId}</book>
                 <usrID>${userId}</usrID>
                 <usrRole>${userRole}</usrRole>
                 <ViewMode>${viewMode}</ViewMode>
                 <classID>${classId}</classID>
                 <section>${section}</section>
-            </GetTableOfContentsForCTS>
+            </GetTableOfContentsForCTSGame>
         </S:Body>
     </S:Envelope>`;
     const headers = new HttpHeaders({
@@ -316,7 +316,7 @@ export class TocService {
             const obj = this.ngxXml2jsonService.xmlToJson(xmlDoc);
             this.getChapterTopiclist = obj;
             console.log("###this.getChapterTopiclist", this.getChapterTopiclist);
-            const ctsCapterTopicList = this.getChapterTopiclist['HTML']['BODY']['SOAP:ENVELOPE']['SOAP:BODY'].GETTABLEOFCONTENTSFORCTSRESPONSE.GETTABLEOFCONTENTSFORCTSRESULT.BOOKCHAPTERLIST;
+            const ctsCapterTopicList = this.getChapterTopiclist['HTML']['BODY']['SOAP:ENVELOPE']['SOAP:BODY'].GETTABLEOFCONTENTSFORCTSGAMERESPONSE.GETTABLEOFCONTENTSFORCTSGAMERESULT.BOOKCHAPTERLIST;
             console.log("______))))))!!!", ctsCapterTopicList);
             return ctsCapterTopicList;
 

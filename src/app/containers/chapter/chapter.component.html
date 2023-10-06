@@ -9,7 +9,7 @@
                     Select Chapter</div>
                 <div class="card-body">
 
-                   
+                    <ng-container *ngIf="getchapterTopicData; else noData">
                     <ng-container *ngFor="let chapter of getchapterTopicData | async">
                      
                         <div *ngFor="let bookChapter of chapter.BOOKCHAPTERS.BOOKTOPICLIST">
@@ -56,6 +56,7 @@
                             </div>
                         </div>
                     </ng-container>
+                </ng-container>
 
                     <!-- <div class="row mt-3 mb-3">
 
@@ -103,5 +104,8 @@
 
     </div>
 </div>
+<ng-template #noData>
+    <div>Data is not found</div>
+</ng-template>
 
 <!-- [routerLink]="['/intro/', quiz?.quizId]"  -->

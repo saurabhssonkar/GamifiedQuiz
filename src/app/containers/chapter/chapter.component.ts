@@ -50,6 +50,8 @@ export class ChapterComponent implements OnInit {
   url='<IMG src="http://3.109.178.249:8020/sasimages/';
   imgae='<IMG src="/sasimages/'
   imgae2='<IMG src=\"/SASImages/'
+  image3='<IMG src="/SASImages/'
+  image4='<IMG src="/SASImages/'
   Templatecode:any
   templatImage = 'http://3.109.178.249:8020/Assessments/QuestionBank/QuestionImage.ashx?'
   
@@ -146,7 +148,7 @@ export class ChapterComponent implements OnInit {
                 // http://3.109.178.249:8020/Assessments/QuestionBank/QuestionImage.ashx?id=0000266900152807&templacecode=2
                 this.couter++;
                 //  let templateImage  = this.templatImage +'id='+ jsonValue.QId + '&templacecode='+ jsonValue.Templatecode
-                let questionText= jsonValue.QText.replace(this.imgae,this.url).replace(this.imgae2,this.url)
+                let questionText= jsonValue.QText.replace(this.imgae,this.url).replace(this.imgae2,this.url).replace(this.image3,this.url).replace(this.image4,this.url)
                 
                 if(jsonValue.Templatecode=='2'){
                   let templateImage  = this.templatImage +'id='+ jsonValue.QId + '&templacecode='+ jsonValue.Templatecode

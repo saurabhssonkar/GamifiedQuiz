@@ -1,3 +1,5 @@
+
+<ng-container *ngIf="quizData; else noData">
 <ng-container *ngFor="let quiz of quizData">
   <div class="home" *ngIf="quiz.quizId === quizName">
     <!-- <div class="container mt-md-5 "> -->
@@ -53,3 +55,9 @@
   <!-- </div> -->
 
 </ng-container>
+</ng-container>
+
+
+<ng-template #noData>
+  <div>Data is not found</div>
+</ng-template>

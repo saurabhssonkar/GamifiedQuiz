@@ -1,3 +1,4 @@
+
 <div class="container mt-5 ">
 
     <div class="card bgimage" style="border-radius:25px">
@@ -18,7 +19,7 @@
                     <img src="https://illustoon.com/photo/753.png" alt="star" style="width: 100px;">
                 </div> -->
 
-
+            <ng-container *ngIf="bookList; else noData">
             <p-carousel [value]="bookList | async" [numVisible]="3" [numScroll]="1" [circular]="true"
                 [responsiveOptions]="responsiveOptions" autoPlayInterval="100">
                 <ng-template let-book | async pTemplate="item">
@@ -45,6 +46,12 @@
                     </div>
                 </ng-template>
             </p-carousel>
+        </ng-container>
+         
         </div>
     </div>
 </div>
+
+<ng-template #noData>
+    <div>Data is not found</div>
+</ng-template>
