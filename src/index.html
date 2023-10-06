@@ -8,14 +8,27 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/3a21cb4df8.js" crossorigin="anonymous"></script>
-    <script src="http://3.109.178.249:8020/Scripts/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
-      MathJax.Hub.Config({
-      TeX: {
-          equationNumbers: { autoNumber: "AMS" },
-          extensions: ["AMSmath.js","mhchem.js"]
-      }
-  });
+    <script src="http://192.168.1.50:8081/scripts/initmathjax.js" type="text/javascript"></script>
+    <script src="http://192.168.1.50:8081/Scripts/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
   </script>
+   <script src="http://192.168.1.50:8081/Scripts/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+   type="text/javascript">
+   MathJax.Hub.Config({
+       TeX: {
+           equationNumbers: { autoNumber: "AMS" },
+           extensions: ["AMSmath.js"]
+       }
+   });
+   MathJax.Hub.Config({
+       tex2jax: {
+           inlineMath: [['$', '$'], ['\\(', '\\)']]
+       }
+   });
+   MathJax.Hub.Config({
+       zoom:
+"Double-Click"
+   });
+</script>
       <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
