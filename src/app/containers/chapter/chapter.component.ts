@@ -80,7 +80,7 @@ export class ChapterComponent implements OnInit {
 
     this.getchapterTopicData = this.tocService.getChapterTopicList(this.bookId, this.userId, this.userRole, this.viewMode, this.classId, this.section);
 
-    // this.tocService.getChapterTopicList().subscribe((resp) => {
+    // this.tocService.getChapterTopicList(this.bookId, this.userId, this.userRole, this.viewMode, this.classId, this.section).subscribe((resp) => {
 
 
 
