@@ -12,6 +12,12 @@
   src: url($congratulations-font) format('truetype');
   font-display: swap;
 }
+@font-face {
+  font-family: "Kruti Dev 010";
+  font-style: normal;
+  src: url(../../gamified_quiz/src/assets/images/Kruti_Dev_010.ttf) format("truetype");
+  // font-size: 15px;
+}
 
 mat-card {
   margin: 2% 0 20px 25%;
@@ -65,4 +71,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-image: url(../../gamified_quiz/src/assets/images/bg.png);
   background-size: cover;
   
+}
+
+font {
+  font-family: "Kruti Dev 010";
+  font-style: normal;
+  src: url(../../gamified_quiz/src/assets/images/Kruti_Dev_010.ttf) format("truetype");
+  // font-size: 15px;
 }

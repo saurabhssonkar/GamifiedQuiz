@@ -27,6 +27,7 @@
     "hover.css": "^2.3.2",
     "howler": "^2.2.0",
     "jquery": "^3.5.1",
+    "mathjax": "^3.2.2",
     "ngx-bootstrap": "^6.0.0",
     "ngx-soap": "^0.7.0",
     "ngx-xml2json": "^1.0.2",
