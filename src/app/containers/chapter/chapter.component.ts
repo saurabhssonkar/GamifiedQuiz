@@ -6,6 +6,7 @@ import { TocService } from 'src/app/shared/toc.service';
 import { BehaviorSubject, forkJoin, fromEvent, merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { QuizService } from 'src/app/shared/services/quiz.service';
+import { enviroment } from 'enviroment/enviroment';
 
 
 @Component({
@@ -47,13 +48,22 @@ export class ChapterComponent implements OnInit {
   getchapterIdandTopicId: any;
   getTestQuetiondata: any;
   testData: boolean = true;
-  url='<IMG src="http://3.109.178.249:8020/sasimages/';
-  imgae='<IMG src="/sasimages/'
-  imgae2='<IMG src=\"/SASImages/'
-  image3='<IMG src="/SASImages/'
-  image4='<IMG src="/SASImages/'
+  url = enviroment.url;
+  // url='<IMG src="http://3.109.178.249:8020/sasimages/';
+  // imgae='<IMG src="/sasimages/'
+  imgae=enviroment.imgae;
+  // imgae2='<IMG src=\"/SASImages/'
+  imgae2=enviroment.imgae2
+  // image3='<IMG src="/SASImages/'
+  image3=enviroment.image3
+  // image4='<IMG src="/SASImages/'
+  image4=enviroment.image4
   Templatecode:any
-  templatImage = 'http://3.109.178.249:8020/Assessments/QuestionBank/QuestionImage.ashx?'
+  templatImage = `${enviroment.templatImage}/Assessments/QuestionBank/QuestionImage.ashx?`
+  optionText1:any;
+  optionText2:any;
+  optionText3:any;
+  optionText4:any;
   
 
   // getchapterTopicData : Observable<any>;
@@ -157,15 +167,52 @@ export class ChapterComponent implements OnInit {
                   questionText = questionText + '<br> <br> <div>  <img src = "'+templateImage+'" > </div>';
                 
                 }
+                if(jsonValue.AnswerAText.length!=undefined){
+                  this.optionText1= jsonValue.AnswerAText.replace(this.imgae,this.url).replace(this.imgae2,this.url);
+                  console.log("this.optionText1",this.optionText1)
+
+
+                }
+               
+                if(jsonValue.AnswerBText.length!=undefined){
+                  this.optionText2= jsonValue.AnswerBText.replace(this.imgae,this.url).replace(this.imgae2,this.url);
+                  console.log("this.optionText2",this.optionText2)
+
+
+                }
+                
+                if(jsonValue.AnswerCText.length!=undefined){
+                  console.log(jsonValue.AnswerCText)
+                  this.optionText3= jsonValue.AnswerCText.replace(this.imgae,this.url).replace(this.imgae2,this.url);
+                  console.log(" this.optionText3",this.optionText3)
+
+
+                }
+                
+
+                if(jsonValue.AnswerDText.length!=undefined){
+                  this.optionText4= jsonValue.AnswerDText.replace(this.imgae,this.url).replace(this.imgae2,this.url);
+                  console.log(" this.optionText4",this.optionText4)
+
+
+                }
+                if(jsonValue.AnswerDText.length==undefined){
+                  // this.optionText4= jsonValue.AnswerDText.replace(this.imgae,this.url).replace(this.imgae2,this.url);
+                  // console.log(" this.optionText4",this.optionText4)
+                  this.optionText4="saurabh4";
+                  console.log(" this.optionText4",this.optionText4)
+
+                }
+                
                 const correctAnswerIndex = parseInt(jsonValue.CorrectAnswerCode)-1;
                
                 const question = {
                   questionText: questionText,
                   options: [
-                    { text: jsonValue.AnswerAText.replace(this.imgae,this.url).replace(this.imgae2,this.url),  correct: correctAnswerIndex === 0 },
-                    { text: jsonValue.AnswerBText.replace(this.imgae,this.url).replace(this.imgae2,this.url),  correct: correctAnswerIndex === 1  },
-                    { text: jsonValue.AnswerCText.replace(this.imgae,this.url).replace(this.imgae2,this.url),  correct: correctAnswerIndex === 2  },
-                    { text: jsonValue.AnswerDText.replace(this.imgae,this.url).replace(this.imgae2,this.url),  correct: correctAnswerIndex === 3  },
+                    { text: this.optionText1,  correct: correctAnswerIndex === 0 },
+                    { text: this.optionText2,  correct: correctAnswerIndex === 1  },
+                    { text:this.optionText3,  correct: correctAnswerIndex === 2  },
+                    { text: this.optionText4,  correct: correctAnswerIndex === 3  },
                   ],
                   explanation: `Correct Answer: ${jsonValue.CorrectAnswerCode}`
                 };
