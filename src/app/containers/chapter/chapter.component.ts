@@ -37,7 +37,7 @@ export class ChapterComponent implements OnInit {
   questionTest: any;
   mcqQuestionAndOptionData = [];
   userRole = 'TE';
-  userId = 36;
+  // userId = 36;
   viewMode = "curated";
   section = "A";
   bookId: any;
@@ -60,6 +60,7 @@ export class ChapterComponent implements OnInit {
   image4=enviroment.image4
   Templatecode:any
   templatImage = `${enviroment.templatImage}/Assessments/QuestionBank/QuestionImage.ashx?`
+  userId=enviroment.userId
   optionText1:any;
   optionText2:any;
   optionText3:any;

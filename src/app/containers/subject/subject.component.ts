@@ -7,6 +7,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { TocService } from 'src/app/shared/toc.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, finalize, map, of, switchMap } from 'rxjs';
+import { enviroment } from 'enviroment/enviroment';
 
 
 @Component({
@@ -38,6 +39,7 @@ export class SubjectComponent {
   Subject: any[] = [];
   loading: boolean = true;
   Subject$: Observable<any[]> | null = null; 
+  userId=enviroment.userId
 
   getClasslist: any;
   constructor(
@@ -56,7 +58,7 @@ export class SubjectComponent {
       console.log("new Data", this.Classid);
     })
 
-    this.Subject$ = this.tocService.getSubjectList(36, this.Classid)
+    this.Subject$ = this.tocService.getSubjectList(this.userId, this.Classid)
     
     this.responsiveOptions = [
       {

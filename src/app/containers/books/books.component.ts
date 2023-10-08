@@ -7,6 +7,7 @@ import { QuizService } from 'src/app/shared/services/quiz.service';
 import { TocService } from 'src/app/shared/toc.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
+import { enviroment } from 'enviroment/enviroment';
 
 
 @Component({
@@ -37,6 +38,7 @@ export class BooksComponent {
  classId:any;
  getChapterTopicCuratedList:any;
  defaultImageBook:string="../../../assets/images/samplebook.jpg";
+ userId=enviroment.userId;
  
 
   constructor(
@@ -61,7 +63,7 @@ export class BooksComponent {
       
     })
 
-    this.bookList=this.tocService.getBookList(36,this.classId,this.subjecId);
+    this.bookList=this.tocService.getBookList(this.userId,this.classId,this.subjecId);
    
    
 
