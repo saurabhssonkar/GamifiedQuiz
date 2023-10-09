@@ -5,10 +5,13 @@
       <!-- result of the header  -->
       <div class="card-header ">
         <!-- header image -->
-        <div class="header-image" [routerLink]="['/quiz/select']" data-toggle="back to Codelab Quiz Selection"
+        
+        <div  class="header-image12 p-2 " [routerLink]="['/quiz/select']" data-toggle="back to Codelab Quiz Selection"
           data-placement="left" style="text-align:left;">
-          <!-- <img src="../../../assets/images/edumitram.png" class="header-image"  [routerLink]="['/quiz/select']"> -->
-          <h1 class="card-title" i18n style="text-align: end; color: white;margin-right: 60px; margin-top: 30px; ">Results</h1>
+          <a [routerLink]="['/select']" >
+            <img src="../../../assets/images/header_logo_bak.jpg" alt="logo" style="border-radius: 20px;">
+          </a>         
+           <h1 class="card-title" i18n style="text-align: end; color: white;margin-right: 40px; margin-top: -60px; ">Results</h1>
         </div>
 
       </div>
