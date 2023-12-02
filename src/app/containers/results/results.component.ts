@@ -14,6 +14,7 @@ import { QuizService } from '../../shared/services/quiz.service';
 import { TimerService } from '../../shared/services/timer.service';
 
 
+
 @Component({
   selector: 'codelab-quiz-results',
   templateUrl: './results.component.html',
@@ -99,6 +100,11 @@ export class ResultsComponent implements OnInit {
 
     // console.log("saurabh123",this.quizId)
     // console.log('checked the data', this.quizData);
+    this.activatedRoute.url.subscribe(segments => {
+      console.log(segments);
+      this.quizName = segments[1].toString();
+      console.log("~~~~~~~~~",this.quizName);
+    });
     const quizIds: string[] = this.quizData.map((quiz) => quiz.quizId);
     // console.log(" -- abhishek --",quizIds)
     for(let i = 1 ;i<quizIds.length;i++){
@@ -110,10 +116,20 @@ export class ResultsComponent implements OnInit {
     sessionStorage.setItem('quizIds', JSON.stringify(quizIds));
 
     const quizIdSting = sessionStorage.getItem('quizIds');
+    console.log("const",quizIdSting)
     this.quizI = JSON.parse(quizIdSting);
+
+    console.log("this.quizI",this.quizI.length);
+    for(let i=0;i<this.quizI.length;i++){
+      if(this.quizName==this.quizI[i]){
+        this.levels1 = this.quizI[i+1];
+        console.log("saurbhsonkar",this.levels1)
+      }
+    }
+    
     // console.log("--------", this.quizI);
     for (let i = 0; i < 1; i++) {
-       this.levels1 = this.quizI[i+1];
+      //  this.levels1 = this.quizI[i+1];
       console.log('---value--', this.levels1);
       const levels = this.quizData.filter((scorevalue) => scorevalue.quizId ===this.quizId);
       console.log("<--$-->",levels);

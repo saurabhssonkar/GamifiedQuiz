@@ -51,6 +51,7 @@ export class ChapterComponent implements OnInit {
   url = enviroment.url;
   // url='<IMG src="http://3.109.178.249:8020/sasimages/';
   // imgae='<IMG src="/sasimages/'
+  imgae4='/SASImages/'
   imgae=enviroment.imgae;
   // imgae2='<IMG src=\"/SASImages/'
   imgae2=enviroment.imgae2
@@ -117,7 +118,7 @@ export class ChapterComponent implements OnInit {
 
 
     // this.quizService.setTopicId(obj);
-    this.tocService.getChapterTopicCuratedList(CHAPTERID, TOPICID, 36, this.classId, this.section).subscribe((resp => {
+    this.tocService.getChapterTopicCuratedList(CHAPTERID, TOPICID, this.userId, this.classId, this.section).subscribe((resp => {
 
       // console.log("testing code ", resp);
       this.getChapterTopicCuratedList = resp;
@@ -159,7 +160,7 @@ export class ChapterComponent implements OnInit {
                 // http://3.109.178.249:8020/Assessments/QuestionBank/QuestionImage.ashx?id=0000266900152807&templacecode=2
                 this.couter++;
                 //  let templateImage  = this.templatImage +'id='+ jsonValue.QId + '&templacecode='+ jsonValue.Templatecode
-                let questionText= jsonValue.QText.replace(this.imgae,this.url).replace(this.imgae2,this.url).replace(this.image3,this.url).replace(this.image4,this.url)
+                let questionText= jsonValue.QText.replace(this.imgae,this.url).replace(this.imgae2,this.url).replace(this.image3,this.url).replace(this.image4,this.url).replace(this.imgae4,this.url)
                 
                 if(jsonValue.Templatecode=='2'){
                   let templateImage  = this.templatImage +'id='+ jsonValue.QId + '&templacecode='+ jsonValue.Templatecode
