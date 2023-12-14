@@ -43,23 +43,28 @@
             style="margin-left:2rem; ;  font-size: 1.7rem; color:rgb(80, 80, 80); line-height: 2.5rem; text-align: justify;">
             this is simple question
           </div> -->
-          <div class="card-body">
+          <div class="m-3">
 
             <div class="row ">
               <div class="col-md-12 ">
-                <div class="card" style="border-radius:25px">
+                <div class="card" style="border-radius:10px">
 
                   <div class="card-body1">
 
 
-                    <div class="row col-md-12 ">
-                      <input type="radio" (change)="setSelected(i)" [disabled]="alreadyAnswered"
+                    <div class="row1 row col-md-12 justify-content-between">
+                      
+                      <h1  class="mcqIndex">
+                        <span class="index">{{i+1}}</span>
+                        <span [innerHTML]=" option.text" class="mcqOption"></span>
+                      </h1>
+                      
+
+                      <input type="radio" (change)="setSelected(i)"  (click)="openModal()" [disabled]="alreadyAnswered"
                         [class.is-correct]="option.selected && option.correct"
-                        [class.is-incorrect]="option.selected && !option.correct" class="fade-in-image  custom-radio">
+                        [class.is-incorrect]="option.selected && !option.correct" class="fade-in-image  custom-radio  ">
+                      
                       <!-- show the text option in mcq choice -->
-                      <span>
-                        <div [innerHTML]="i+1 +'.' + option.text"></div>
-                      </span>
                       <!-- this is icon of the done and clear if the question is right  -->
                       <mat-icon class="feedback-icon"
                         *ngIf="option.selected && option.correct && isCorrectAnswerSelected">done</mat-icon>
@@ -67,7 +72,7 @@
 
                       
                     </div>
-
+                 
                   </div>
                 </div>
               </div>
@@ -142,7 +147,22 @@
       </div>
     </div>
   </div>
+ 
 </ng-container>
+
+
+
+ <dialog [open]="isModalOpen" (close)="onModalClose()">
+    <h2>Subscribe to our newsletter</h2>
+    <form >
+      <input type="email" placeholder="example@email.com"  />
+      <button class="apply" type="submit">Subscribe</button>
+      <button class="close-modal" (click)="closeModal()">No Thanks</button>
+    </form>
+  </dialog>
+
+
+
 <!-- <div class="container mt-5 ">
   <div class="row">
     <div class="col-md-12 ">

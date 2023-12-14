@@ -46,6 +46,10 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
   quizId:any
   questions=[];
   jsonData=[];
+  isModalOpen = false;
+  email = '';
+  modalReturnValue = '';
+
 
 
   constructor(
@@ -85,6 +89,7 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
   }
 
   setSelected(optionIndex: number): void {
+    console.log("saurabh sonkar")
     this.quizStarted = true;
     this.correctMessage = this.quizService.correctMessage;
     this.isCorrectAnswerSelected = this.isCorrect(this.currentQuestion.options[optionIndex].correct, optionIndex);
@@ -109,5 +114,16 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
     }
 
     this.alreadyAnswered = true;
+  }
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+  closeModal() {
+    this.isModalOpen = false;
+    this.modalReturnValue = '';
+  }
+  onModalClose(){
+    
   }
 }

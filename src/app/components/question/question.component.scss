@@ -1,8 +1,6 @@
-
-
-.mcq{
+.mcq {
   margin-top: 150px;
-  
+
 }
 
 .mcq .mcq-answer {
@@ -12,15 +10,15 @@
   align-items: center;
   justify-content: flex-start;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   background: #F5F5F5;
   border: 1px solid #CCC;
   border-radius: 15px;
   padding-right: 120px;
   width: 550px;
-  
+
 }
 
 .mcq .mcq-answer p {
@@ -74,86 +72,200 @@
   left: 0;
 }
 
-.mcq input:hover ~ .highlight {
+.mcq input:hover~.highlight {
   background-color: #CCC;
 }
 
-.mcq input:checked ~ .highlight {
+.mcq input:checked~.highlight {
   background-color: #f2dede;
 }
 
-.mcq .correct input:checked ~ .highlight {
+.mcq .correct input:checked~.highlight {
   background-color: #dff0d8;
 }
 
-.mcq input:checked ~ .circle {
-  background-color: #ebccd1;;
+.mcq input:checked~.circle {
+  background-color: #ebccd1;
+  ;
   border-color: #a94442;
 }
 
-.mcq .correct input:checked ~ .circle {
+.mcq .correct input:checked~.circle {
   background-color: #d6e9c6;
   border-color: #3c763d;
-  
+
 }
 
-.mcq input:checked ~ .feedback {
+.mcq input:checked~.feedback {
   visibility: visible;
   -webkit-animation: feedbackfade 3s ease 3s;
-          animation: feedbackfade 3s ease 3s;
+  animation: feedbackfade 3s ease 3s;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .card-body1 {
   flex: 1 1 auto;
   min-height: 1px;
-  padding: 1rem 2rem;
+  // padding: 1rem 2rem;
   display: flex;
-  gap: 10px;
-  
+  gap: 100px;
+
 }
+
 // .card-body1 input{
 //   font-family: bold;
 //   font-size: large;
 //   size: 50px;
 
 // }
-.message{
-  color:  #07f20b;;
+
+
+.message {
+  color: #07f20b;
+  ;
 }
-.sentiment-icon{
+
+.sentiment-icon {
   color: #00ff04;
 }
-.sentiment-iconwrong{
+
+.sentiment-iconwrong {
   color: red;
 }
-.wrong-message{
-  color:#c70805
 
+.wrong-message {
+  color: #c70805
 }
-.messages{
+
+.messages {
   margin-top: 10px;
   text-align: end;
- 
+
 }
-.row input[type="radio"] {
+
+// .row input[type="radio"] {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center; 
+//   width: 18px; 
+//   height: 18px;
+//   background-color: #007bff; 
+//   border-radius: 50%;
+//   border: 2px solid #007bff; 
+//   margin-right: 10px;
+//   margin-top: 2px;
+// }
+
+.row1 input[type=radio] {
   display: flex;
   align-items: center;
-  justify-content: center; 
-  width: 18px; 
-  height: 18px;
-  background-color: #007bff; 
+  justify-content: center;
+  width: 42px;
+  height: 52px;
+  background-color: #007bff;
   border-radius: 50%;
-  border: 2px solid #007bff; 
+  border: 2px solid black;
   margin-right: 10px;
-  margin-top: 2px;
+  margin-top: 12px;
+  // color: black;
+  // box-shadow: 0 0 0 6px black;
+}
+
+.mcqIndex {
+
+  color: rgb(228, 224, 224);
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 48px;
+
+}
+
+.mcqOption {
+  margin-left: 20px;
+  color: black;
+  font-weight: 350;
+  font-size: 37px;
+  margin-top: 30px;
+
+}
+
+.index {
+  background-color: #296C83;
+  margin-left: -1px;
+  padding: 8px 20px;
+  border-radius: 10% 0% 0% 10%;
 }
 
 
+/* modal.component.css */
+:host {
+  margin: 40px;
+  
 
+}
 
+dialog {
+  text-align: center;
+  background-color: #333;
+  color: #eee;
+  border: none;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.5);
+  width: 500px;
+  max-width: 80%;
+  margin-top: -20rem;
 
+}
 
+dialog[open] {
+  animation: toggle-modal .3s ease-in-out;
+}
 
+dialog::backdrop {
+  background: rgba(0, 0, 0, .5);
+}
 
+dialog h2 {
+  margin: 0 0 30px;
+}
+
+input,
+button {
+  padding: 8px 20px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+
+button {
+  color: #fff;
+  background: #04b95b;
+}
+
+.close-modal {
+  background: #c70000;
+}
+
+.open-modal {
+  margin-bottom: 40px;
+}
+
+@keyframes toggle-modal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+// .correct{
+//   // background-image: image("../../../assets/images/correct.png");
+//   background-image: url("../../../assets/images/correct.png");
+//   width: 10rem;
+//   height: 10rem;
+//   // margin-top: -20rem;
+// }

@@ -23,7 +23,7 @@ mat-card-header {
 }
 
 .unanswered {
-  border: 2px solid $vivid-blue;
+  border: 2px solid white;
 }
 
 .answered {
@@ -144,6 +144,7 @@ section.progress-bar {
     margin: -100px -150px 0 -120px !important;
     margin-top: 5px !important;
     font-size: 36px;
+    color:#F7F7F7
   }
 
   .card-subtitle {
@@ -155,7 +156,7 @@ section.progress-bar {
 }
 
 .unanswered {
-  border: 2px solid $vivid-blue;
+  border: 2px solid white;
 }
 
 .answered {
@@ -179,12 +180,14 @@ section.progress-bar {
   // float: left;
   // padding: 18px 38px;
   background-color:#F7F7F7;
-  border: none;
+  // border: none;
+  border: 3px solid white;
   color: $dark-brown;
   // height: auto;
   vertical-align: baseline;
-  border-radius: 44px;
+  border-radius: 10px;
   line-height: 32px;
+  color: white;
   
 
   
@@ -265,10 +268,14 @@ section.progress-bar {
 
 .custom{
   margin-top: 20px;
+  // padding: -20px;
+  border: 3px solid white;
+  border-radius: 10px;
+  
 }
 
 .bgimage{
-  background-image: url(../../../assets/images/bg.png);
+  background-image: url(../../../assets/images/bg1.png);
   background-size: cover;
   
   
