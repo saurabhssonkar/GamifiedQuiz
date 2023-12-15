@@ -52,7 +52,7 @@
                   <div class="card-body1">
 
 
-                    <div class="row1 row col-md-12 justify-content-between">
+                    <div class="row1 row col-md-12 justify-content-between ">
                       
                       <h1  class="mcqIndex">
                         <span class="index">{{i+1}}</span>
@@ -68,7 +68,9 @@
                       <!-- this is icon of the done and clear if the question is right  -->
                       <mat-icon class="feedback-icon"
                         *ngIf="option.selected && option.correct && isCorrectAnswerSelected">done</mat-icon>
-                      <mat-icon class="feedback-icon" *ngIf="option.selected && !option.correct">clear</mat-icon>
+                      <!-- <mat-icon class="feedback-icon" *ngIf="option.selected && !option.correct">clear</mat-icon> -->
+                      <div style="background-color: red;" *ngIf="option.selected && !option.correct"></div>
+
 
                       
                     </div>
@@ -81,7 +83,7 @@
               <span>&ldquo;{{ previousUserAnswersText[i] }}&rdquo; was selected in your previous quiz.</span>
             </div>
 
-            <section class="messages">
+            <!-- <section class="messages">
               <div *ngIf="option.selected && option.correct && isCorrectAnswerSelected">
                 <span>
                   <mat-icon class="sentiment-icon">sentiment_very_satisfied</mat-icon>&nbsp;&nbsp;&nbsp;
@@ -96,12 +98,12 @@
                     }}</span>
                 </span>
               </div>
-              <!-- TODO: show previous user answers for single-answer questions -->
+               TODO: show previous user answers for single-answer questions
               <div *ngFor="let previousText of previousUserAnswersTextSingleAnswer[i]" class="previous-answer-text">
 
                 <span *ngIf="option.selected"><em>{{ previousText }}</em> was selected in your previous quiz.</span>
               </div>
-            </section>
+            </section> -->
             <!-- <div class="row mt-3 mb-3">
               <div class="col-md-12 ">
                 <div class="card" style="border-radius:25px">
@@ -153,12 +155,10 @@
 
 
  <dialog [open]="isModalOpen" (close)="onModalClose()">
-    <h2>Subscribe to our newsletter</h2>
-    <form >
-      <input type="email" placeholder="example@email.com"  />
-      <button class="apply" type="submit">Subscribe</button>
-      <button class="close-modal" (click)="closeModal()">No Thanks</button>
-    </form>
+    
+      <button class="apply btn close-modal" (click)="closeModal()" type="submit">Continue</button>
+      <!-- <button class="" (click)="closeModal()">No Thanks</button> -->
+    
   </dialog>
 
 
