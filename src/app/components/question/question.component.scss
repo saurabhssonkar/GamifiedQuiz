@@ -110,6 +110,18 @@
   // padding: 1rem 2rem;
   display: flex;
   gap: 100px;
+  // background-color: #a94442;
+  border-radius: 10px;
+
+}
+.card-body2{
+  flex: 1 1 auto;
+  min-height: 1px;
+  // padding: 1rem 2rem;
+  display: flex;
+  gap: 100px;
+  background-color: green;
+  border-radius: 10px;
 
 }
 
@@ -144,18 +156,7 @@
 
 }
 
-// .row input[type="radio"] {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center; 
-//   width: 18px; 
-//   height: 18px;
-//   background-color: #007bff; 
-//   border-radius: 50%;
-//   border: 2px solid #007bff; 
-//   margin-right: 10px;
-//   margin-top: 2px;
-// }
+
 
 .row1 input[type=radio] {
   display: flex;
@@ -179,6 +180,7 @@
   font-weight: 500;
   font-size: 48px;
 
+
 }
 
 .mcqOption {
@@ -187,6 +189,7 @@
   font-weight: 350;
   font-size: 37px;
   margin-top: 30px;
+  
 
 }
 
@@ -214,11 +217,12 @@ dialog {
   padding: 90px;
   border-radius: 5px;
   // box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.5);
-  width: 555px;
-  height: 344px;
+  width: 34.125rem;
+  height: 24.75rem;
   max-width: 80%;
-  margin-top: -24.5rem;
+  margin-top: -24rem;
   background-repeat: no-repeat;
+  position: relative;
 
 }
 
@@ -233,7 +237,6 @@ dialog::backdrop {
 dialog h2 {
   margin: 0 0 30px;
 }
-
 input,
 button {
   padding: 8px 20px;
@@ -272,4 +275,21 @@ margin-right: 300px;
 padding: 8px 19px;
   background-color: #00ff04;
   border-radius: 6px;
+  
+}
+
+.correct {
+  background-color: #58B67F; 
+}
+
+.incorrect {
+  background-color: #DE8392;
+}
+
+.corrects {
+  background-color: #18A150; 
+}
+
+.incorrects {
+  background-color:#E34C4B;
 }

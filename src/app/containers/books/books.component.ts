@@ -8,6 +8,7 @@ import { TocService } from 'src/app/shared/toc.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
 import { enviroment } from 'enviroment/enviroment';
+// import envvirment from "../../../assets/audio/enviroment.json"
 
 
 @Component({
@@ -52,6 +53,10 @@ export class BooksComponent {
  
 
   ngOnInit() {
+
+
+
+    
    
    this.quizService.getclassId.subscribe(resp=>{
     this.classId = resp;

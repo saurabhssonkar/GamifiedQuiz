@@ -50,6 +50,8 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
   email = '';
   modalReturnValue = '';
 
+  value:any;
+
 
 
   constructor(
@@ -75,6 +77,7 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
       this.currentQuestion = changes.question.currentValue;
       console.log("this.currentQuestion",  this.currentQuestion)
       this.correctAnswers = this.quizService.getCorrectAnswers(this.currentQuestion);
+      console.log("@@@ this.correctAnswers", this.correctAnswers)
       this.multipleAnswer = this.correctAnswers.length > 1;
 
       if (this.formGroup) {
@@ -93,13 +96,26 @@ export class QuizQuestionComponent implements OnInit, OnChanges {
     console.log("saurabh sonkar")
     this.quizStarted = true;
     this.correctMessage = this.quizService.correctMessage;
+    console.log("this.correctMessage",this.correctMessage);
     this.isCorrectAnswerSelected = this.isCorrect(this.currentQuestion.options[optionIndex].correct, optionIndex);
+
+    console.log(" this.isCorrectAnswerSelected ", this.isCorrectAnswerSelected )
+
     this.answer.emit(optionIndex);
+    // console.log("this.answer.emit(optionIndex) ", this.answer.emit(optionIndex))
 
     if (this.correctAnswers.length === 1) {
+      console.log("this.currentQuestion.options",this.currentQuestion.options)
       this.currentQuestion.options.forEach((option: Option) => option.selected = false);
+      console.log("@@",this.currentQuestion.options.forEach((option: Option) => option.selected = false))
+      this.value=0;
+      console.log("this.value",this.value)
+      
     }
     this.currentQuestion.options[optionIndex].selected = true;
+    this.value=1;
+    console.log("this.value",this.value);
+    console.log("!!!!",    this.currentQuestion.options[optionIndex].selected = true)
 
     if (
       optionIndex >= 0 &&

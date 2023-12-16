@@ -44,39 +44,42 @@
             this is simple question
           </div> -->
           <div class="m-3">
+            
 
             <div class="row ">
               <div class="col-md-12 ">
                 <div class="card" style="border-radius:10px">
 
-                  <div class="card-body1">
+                  <div class="card-body1"  [class.correct]="option.selected && option.correct" [class.incorrect]="option.selected && !option.correct">
 
 
                     <div class="row1 row col-md-12 justify-content-between ">
-                      
-                      <h1  class="mcqIndex">
-                        <span class="index">{{i+1}}</span>
-                        <span [innerHTML]=" option.text" class="mcqOption"></span>
-                      </h1>
-                      
 
-                      <input type="radio" (change)="setSelected(i)"  (click)="openModal()" [disabled]="alreadyAnswered"
+                      <h1 class="mcqIndex" >
+
+                        <span class="index"  [class.corrects]="option.selected && option.correct" [class.incorrects]="option.selected && !option.correct">{{i+1}}</span>
+                        <span   [innerHTML]=" option.text" class="mcqOption"></span>
+                      </h1>
+
+
+                      <input type="radio" (change)="setSelected(i)" (click)="openModal()" [disabled]="alreadyAnswered"
                         [class.is-correct]="option.selected && option.correct"
                         [class.is-incorrect]="option.selected && !option.correct" class="fade-in-image  custom-radio  ">
-                      
+
                       <!-- show the text option in mcq choice -->
                       <!-- this is icon of the done and clear if the question is right  -->
-                      <mat-icon class="feedback-icon"
-                        *ngIf="option.selected && option.correct && isCorrectAnswerSelected">done</mat-icon>
+                      <!-- <mat-icon class="feedback-icon"
+                        *ngIf="option.selected && option.correct && isCorrectAnswerSelected">done</mat-icon> -->
                       <!-- <mat-icon class="feedback-icon" *ngIf="option.selected && !option.correct">clear</mat-icon> -->
-                      <div style="background-color: red;" *ngIf="option.selected && !option.correct"></div>
+                     
+                     
 
-
-                      
-                    </div>
-                 
+                    
                   </div>
                 </div>
+                
+                  <!-- <button class="" (click)="closeModal()">No Thanks</button> -->
+                
               </div>
             </div>
             <div *ngIf="previousUserAnswersText[i] && option.selected" class="previous-answer-text">
@@ -149,17 +152,38 @@
       </div>
     </div>
   </div>
+
+
+
+
+  
  
+
+
+</div>
+
+
 </ng-container>
 
 
 
- <dialog [open]="isModalOpen" (close)="onModalClose()">
-    
-      <button class="apply btn close-modal" (click)="closeModal()" type="submit">Continue</button>
-      <!-- <button class="" (click)="closeModal()">No Thanks</button> -->
-    
-  </dialog>
+<ng-container *ngFor="let option of currentQuestion.options; index as i">
+
+<dialog   *ngIf="option.selected && option.correct && isCorrectAnswerSelected"  [open]="isModalOpen" (close)="onModalClose()">
+  
+  <button class=" btn" (click)="closeModal()" type="submit">Continue</button>
+
+</dialog> 
+<dialog   *ngIf="option.selected && !option.correct"  [open]="isModalOpen" (close)="onModalClose()">
+  
+  <button class=" btn" (click)="closeModal()" type="submit">Wrong</button>
+
+</dialog> 
+
+</ng-container>
+
+
+
 
 
 

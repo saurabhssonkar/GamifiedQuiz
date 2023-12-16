@@ -1,0 +1,13 @@
+
+{
+    "hostName": "http://192.168.1.50:8081",
+    "userId": 582,
+    "portName": "",
+    "Authentication": "",
+    "url": "<IMG src=\"http://localhost:80/sasimages/",
+    "imgae": "<IMG src=\"/sasimages/",
+    "imgae2": "<IMG src=\\\"/SASImages/",
+    "image3": "<IMG src=\"/SASImages/",
+    "image4": "<IMG src=\"/SASImages/",
+    "templatImage": "http://localhost:80/"
+}
