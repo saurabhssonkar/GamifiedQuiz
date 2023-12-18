@@ -208,7 +208,7 @@
 
 }
 
-dialog {
+.popcorrect {
   text-align: center;
   // background-color: #333;
   background: url("../../../assets/images/correct.png");
@@ -225,26 +225,44 @@ dialog {
   position: relative;
 
 }
-
-dialog[open] {
-  animation: toggle-modal .3s ease-in-out;
-}
-
-dialog::backdrop {
-  background: rgba(0, 0, 0, .5);
-}
-
-dialog h2 {
-  margin: 0 0 30px;
-}
-input,
-button {
-  padding: 8px 20px;
-  margin-bottom: 5px;
-  border-radius: 3px;
+.popincorrect{
+  text-align: center;
+  // background-color: #333;
+  background: url("../../../assets/images/incorrect.png");
+  color: #eee;
   border: none;
-  cursor: pointer;
+  padding: 90px;
+  border-radius: 5px;
+  // box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.5);
+  width: 34.125rem;
+  height: 24.75rem;
+  max-width: 80%;
+  margin-top: -24rem;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-left: 15.93rem;
+
 }
+
+// dialog[open] {
+//   animation: toggle-modal .3s ease-in-out;
+// }
+
+// dialog::backdrop {
+//   background: rgba(0, 0, 0, .5);
+// }
+
+// dialog h2 {
+//   margin: 0 0 30px;
+// }
+// input,
+// button {
+//   padding: 8px 20px;
+//   margin-bottom: 5px;
+//   border-radius: 3px;
+//   border: none;
+//   cursor: pointer;
+// }
 
 button {
   color: #fff;
@@ -268,14 +286,36 @@ button {
     opacity: 1;
   }
 }
-.btn{
-  margin-top: 120px;
-
-margin-right: 300px;  
-padding: 8px 19px;
-  background-color: #00ff04;
-  border-radius: 6px;
+.btn1{
+ margin-top: 120px;
+    margin-right: 179px;
+    padding: 13px 41px;
+    background-color: #1dad3a;
+    border-radius: 6px;
+    border: none;
+    font-size: 28px;
+    font-weight: 500;
   
+}
+.btn1:hover{
+     background-color: #84CD93;
+
+
+}
+.btn2{
+margin-top: 120px;
+margin-right: 179px;
+padding: 13px 41px;
+background-color: #f4122c;
+border-radius: 6px;
+border: none;
+font-size: 28px;
+font-weight: 500;
+  
+}
+.btn2:hover{
+  background-color:#DE8392;
+
 }
 
 .correct {

@@ -169,14 +169,16 @@
 
 <ng-container *ngFor="let option of currentQuestion.options; index as i">
 
-<dialog   *ngIf="option.selected && option.correct && isCorrectAnswerSelected"  [open]="isModalOpen" (close)="onModalClose()">
+
   
-  <button class=" btn" (click)="closeModal()" type="submit">Continue</button>
+<dialog  class="popcorrect"  *ngIf="option.selected && option.correct && isCorrectAnswerSelected"  [open]="isModalOpen" (close)="onModalClose()">
+  
+  <button class="btn1" (click)="closeModal()" type="submit">Continue</button>
 
 </dialog> 
-<dialog   *ngIf="option.selected && !option.correct"  [open]="isModalOpen" (close)="onModalClose()">
+<dialog  class="popincorrect" *ngIf="option.selected && !option.correct"  [open]="isModalOpen" (close)="onModalClose()">
   
-  <button class=" btn" (click)="closeModal()" type="submit">Wrong</button>
+  <button class=" btn2" (click)="closeModal()" type="submit">Continue</button>
 
 </dialog> 
 
