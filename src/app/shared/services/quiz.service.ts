@@ -54,7 +54,7 @@ export class QuizService {
   checkedShuffle: boolean;
 
   correctSound = new Howl({
-    src: '../../assets/audio/sound-incorrect.mp3',
+    src: '../../assets/audio/Quiz-Correct.mp3',
     html5: true,
     format: ['mp3', 'aac']
   });

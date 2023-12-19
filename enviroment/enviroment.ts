@@ -1,6 +1,6 @@
 
 // this is the production level 
-export const     enviromentProduction  = {
+export const    enviroment = {
     hostName: 'http://192.168.1.50:8081',
     // hostName: 'http://localhost:8082',
     // http://localhost:4200/
@@ -18,7 +18,7 @@ export const     enviromentProduction  = {
 // enviroment
 // this is the localhost level 
 
-export const enviroment = {
+export const enviromentProduction   = {
     hostName: 'http://192.168.0.1:8082',
     
     userId : 582,

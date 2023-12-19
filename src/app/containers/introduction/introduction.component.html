@@ -5,13 +5,13 @@
     <!-- <div class="container mt-md-5 "> -->
 
     <div class="bgimage    mt-md-5 mb-5  d-flex justify-content-center align-items-center"
-      style=" border-radius: 50px;color: #ffff; ">
+      style=" border-radius: 50px;color: #ffff;">
       
       <div class="text-center ">
-        <h1>Get Ready</h1>
-        <h3>Your quiz is starting</h3>
-        <h1>{{countdown}}</h1>
-        <h1>Seconds</h1>
+        <h1 style="font-weight: 600; font-size: 28px;" >GET   <span style="color:#ffd740; font-weight: 600; font-size: 28px;" >READY</span></h1>
+        <h3 style="font-size: 16px; font-weight: 500;">YOUR QUIZ IS STARTING !</h3>
+        <h1 style="font-weight: 500; font-size: 32px; color:#ffd740;">{{countdown}}</h1>
+        <h1 style="font-weight: bold; font-size: 27px; ">SECONDS</h1>
 
         <button *ngIf="countdown > 0; else enableButton" mat-raised-button type="button" name="start quiz"
           [disabled]="true" class="btn btn-outline-primary" [routerLink]="['/question/', quiz.quizId, 1]"
