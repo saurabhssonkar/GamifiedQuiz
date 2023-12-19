@@ -8,6 +8,7 @@ import { TocService } from 'src/app/shared/toc.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
 import { enviroment } from 'enviroment/enviroment';
+import { EnvirmentService } from 'src/app/shared/services/envirment.service'; 
 // import envvirment from "../../../assets/audio/enviroment.json"
 
 
@@ -40,19 +41,38 @@ export class BooksComponent {
  getChapterTopicCuratedList:any;
  defaultImageBook:string="../../../assets/images/samplebook.jpg";
  userId=enviroment.userId;
+// userId:any
+enviroment:any
+
  
 
   constructor(
     private quizService: QuizService,
     private route: ActivatedRoute,
     private tocService:TocService,
-    private http:HttpClient
-  ) { }
+    private http:HttpClient,
+    private envirment:EnvirmentService
+  ) { 
+
+
+    // this.envirment.enviorment().then((resp)=>{
+    //   this.enviroment=resp[0];
+    //   console.log("this.envirment",this.enviroment);
+    //   this.userId=this.enviroment.userId
+    //   console.log("  this.userId",  this.userId)
+
+    // })
+  }
 
 
  
 
   ngOnInit() {
+
+    console.log("saurabh sonkar")
+
+
+   
 
 
 

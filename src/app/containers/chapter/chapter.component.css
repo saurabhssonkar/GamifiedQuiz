@@ -3,3 +3,27 @@
     background-size: cover;
     
   }
+  .custom{
+  background: linear-gradient(to right, #44ae4c, #1488af);
+  width: 100%;
+  padding: 3px;
+  border-radius: 2px
+  }
+  .text{
+    margin-top: 15px;
+    margin-left: 35px;
+    color: white;
+    font-size: 15px;
+
+  }
+  .chapter{
+    background: url(../../../assets/images/Arrow-sam-2.png);
+    height: 2.4rem;
+    background-repeat: no-repeat;
+  }
+  .chapters{
+    position: absolute;
+    margin-top: 10px;
+    font-weight: bold;
+    margin-left: -10px;
+  }
