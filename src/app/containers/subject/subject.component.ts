@@ -8,6 +8,7 @@ import { TocService } from 'src/app/shared/toc.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, finalize, map, of, switchMap } from 'rxjs';
 import { enviroment } from 'enviroment/enviroment';
+import { AppConfig } from 'src/config/app.config';
 
 
 @Component({
@@ -39,7 +40,8 @@ export class SubjectComponent {
   Subject: any[] = [];
   loading: boolean = true;
   Subject$: Observable<any[]> | null = null; 
-  userId=enviroment.userId
+  // userId=enviroment.userId
+  userId:any;
 
   getClasslist: any;
   constructor(
@@ -53,6 +55,8 @@ export class SubjectComponent {
 
   ngOnInit() {
 
+
+    this.userId = AppConfig.settings.data[0].userId;
     this.quizService.getclassId.subscribe(resp => {
       this.Classid = resp;
       console.log("new Data", this.Classid);

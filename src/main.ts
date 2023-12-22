@@ -14,17 +14,48 @@ import '@angular/localize/init';
 
 
 import { AppModule } from './app/app.module';
+import { AppConfig } from './app.config';
 
-platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
+// platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
   
   
-  // Ensure Angular destroys itself on hot reloads.
-  if (window['ngRef']) {
-    window['ngRef'].destroy();
-  }
-  window['ngRef'] = ref;
+//   // Ensure Angular destroys itself on hot reloads.
+//   if (window['ngRef']) {
+//     window['ngRef'].destroy();
+//   }
+//   window['ngRef'] = ref;
 
-  // Otherwise, log the boot error
-}).catch(err => console.error(err));
+//   // Otherwise, log the boot error
+// }).catch(err => console.error(err));
+
+
+AppConfig.load()
+.then(() => {
+  platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
+  
+  
+    // Ensure Angular destroys itself on hot reloads.
+    if (window['ngRef']) {
+      window['ngRef'].destroy();
+    }
+    window['ngRef'] = ref;
+  
+    // Otherwise, log the boot error
+  }).catch(err => console.error(err));
+  
+});
+
+
+// platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
+  
+  
+//   // Ensure Angular destroys itself on hot reloads.
+//   if (window['ngRef']) {
+//     window['ngRef'].destroy();
+//   }
+//   window['ngRef'] = ref;
+
+//   // Otherwise, log the boot error
+// }).catch(err => console.error(err));
 
 

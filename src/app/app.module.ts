@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuizRoutingModule } from './router/quiz-routing.module';
@@ -37,9 +37,11 @@ import { CarouselModule } from 'primeng/carousel';
 import { BooksComponent } from './containers/books/books.component';
 import {HttpClientModule} from '@angular/common/http';
 import { NgxXml2jsonService } from 'ngx-xml2json';
+import { AppConfig } from 'src/config/app.config';
 
-
-
+export function initializeApp(appConfig: AppConfig) {
+  return () => appConfig.load();
+}
 
 @NgModule({
   declarations: [
@@ -84,7 +86,15 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
   ],
   exports: [MatExpansionModule],
   bootstrap: [AppComponent],
-  providers: [QuizService, TimerService,NgxXml2jsonService],
+  providers: [QuizService, TimerService,NgxXml2jsonService,
+    AppConfig,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AppConfig],
+      multi: true
+     },
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   
 })

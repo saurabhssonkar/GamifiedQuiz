@@ -7,6 +7,7 @@ import { BehaviorSubject, forkJoin, fromEvent, merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { QuizService } from 'src/app/shared/services/quiz.service';
 import { enviroment } from 'enviroment/enviroment';
+import { AppConfig } from 'src/config/app.config';
 
 
 @Component({
@@ -48,24 +49,32 @@ export class ChapterComponent implements OnInit {
   getchapterIdandTopicId: any;
   getTestQuetiondata: any;
   testData: boolean = true;
-  url = enviroment.url;
+  // url = enviroment.url;
+  url:any;
   // url='<IMG src="http://3.109.178.249:8020/sasimages/';
   // imgae='<IMG src="/sasimages/'
   imgae4='/SASImages/'
-  imgae=enviroment.imgae;
+  // imgae=enviroment.imgae;
+  imgae:any;
   // imgae2='<IMG src=\"/SASImages/'
-  imgae2=enviroment.imgae2
+ 
+  // imgae2=enviroment.imgae2
+  imgae2:any;
   // image3='<IMG src="/SASImages/'
-  image3=enviroment.image3
+  // image3=enviroment.image3
+  image3:any;
   // image4='<IMG src="/SASImages/'
-  image4=enviroment.image4
+  // image4=enviroment.image4
+  image4:any
   Templatecode:any
-  templatImage = `${enviroment.templatImage}/Assessments/QuestionBank/QuestionImage.ashx?`
+  // templatImage = `${enviroment.templatImage}/Assessments/QuestionBank/QuestionImage.ashx?`
+  templatImage:any;
   userId=enviroment.userId
   optionText1:any;
   optionText2:any;
   optionText3:any;
   optionText4:any;
+  
   
 
   // getchapterTopicData : Observable<any>;
@@ -77,6 +86,22 @@ export class ChapterComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.userId =AppConfig.settings.data[0].userId;
+
+    this.imgae = AppConfig.settings.data[0].imgae;
+
+    this.imgae2 = AppConfig.settings.data[0].imgae2;
+
+    this.image3 =  AppConfig.settings.data[0].image3;
+    this.image4 = AppConfig.settings.data[0].image4
+
+    this.templatImage = `${AppConfig.settings.data[0].templatImage}/Assessments/QuestionBank/QuestionImage.ashx?`
+    this.url = AppConfig.settings.data[0].url;
+
+
+
+
     
 
     this.quizService.getbookId.subscribe(resp => {

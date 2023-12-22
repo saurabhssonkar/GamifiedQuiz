@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
 import { enviroment } from 'enviroment/enviroment';
 import { EnvirmentService } from 'src/app/shared/services/envirment.service'; 
-// import envvirment from "../../../assets/audio/enviroment.json"
+import { AppConfig } from 'src/config/app.config';
 
 
 @Component({
@@ -40,8 +40,8 @@ export class BooksComponent {
  classId:any;
  getChapterTopicCuratedList:any;
  defaultImageBook:string="../../../assets/images/samplebook.jpg";
- userId=enviroment.userId;
-// userId:any
+//  userId=enviroment.userId;
+userId:any
 enviroment:any
 
  
@@ -51,7 +51,6 @@ enviroment:any
     private route: ActivatedRoute,
     private tocService:TocService,
     private http:HttpClient,
-    private envirment:EnvirmentService
   ) { 
 
 
@@ -70,6 +69,9 @@ enviroment:any
   ngOnInit() {
 
     console.log("saurabh sonkar")
+
+   this.userId =AppConfig.settings.data[0].userId;
+    console.log("data@!2",this.userId)
 
 
    
