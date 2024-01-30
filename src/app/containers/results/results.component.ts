@@ -38,6 +38,7 @@ export class ResultsComponent implements OnInit {
     userAnswers: this.quizService.userAnswers,
     elapsedTimes: this.timerService.elapsedTimes
   };
+  
   highScores: Score[] = [];
   score: Score = {
     quizId: '',
@@ -91,6 +92,7 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Saurabh@@!!!",this.results);
 
 
 
@@ -170,8 +172,11 @@ export class ResultsComponent implements OnInit {
       console.log('checked the level', this.quizName);
     });
     this.correctAnswers = this.quizService.correctAnswers;
+    console.log("this.correctAnswers",this.correctAnswers)
     this.questions = this.quizService.questions;
+    console.log("this.questions$$$$$",  this.questions);
     this.numberOfCorrectAnswers = this.quizService.numberOfCorrectAnswersArray;
+    console.log(" this.numberOfCorrectAnswers", this.numberOfCorrectAnswers)
     this.checkedShuffle = this.quizService.checkedShuffle;
     // this.resources = this.quizService.resources;
   }

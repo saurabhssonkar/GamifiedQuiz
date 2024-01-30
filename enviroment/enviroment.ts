@@ -1,19 +1,21 @@
 
 // this is the production level 
-export const    enviroment = {
-    hostName: 'http://192.168.1.50:8081',
+export const enviroment = {
+    // hostName: 'http://10.0.0.80:8082',
+    hostName: 'http://192.168.1.50:8082',
+
     // hostName: 'http://localhost:8082',
     // http://localhost:4200/
     userId : 582,
 
     portName: '',
     Authentication: '',
-    url: '<IMG src="http://localhost:80/sasimages/',
+    url: '<IMG src="http://192.168.1.50/sasimages/',
     imgae: '<IMG src="/sasimages/',
     imgae2: '<IMG src=\"/SASImages/',
     image3: '<IMG src="/SASImages/',
     image4: '<IMG src="/SASImages/',
-    templatImage: 'http://localhost:80/',
+    templatImage: 'http://192.168.1.50/',
 }
 // enviroment
 // this is the localhost level 
