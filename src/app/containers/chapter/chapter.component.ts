@@ -6,7 +6,7 @@ import { TocService } from 'src/app/shared/toc.service';
 import { BehaviorSubject, forkJoin, fromEvent, merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { QuizService } from 'src/app/shared/services/quiz.service';
-import { enviroment } from 'enviroment/enviroment';
+// import { enviroment } from 'enviroment/enviroment';
 import { AppConfig } from 'src/config/app.config';
 
 
@@ -69,7 +69,10 @@ export class ChapterComponent implements OnInit {
   Templatecode:any
   // templatImage = `${enviroment.templatImage}/Assessments/QuestionBank/QuestionImage.ashx?`
   templatImage:any;
-  userId=enviroment.userId
+  // userId=enviroment.userId
+  // userId =AppConfig.settings.data[0].userId;
+  userId:any
+
   optionText1:any;
   optionText2:any;
   optionText3:any;

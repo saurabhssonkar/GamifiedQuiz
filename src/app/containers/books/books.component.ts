@@ -7,7 +7,7 @@ import { QuizService } from 'src/app/shared/services/quiz.service';
 import { TocService } from 'src/app/shared/toc.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
-import { enviroment } from 'enviroment/enviroment';
+// import { enviroment } from 'enviroment/enviroment';
 import { EnvirmentService } from 'src/app/shared/services/envirment.service'; 
 import { AppConfig } from 'src/config/app.config';
 

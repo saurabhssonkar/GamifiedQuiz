@@ -6,7 +6,9 @@ import { text } from '@fortawesome/fontawesome-svg-core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Quiz } from './models/Quiz.model';
 import { QUIZ_DATA } from './quiz';
-import { enviroment } from '../../../enviroment/enviroment';
+// import { enviroment } from '../../../enviroment/enviroment';
+import { AppConfig } from 'src/config/app.config';
+
 
 
 
@@ -43,7 +45,9 @@ export class TocService {
   questionTest: any;
   mcqQuestionAndOptionData: any;
   loading:boolean=true;
-  private hostName:any = enviroment.hostName;
+  // private hostName:any = enviroment.hostName;
+  private hostName =AppConfig.settings.data[0].hostName;
+
 
   // private message = new BehaviorSubject<Quiz[]>(QUIZ_DATA);
   // getMessage = this.message.asObservable();

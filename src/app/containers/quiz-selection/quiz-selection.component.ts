@@ -5,7 +5,7 @@ import { Quiz } from '../../shared/models/Quiz.model';
 import { QuizService } from '../../shared/services/quiz.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { TocService } from 'src/app/shared/toc.service';
-import { enviroment } from 'enviroment/enviroment';
+// import { enviroment } from 'enviroment/enviroment';
 import { AppConfig } from 'src/config/app.config';
 
 @Component({
